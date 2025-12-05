@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Noval - Web & AI Developer</title>
+    <meta name="description" content="Portfolio of Muhammad Noval Dwi Ramadhani, focusing on Web Development and Deep Learning.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#18181b', /* Zinc 900 */
+                        surface: '#27272a',    /* Zinc 800 */
+                        border: '#3f3f46',     /* Zinc 700 */
+                        primary: '#fafafa',    /* Zinc 50 */
+                        secondary: '#a1a1aa',  /* Zinc 400 */
+                        accent: '#3b82f6',     /* Blue 500 - Aksen minimalis */
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-primary font-sans antialiased selection:bg-accent selection:text-white">
+
+    <main class="max-w-3xl mx-auto px-6 py-12 md:py-20">
+        
+        <header class="mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+                Hi, I'm Noval.
+            </h1>
+            <p class="text-lg text-secondary leading-relaxed mb-6">
+                Seorang mahasiswa dan pengembang perangkat lunak yang berbasis di Malang. 
+                Saya memiliki ketertarikan mendalam pada <span class="text-white font-semibold">Web Development</span> dan <span class="text-white font-semibold">Artificial Intelligence</span> (khususnya Computer Vision).
+            </p>
+            
+            <div class="flex flex-wrap items-center gap-4">
+                <div class="flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span class="text-xs font-medium text-green-500">Open for Internship</span>
+                </div>
+                
+                <a href="https://github.com/mnovaldr" class="text-secondary hover:text-white transition"><i class="fa-brands fa-github text-xl"></i></a>
+                <a href="https://instagram.com/mnvldr_" class="text-secondary hover:text-white transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                <a href="mailto:mnovaldr@gmail.com" class="text-secondary hover:text-white transition"><i class="fa-regular fa-envelope text-xl"></i></a>
+            </div>
+        </header>
+
+        <hr class="border-border mb-16 opacity-50">
+
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-secondary text-sm"></i> Focus Area
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-6 rounded-2xl bg-surface border border-border hover:border-accent/50 transition duration-300">
+                    <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4 text-blue-400">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Web Engineering</h3>
+                    <p class="text-sm text-secondary leading-relaxed">
+                        Membangun aplikasi web yang responsif menggunakan HTML, CSS, JavaScript, dan PHP. Berpengalaman dalam membuat sistem E-commerce dan PWA.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-surface border border-border hover:border-accent/50 transition duration-300">
+                    <div class="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center mb-4 text-purple-400">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Deep Learning</h3>
+                    <p class="text-sm text-secondary leading-relaxed">
+                        Mengeksplorasi Convolutional Neural Network (CNN) untuk pengolahan citra digital, seperti klasifikasi objek.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+                <i class="fa-solid fa-flask text-secondary text-sm"></i> Featured Projects
+            </h2>
+
+            <div class="space-y-6">
+                
+                <a href="#" class="group block p-6 rounded-2xl bg-surface/50 border border-border hover:bg-surface hover:border-accent/30 transition duration-300">
+                    <div class="flex flex-col md:flex-row gap-6 justify-between md:items-start">
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold group-hover:text-accent transition">Implementasi Algoritma YOLOv8 untuk Identifikasi Plat Nomor Kendaraan</h3>
+                            <p class="text-sm text-secondary mt-2 mb-4">
+                                Implementasi Algoritma YOLOv8 untuk Identifikasi Plat Nomor Kendaraan dalam Sistem Parkir Otomatis.
+                            </p>
+                            <div class="flex gap-2">
+                                <span class="text-xs px-2 py-1 rounded bg-white/5 text-secondary border border-white/5">Python</span>
+                                <span class="text-xs px-2 py-1 rounded bg-white/5 text-secondary border border-white/5">YOLOv8</span>
+                            </div>
+                        </div>
+                        </div>
+                </a>
+
+                <a href="https://mamafrozen.000webhostapp.com/" target="_blank" class="group block p-6 rounded-2xl bg-surface/50 border border-border hover:bg-surface hover:border-accent/30 transition duration-300">
+                    <div class="flex flex-col md:flex-row gap-6 justify-between md:items-start">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-lg font-bold group-hover:text-accent transition">Mama Frozen E-commerce</h3>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-secondary opacity-0 group-hover:opacity-100 transition"></i>
+                            </div>
+                            <p class="text-sm text-secondary mt-2 mb-4">
+                                Platform toko online untuk UMKM Frozen Food. Membantu digitalisasi proses pemesanan dan katalog produk.
+                            </p>
+                            <div class="flex gap-2">
+                                <span class="text-xs px-2 py-1 rounded bg-white/5 text-secondary border border-white/5">PHP</span>
+                                <span class="text-xs px-2 py-1 rounded bg-white/5 text-secondary border border-white/5">Laravel</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="group block p-6 rounded-2xl bg-surface/50 border border-border hover:bg-surface hover:border-accent/30 transition duration-300">
+                    <div class="flex flex-col md:flex-row gap-6 justify-between md:items-start">
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold group-hover:text-accent transition">RestoranQue</h3>
+                            <p class="text-sm text-secondary mt-2 mb-4">
+                                Aplikasi Progressive Web App (PWA) untuk katalog restoran dengan fitur caching, favorites, dan integration testing.
+                            </p>
+                            <div class="flex gap-2">
+                                <span class="text-xs px-2 py-1 rounded bg-white/5 text-secondary border border-white/5">JavaScript</span>
+                                <span class="text-xs px-2 py-1 rounded bg-white/5 text-secondary border border-white/5">PWA</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            
+            <div class="mt-6 text-center">
+                <a href="https://github.com/mnovaldr" class="text-sm text-secondary hover:text-white border-b border-secondary/30 pb-0.5 hover:border-white transition">
+                    Lihat arsip kode lainnya di GitHub
+                </a>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+                <i class="fa-solid fa-microchip text-secondary text-sm"></i> Tech Stack
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">Python</div>
+                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">JavaScript</div>
+                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">PHP</div>
+                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">Dart</div>
+                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">TensorFlow</div>
+                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">Flutter</div>
+                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">Tailwind</div>
+                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">Git</div>
+            </div>
+        </section>
+
+        <hr class="border-border mb-12 opacity-50">
+
+        <footer class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary">
+            <p>&copy; 2025 Muhammad Noval Dwi Ramadhani.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white transition">Resume</a>
+                <a href="#" class="hover:text-white transition">LinkedIn</a>
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+</html>
