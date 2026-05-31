@@ -194,6 +194,10 @@
             <div id="projects-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Rendered dynamically -->
             </div>
+            
+            <div id="github-archive-link" class="mt-8 text-center">
+                <!-- Rendered dynamically -->
+            </div>
         </section>
 
         <!-- Tech Stack Section -->
@@ -373,6 +377,16 @@
                         </a>
                     `;
                 }).join('');
+            }
+
+            // Render GitHub Archive Link
+            const githubArchiveLink = document.getElementById('github-archive-link');
+            if (githubArchiveLink && data.profile) {
+                githubArchiveLink.innerHTML = `
+                    <a href="${data.profile.socials.github}" target="_blank" class="text-sm text-secondary hover:text-primary border-b border-border pb-0.5 hover:border-primary transition-all duration-200">
+                        Lihat arsip kode lainnya di GitHub
+                    </a>
+                `;
             }
 
             // 4. Render Tech Stack
