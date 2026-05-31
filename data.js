@@ -4,7 +4,7 @@ window.PORTFOLIO_DATA = {
     nickname: "Noval",
     tagline: "Hi, I'm Noval.",
     role: "AI & Backend Engineer",
-    bio: "Mahasiswa Teknik Informatika Semester 6 dengan spesialisasi pada <span id='typewriter' class='text-white font-semibold border-r-2 border-accent animate-pulse pr-1'></span>. Menggabungkan fondasi Software Engineering yang kuat dengan kemampuan analisis data modern untuk menciptakan solusi cerdas yang aplikatif.",
+    bio: "Mahasiswa Teknik Informatika Semester 6 dengan spesialisasi pada <span id='typewriter' class='text-primary font-semibold border-r-2 border-accent animate-pulse pr-1'></span>. Menggabungkan fondasi Software Engineering yang kuat dengan kemampuan analisis data modern untuk menciptakan solusi cerdas yang aplikatif.",
     typewriterRoles: [
       "Artificial Intelligence (Computer Vision)",
       "Backend Engineering",
@@ -27,7 +27,7 @@ window.PORTFOLIO_DATA = {
     {
       title: "Backend Engineering",
       icon: "fa-solid fa-server",
-      description: "Membangun aplikasi web yang <i>scalable</i> menggunakan <span class='text-white'>Django (Python)</span> dan <span class='text-white'>Laravel (PHP)</span>. Berpengalaman mengintegrasikan model AI ke dalam sistem web.",
+      description: "Membangun aplikasi web yang <i>scalable</i> menggunakan <span class='text-primary font-semibold'>Django (Python)</span> dan <span class='text-primary font-semibold'>Laravel (PHP)</span>. Berpengalaman mengintegrasikan model AI ke dalam sistem web.",
       accentClass: "text-blue-400 bg-blue-500/10 hover:border-blue-500/30 group-hover:text-blue-400 shadow-blue-500/5",
       glowColor: "rgba(59, 130, 246, 0.15)",
       glowClass: "glow-card-blue",
@@ -36,7 +36,7 @@ window.PORTFOLIO_DATA = {
     {
       title: "Deep Learning",
       icon: "fa-solid fa-brain",
-      description: "Mengembangkan model deteksi objek secara <i>real-time</i> menggunakan <span class='text-white'>YOLOv8</span> dan <span class='text-white'>PyTorch</span>. Fokus pada implementasi <i>end-to-end</i>, mulai dari <i>training dataset</i> hingga tahap <i>deployment</i>.",
+      description: "Mengembangkan model deteksi objek secara <i>real-time</i> menggunakan <span class='text-primary font-semibold'>YOLOv8</span> dan <span class='text-primary font-semibold'>PyTorch</span>. Fokus pada implementasi <i>end-to-end</i>, mulai dari <i>training dataset</i> hingga tahap <i>deployment</i>.",
       accentClass: "text-purple-400 bg-purple-500/10 hover:border-purple-500/30 group-hover:text-purple-400 shadow-purple-500/5",
       glowColor: "rgba(168, 85, 247, 0.15)",
       glowClass: "glow-card-purple",

@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Noval - AI & Backend Engineer</title>
-    <meta name="description"
-        content="Portfolio of Muhammad Noval Dwi Ramadhani, focusing on Artificial Intelligence, Computer Vision, and Backend Engineering.">
-
+    <meta name="description" content="Portfolio of Muhammad Noval Dwi Ramadhani, focusing on Artificial Intelligence, Computer Vision, and Backend Engineering.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-
+    
     <link rel="shortcut icon" href="dist/img/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="dist/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
+        // Apply theme early to prevent flash of wrong theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
         tailwind.config = {
             theme: {
                 extend: {
@@ -24,12 +26,12 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        background: '#09090b', // Zinc 950 for deeper modern dark background
-                        surface: '#18181b',    // Zinc 900
-                        border: '#27272a',     // Zinc 800
-                        primary: '#fafafa',
-                        secondary: '#a1a1aa',
-                        accent: '#3b82f6',
+                        background: 'rgba(var(--color-background-rgb), <alpha-value>)',
+                        surface: 'rgba(var(--color-surface-rgb), <alpha-value>)',
+                        border: 'rgba(var(--color-border-rgb), <alpha-value>)',
+                        primary: 'rgba(var(--color-primary-rgb), <alpha-value>)',
+                        secondary: 'rgba(var(--color-secondary-rgb), <alpha-value>)',
+                        accent: 'rgba(var(--color-accent-rgb), <alpha-value>)',
                     }
                 }
             }
@@ -37,45 +39,47 @@
     </script>
 
     <style>
+        :root {
+            --color-background-rgb: 9, 9, 11;
+            --color-surface-rgb: 24, 24, 27;
+            --color-border-rgb: 39, 39, 42;
+            --color-primary-rgb: 250, 250, 250;
+            --color-secondary-rgb: 161, 161, 170;
+            --color-accent-rgb: 59, 130, 246;
+            --blueprint-opacity: 0.25;
+        }
+
+        [data-theme="light"] {
+            --color-background-rgb: 244, 244, 245;
+            --color-surface-rgb: 255, 255, 255;
+            --color-border-rgb: 228, 228, 230;
+            --color-primary-rgb: 9, 9, 11;
+            --color-secondary-rgb: 113, 113, 122;
+            --color-accent-rgb: 37, 99, 235;
+            --blueprint-opacity: 0.08;
+        }
+
         /* Modern Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
-
         ::-webkit-scrollbar-track {
-            background: #09090b;
+            background: rgb(var(--color-background-rgb));
         }
-
         ::-webkit-scrollbar-thumb {
-            background: #27272a;
+            background: rgb(var(--color-border-rgb));
             border-radius: 9999px;
         }
-
         ::-webkit-scrollbar-thumb:hover {
-            background: #3f3f46;
+            background: rgb(var(--color-secondary-rgb));
         }
 
-        /* Ambient Glow Animations */
-        @keyframes pulseGlow {
-
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.12;
-            }
-
-            50% {
-                transform: scale(1.05);
-                opacity: 0.18;
-            }
-        }
-
-        .ambient-glow-1 {
-            animation: pulseGlow 12s ease-in-out infinite alternate;
-        }
-
-        .ambient-glow-2 {
-            animation: pulseGlow 16s ease-in-out infinite alternate-reverse;
+        /* Blueprint Grid Pattern */
+        .blueprint-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(39, 39, 42, var(--blueprint-opacity)) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(39, 39, 42, var(--blueprint-opacity)) 1px, transparent 1px);
         }
 
         /* Fade In Up Entrance Animation */
@@ -84,13 +88,11 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
         .animate-fade-in-up {
             animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
@@ -100,101 +102,111 @@
         .glow-card-blue {
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .glow-card-blue:hover {
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.15);
-            border-color: rgba(59, 130, 246, 0.45) !important;
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.12);
+            border-color: rgba(59, 130, 246, 0.4) !important;
         }
-
         .glow-card-purple {
-            transition: all 0.3 cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .glow-card-purple:hover {
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.15);
-            border-color: rgba(168, 85, 247, 0.45) !important;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.12);
+            border-color: rgba(168, 85, 247, 0.4) !important;
         }
-
         .glow-card-emerald {
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .glow-card-emerald:hover {
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
-            border-color: rgba(16, 185, 129, 0.45) !important;
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.4) !important;
         }
     </style>
 </head>
+<body class="bg-background text-primary font-sans antialiased selection:bg-accent/30 selection:text-white relative overflow-x-hidden min-h-screen blueprint-grid transition-colors duration-300">
 
-<body
-    class="bg-background text-primary font-sans antialiased selection:bg-accent/30 selection:text-white relative overflow-x-hidden min-h-screen">
-
-
-
-    <!-- Ambient Decorative Background Glows: Interactive Neuron Network Canvas -->
-    <canvas id="neuron-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-60"></canvas>
-
-    <main class="max-w-4xl mx-auto px-6 py-12 md:py-20 relative z-10">
-
-        <!-- Header / Hero Section -->
-        <header id="hero-section" class="mb-16 animate-fade-in-up text-center flex flex-col items-center justify-center"
-            style="animation-delay: 100ms;">
-            <!-- Rendered dynamically -->
-        </header>
-
-        <hr class="border-border mb-16 opacity-50 animate-fade-in-up" style="animation-delay: 200ms;">
-
-        <!-- Focus Area Section -->
-        <section class="mb-20 animate-fade-in-up" style="animation-delay: 300ms;">
-            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 text-zinc-100">
-                <span class="p-1.5 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-                    <i class="fa-solid fa-layer-group text-zinc-400 text-sm"></i>
-                </span>
-                Focus Area
-            </h2>
-
-            <div id="focus-areas-container" class="grid md:grid-cols-2 gap-4">
+    <main class="max-w-5xl mx-auto px-6 py-12 md:py-20 relative z-10 flex flex-col gap-6">
+        
+        <!-- Bento Grid Top Row -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Hero / Bio Card (spans 2 columns on desktop) -->
+            <div id="hero-card" class="md:col-span-2 p-8 rounded-2xl bg-surface/40 backdrop-blur-md border border-border/80 flex flex-col justify-center animate-fade-in-up" style="animation-delay: 100ms;">
                 <!-- Rendered dynamically -->
             </div>
-        </section>
+
+            <!-- Status & Socials Card (spans 1 column on desktop) -->
+            <div id="status-social-card" class="p-8 rounded-2xl bg-surface/40 backdrop-blur-md border border-border/80 flex flex-col justify-between animate-fade-in-up" style="animation-delay: 200ms;">
+                <!-- Rendered dynamically -->
+            </div>
+        </div>
+
+        <!-- Bento Grid Middle Row -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Focus Area 1: Backend -->
+            <div id="focus-backend-card" class="animate-fade-in-up" style="animation-delay: 300ms;">
+                <!-- Rendered dynamically -->
+            </div>
+            
+            <!-- Focus Area 2: Deep Learning -->
+            <div id="focus-dl-card" class="animate-fade-in-up" style="animation-delay: 350ms;">
+                <!-- Rendered dynamically -->
+            </div>
+
+            <!-- Column 3: Stack of Doodle & Spotify -->
+            <div class="flex flex-col gap-6 h-full animate-fade-in-up" style="animation-delay: 400ms;">
+                <!-- Doodle Sketch Card -->
+                <div id="doodle-card" class="group relative p-5 rounded-2xl bg-surface/40 backdrop-blur-md border border-border/80 flex flex-col justify-between h-[180px] glow-card-blue overflow-hidden">
+                    <div class="flex items-center justify-between z-10 mb-2">
+                        <span class="text-[9px] font-bold text-zinc-500 tracking-wider uppercase font-mono">Doodle Box</span>
+                        <button id="clear-doodle" class="text-[9px] px-2 py-0.5 rounded bg-surface border border-border text-secondary hover:text-primary transition cursor-pointer select-none">Clear</button>
+                    </div>
+                    <div class="relative flex-1 bg-zinc-950/20 rounded-xl border border-border/50 overflow-hidden cursor-crosshair group-hover:border-border transition-all duration-300">
+                        <span class="absolute inset-0 flex items-center justify-center text-[10px] text-zinc-500 font-mono pointer-events-none select-none" id="doodle-placeholder">Coret sesuatu...</span>
+                        <canvas id="doodle-canvas" class="absolute inset-0 w-full h-full"></canvas>
+                    </div>
+                </div>
+
+                <!-- Spotify Widget Card -->
+                <div id="spotify-card" class="group relative p-5 rounded-2xl bg-surface/40 backdrop-blur-md border border-border/80 flex items-center gap-4 h-[110px] transition-all duration-300 ease-out glow-card-emerald overflow-hidden">
+                    <!-- Rendered dynamically -->
+                </div>
+            </div>
+        </div>
 
         <!-- Featured Projects Section -->
-        <section class="mb-20 animate-fade-in-up" style="animation-delay: 400ms;">
-            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 text-zinc-100">
-                <span class="p-1.5 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-                    <i class="fa-solid fa-flask text-zinc-400 text-sm"></i>
+        <section class="animate-fade-in-up" style="animation-delay: 500ms;">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-zinc-100">
+                <span class="p-1.5 rounded-lg bg-surface border border-border flex items-center justify-center">
+                    <i class="fa-solid fa-flask text-secondary text-sm"></i>
                 </span>
-                Featured Projects
+                <span class="text-primary">Featured Projects</span>
             </h2>
 
-            <div id="projects-container" class="space-y-4">
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Rendered dynamically -->
             </div>
-
+            
             <div id="github-archive-link" class="mt-8 text-center">
                 <!-- Rendered dynamically -->
             </div>
         </section>
 
         <!-- Tech Stack Section -->
-        <section class="mb-20 animate-fade-in-up" style="animation-delay: 500ms;">
-            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 text-zinc-100">
-                <span class="p-1.5 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-                    <i class="fa-solid fa-microchip text-zinc-400 text-sm"></i>
+        <section class="animate-fade-in-up" style="animation-delay: 600ms;">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-zinc-100">
+                <span class="p-1.5 rounded-lg bg-surface border border-border flex items-center justify-center">
+                    <i class="fa-solid fa-microchip text-secondary text-sm"></i>
                 </span>
-                Tech Stack
+                <span class="text-primary">Tech Stack</span>
             </h2>
             <div id="tech-stack-container" class="grid grid-cols-2 md:grid-cols-4 gap-3">
                 <!-- Rendered dynamically -->
             </div>
         </section>
 
-        <hr class="border-border mb-12 opacity-50 animate-fade-in-up" style="animation-delay: 600ms;">
+        <hr class="border-border opacity-50 animate-fade-in-up" style="animation-delay: 700ms;">
 
         <!-- Footer -->
-        <footer id="footer-section"
-            class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary animate-fade-in-up"
-            style="animation-delay: 700ms;">
+        <footer id="footer-section" class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary animate-fade-in-up" style="animation-delay: 800ms;">
             <!-- Rendered dynamically -->
         </footer>
 
@@ -203,158 +215,31 @@
     <!-- Load content data -->
     <script src="data.js"></script>
 
-    <!-- Dynamic rendering & Neuron Background script -->
+    <!-- Dynamic rendering & Interactivity script -->
     <script>
-        // HTML5 Canvas Neuron Network Engine
-        class NeuronNetwork {
-            constructor(canvasId) {
-                this.canvas = document.getElementById(canvasId);
-                if (!this.canvas) return;
-                this.ctx = this.canvas.getContext('2d');
-                this.particles = [];
-                this.mouse = { x: null, y: null, radius: 150 };
-                this.maxParticles = 80;
-                this.connectionDistance = 100;
-                this.baseColor = [161, 161, 170]; // Zinc-400 RGB
-                this.targetColor = [161, 161, 170];
-                this.currentColor = [161, 161, 170];
-                this.colorLerpFactor = 0.05;
-
-                this.init();
-                this.animate();
-
-                window.addEventListener('resize', () => this.resize());
-                window.addEventListener('mousemove', (e) => {
-                    this.mouse.x = e.clientX;
-                    this.mouse.y = e.clientY;
-                });
-                window.addEventListener('mouseout', () => {
-                    this.mouse.x = null;
-                    this.mouse.y = null;
-                });
-            }
-
-            init() {
-                this.resize();
-                this.particles = [];
-                for (let i = 0; i < this.maxParticles; i++) {
-                    this.particles.push({
-                        x: Math.random() * this.canvas.width,
-                        y: Math.random() * this.canvas.height,
-                        vx: (Math.random() - 0.5) * 0.4,
-                        vy: (Math.random() - 0.5) * 0.4,
-                        radius: Math.random() * 2 + 1
-                    });
-                }
-            }
-
-            resize() {
-                this.canvas.width = window.innerWidth;
-                this.canvas.height = window.innerHeight;
-                if (window.innerWidth < 768) {
-                    this.maxParticles = 40;
-                    this.connectionDistance = 80;
-                } else {
-                    this.maxParticles = 80;
-                    this.connectionDistance = 120;
-                }
-            }
-
-            setTargetColor(rgb) {
-                this.targetColor = rgb || this.baseColor;
-            }
-
-            animate() {
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-                // Smooth color interpolation
-                for (let i = 0; i < 3; i++) {
-                    this.currentColor[i] += (this.targetColor[i] - this.currentColor[i]) * this.colorLerpFactor;
-                }
-
-                const colorStr = `rgba(${Math.round(this.currentColor[0])}, ${Math.round(this.currentColor[1])}, ${Math.round(this.currentColor[2])}`;
-
-                // Update & draw particles
-                for (let i = 0; i < this.particles.length; i++) {
-                    const p = this.particles[i];
-                    p.x += p.vx;
-                    p.y += p.vy;
-
-                    if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
-                    if (p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
-
-                    this.ctx.beginPath();
-                    this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                    this.ctx.fillStyle = `${colorStr}, 0.35)`;
-                    this.ctx.fill();
-
-                    // Connect adjacent particles
-                    for (let j = i + 1; j < this.particles.length; j++) {
-                        const p2 = this.particles[j];
-                        const dx = p.x - p2.x;
-                        const dy = p.y - p2.y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-
-                        if (dist < this.connectionDistance) {
-                            const alpha = (1 - dist / this.connectionDistance) * 0.25;
-                            this.ctx.beginPath();
-                            this.ctx.moveTo(p.x, p.y);
-                            this.ctx.lineTo(p2.x, p2.y);
-                            this.ctx.strokeStyle = `${colorStr}, ${alpha})`;
-                            this.ctx.lineWidth = 0.8;
-                            this.ctx.stroke();
-                        }
-                    }
-
-                    // Interactive mouse effect
-                    if (this.mouse.x !== null) {
-                        const dx = p.x - this.mouse.x;
-                        const dy = p.y - this.mouse.y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-
-                        if (dist < this.mouse.radius) {
-                            // Subtle gravity pull
-                            p.x -= dx * 0.008;
-                            p.y -= dy * 0.008;
-
-                            const alpha = (1 - dist / this.mouse.radius) * 0.35;
-                            this.ctx.beginPath();
-                            this.ctx.moveTo(p.x, p.y);
-                            this.ctx.lineTo(this.mouse.x, this.mouse.y);
-                            this.ctx.strokeStyle = `${colorStr}, ${alpha})`;
-                            this.ctx.lineWidth = 1;
-                            this.ctx.stroke();
-                        }
-                    }
-                }
-
-                // Ambient mouse center glow
-                if (this.mouse.x !== null) {
-                    const gradient = this.ctx.createRadialGradient(this.mouse.x, this.mouse.y, 0, this.mouse.x, this.mouse.y, 80);
-                    gradient.addColorStop(0, `${colorStr}, 0.15)`);
-                    gradient.addColorStop(1, `${colorStr}, 0)`);
-                    this.ctx.beginPath();
-                    this.ctx.arc(this.mouse.x, this.mouse.y, 80, 0, Math.PI * 2);
-                    this.ctx.fillStyle = gradient;
-                    this.ctx.fill();
-                }
-
-                requestAnimationFrame(() => this.animate());
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             const data = window.PORTFOLIO_DATA || {};
 
-            // Initialize Neuron Network Background
-            const neuronNetwork = new NeuronNetwork('neuron-canvas');
-
-            // 1. Render Hero Section
-            const heroSection = document.getElementById('hero-section');
-            if (heroSection && data.profile) {
+            // 1. Render Hero Section (Into the Bento Hero Card)
+            const heroCard = document.getElementById('hero-card');
+            if (heroCard && data.profile) {
                 const profile = data.profile;
-                const statusBadge = profile.status && profile.status.active
-                    ? `<div class="flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full w-fit">
+                heroCard.innerHTML = `
+                    <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-primary">
+                        ${profile.tagline}
+                    </h1>
+                    <p class="text-base md:text-lg text-secondary leading-relaxed font-normal">
+                        ${profile.bio}
+                    </p>
+                `;
+            }
+
+            // Render Status & Social Card
+            const statusSocialCard = document.getElementById('status-social-card');
+            if (statusSocialCard && data.profile) {
+                const profile = data.profile;
+                const statusBadge = profile.status && profile.status.active 
+                    ? `<div class="flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full w-fit mb-6">
                             <span class="relative flex h-2 w-2">
                               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                               <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -363,61 +248,112 @@
                        </div>`
                     : '';
 
-                heroSection.innerHTML = `
-                    <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white w-full">
-                        ${profile.tagline}
-                    </h1>
-                    <p class="text-base md:text-lg text-secondary leading-relaxed mb-6 font-normal max-w-2xl mx-auto">
-                        ${profile.bio}
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+                statusSocialCard.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] font-bold text-zinc-500 tracking-wider uppercase font-mono">Info & Medsos</span>
+                            <button id="theme-toggle" class="text-secondary hover:text-primary transition duration-200 cursor-pointer p-1.5 rounded-lg hover:bg-zinc-800/20" aria-label="Toggle Theme">
+                                <i class="fa-solid fa-moon text-sm block" id="theme-icon"></i>
+                            </button>
+                        </div>
                         ${statusBadge}
-                        <div class="flex items-center justify-center gap-4 sm:ml-1">
-                            <a href="${profile.socials.github}" target="_blank" aria-label="GitHub" class="text-secondary hover:text-white transition duration-200"><i class="fa-brands fa-github text-xl"></i></a>
-                            <a href="${profile.socials.instagram}" target="_blank" aria-label="Instagram" class="text-secondary hover:text-white transition duration-200"><i class="fa-brands fa-instagram text-xl"></i></a>
-                            <a href="${profile.socials.email}" aria-label="Email" class="text-secondary hover:text-white transition duration-200"><i class="fa-regular fa-envelope text-xl"></i></a>
+                        <h2 class="text-lg font-bold text-primary mb-1">${profile.nickname}</h2>
+                        <p class="text-xs text-secondary leading-relaxed mb-6 font-mono">${profile.role}</p>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border-t border-border/80 pt-4">
+                        <div class="flex items-center gap-4">
+                            <!-- GitHub (Phosphor Bold Cute Cat) -->
+                            <a href="${profile.socials.github}" target="_blank" aria-label="GitHub" class="text-secondary hover:text-primary transition duration-200">
+                                <svg class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
+                                    <path d="M212.62,75.17A63.7,63.7,0,0,0,206.39,26,12,12,0,0,0,196,20a63.71,63.71,0,0,0-50,24H126A63.71,63.71,0,0,0,76,20a12,12,0,0,0-10.39,6,63.7,63.7,0,0,0-6.23,49.17A61.5,61.5,0,0,0,52,104v8a60.1,60.1,0,0,0,45.76,58.28A43.66,43.66,0,0,0,92,192v4H76a20,20,0,0,1-20-20,44.05,44.05,0,0,0-44-44,12,12,0,0,0,0,24,20,20,0,0,1,20,20,44.05,44.05,0,0,0,44,44H92v12a12,12,0,0,0,24,0V192a20,20,0,0,1,40,0v40a12,12,0,0,0,24,0V192a43.66,43.66,0,0,0-5.76-21.72A60.1,60.1,0,0,0,220,112v-8A61.5,61.5,0,0,0,212.62,75.17ZM196,112a36,36,0,0,1-36,36H112a36,36,0,0,1-36-36v-8a37.87,37.87,0,0,1,6.13-20.12,11.65,11.65,0,0,0,1.58-11.49,39.9,39.9,0,0,1-.4-27.72,39.87,39.87,0,0,1,26.41,17.8A12,12,0,0,0,119.82,68h32.35a12,12,0,0,0,10.11-5.53,39.84,39.84,0,0,1,26.41-17.8,39.9,39.9,0,0,1-.4,27.72,12,12,0,0,0,1.61,11.53A37.85,37.85,0,0,1,196,104Z"/>
+                                </svg>
+                            </a>
+                            <!-- LinkedIn (Phosphor Bold Square in) -->
+                            <a href="${profile.socials.linkedin}" target="_blank" aria-label="LinkedIn" class="text-secondary hover:text-primary transition duration-200">
+                                <svg class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
+                                    <path d="M216,20H40A20,20,0,0,0,20,40V216a20,20,0,0,0,20,20H216a20,20,0,0,0,20-20V40A20,20,0,0,0,216,20ZM112,176V120a12,12,0,0,1,21.43-7.41A40,40,0,0,1,192,148v28a12,12,0,0,1-24,0V148a16,16,0,0,0-32,0v28a12,12,0,0,1-24,0ZM96,120v56a12,12,0,0,1-24,0V120a12,12,0,0,1,24,0ZM68,80A16,16,0,1,1,84,96,16,16,0,0,1,68,80Z"/>
+                                </svg>
+                            </a>
+                            <!-- Instagram (Phosphor Bold Square Camera) -->
+                            <a href="${profile.socials.instagram}" target="_blank" aria-label="Instagram" class="text-secondary hover:text-primary transition duration-200">
+                                <svg class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
+                                    <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,72a24,24,0,1,1,24-24A24,24,0,0,1,128,152ZM176,20H80A60.07,60.07,0,0,0,20,80v96a60.07,60.07,0,0,0,60,60h96a60.07,60.07,0,0,0,60-60V80A60.07,60.07,0,0,0,176,20Zm36,156a36,36,0,0,1-36,36H80a36,36,0,0,1-36-36V80A36,36,0,0,1,80,44h96a36,36,0,0,1,36,36ZM196,76a16,16,0,1,1-16-16A16,16,0,0,1,196,76Z"/>
+                                </svg>
+                            </a>
+                            <!-- Email (Phosphor Bold Envelope) -->
+                            <a href="${profile.socials.email}" aria-label="Email" class="text-secondary hover:text-primary transition duration-200">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M4 5.095v-.001l.002-.002a.011.011 0 01.003-.003h.004C5.786 5.234 9.406 5.5 12 5.5c2.594 0 6.214-.266 7.991-.41h.003l.004.002.002.002v2.318l-8 4.444-8-4.444V5.095zM4 9.7v9.206l.002.002a.01.01 0 00.003.003h.004C5.786 18.766 9.406 18.5 12 18.5c2.594 0 6.214.266 7.991.41h.003l.004-.002.002-.002V9.7l-7.029 3.904a2 2 0 01-1.942 0L4 9.7zm.17-6.604a2.007 2.007 0 00-2.17 2v13.809a2.007 2.007 0 002.17 1.999c1.781-.145 5.327-.404 7.83-.404 2.502 0 6.049.26 7.83.404a2.007 2.007 0 002.17-2V5.096a2.007 2.007 0 00-2.17-1.999c-1.781.145-5.327.404-7.83.404s-6.049-.26-7.83-.404z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <a href="${profile.socials.resume}" target="_blank" class="text-xs font-semibold text-accent hover:opacity-80 transition duration-200 flex items-center gap-1">Resume <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                    </div>
+                `;
+                
+                // Initialize icon based on current theme state
+                updateThemeIcon(document.documentElement.getAttribute('data-theme'));
+            }
+
+            // 2. Render Focus Areas
+            const focusBackendCard = document.getElementById('focus-backend-card');
+            const focusDlCard = document.getElementById('focus-dl-card');
+            
+            if (focusBackendCard && data.focusAreas && data.focusAreas[0]) {
+                const area = data.focusAreas[0];
+                focusBackendCard.innerHTML = `
+                    <div class="group relative p-6 rounded-2xl bg-surface/40 backdrop-blur-md border border-border/80 hover:border-border transition-all duration-300 ease-out hover:-translate-y-1 ${area.glowClass} h-full flex flex-col justify-between">
+                        <div class="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), ${area.glowColor}, transparent 40%);"></div>
+                        <div>
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${area.accentClass}">
+                                <i class="${area.icon} text-lg"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2 text-primary group-hover:text-accent transition-colors duration-200">${area.title}</h3>
+                            <p class="text-sm text-secondary leading-relaxed relative z-10">
+                                ${area.description}
+                            </p>
                         </div>
                     </div>
                 `;
             }
 
-            // 2. Render Focus Areas
-            const focusAreasContainer = document.getElementById('focus-areas-container');
-            if (focusAreasContainer && data.focusAreas) {
-                focusAreasContainer.innerHTML = data.focusAreas.map(area => `
-                    <div class="group relative p-6 rounded-2xl bg-zinc-900/40 backdrop-blur-md border border-zinc-800/80 hover:border-zinc-700/80 transition-all duration-300 ease-out hover:-translate-y-1 ${area.glowClass}">
+            if (focusDlCard && data.focusAreas && data.focusAreas[1]) {
+                const area = data.focusAreas[1];
+                focusDlCard.innerHTML = `
+                    <div class="group relative p-6 rounded-2xl bg-surface/40 backdrop-blur-md border border-border/80 hover:border-border transition-all duration-300 ease-out hover:-translate-y-1 ${area.glowClass} h-full flex flex-col justify-between">
                         <div class="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), ${area.glowColor}, transparent 40%);"></div>
-                        
-                        <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${area.accentClass}">
-                            <i class="${area.icon} text-lg"></i>
+                        <div>
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${area.accentClass}">
+                                <i class="${area.icon} text-lg"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2 text-primary group-hover:text-accent transition-colors duration-200">${area.title}</h3>
+                            <p class="text-sm text-secondary leading-relaxed relative z-10">
+                                ${area.description}
+                            </p>
                         </div>
-                        <h3 class="font-bold text-lg mb-2 text-zinc-100 group-hover:text-white transition-colors duration-200">${area.title}</h3>
-                        <p class="text-sm text-secondary leading-relaxed relative z-10">
-                            ${area.description}
-                        </p>
                     </div>
-                `).join('');
+                `;
             }
 
             // 3. Render Featured Projects
             const projectsContainer = document.getElementById('projects-container');
             if (projectsContainer && data.projects) {
                 projectsContainer.innerHTML = data.projects.map(project => {
-                    const projectLinkAttrs = project.url && project.url !== '#'
-                        ? `href="${project.url}" target="_blank"`
+                    const projectLinkAttrs = project.url && project.url !== '#' 
+                        ? `href="${project.url}" target="_blank"` 
                         : `href="#"`;
 
                     const tagsHtml = project.tags.map(tag => `
-                        <span class="text-[11px] px-2 py-0.5 rounded bg-zinc-800/50 text-zinc-400 border border-zinc-700/30 group-hover:border-zinc-700/60 transition-colors duration-300">${tag}</span>
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-zinc-800/10 dark:bg-zinc-800/50 text-secondary border border-border/50 group-hover:border-border transition-colors duration-300">${tag}</span>
                     `).join('');
 
                     return `
-                        <a ${projectLinkAttrs} class="group block p-6 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800/80 hover:bg-zinc-900/50 hover:border-zinc-700/80 transition-all duration-300 ease-out hover:-translate-y-0.5 ${project.glowClass || 'glow-card-blue'}">
+                        <a ${projectLinkAttrs} class="group block p-6 rounded-2xl bg-surface/30 backdrop-blur-md border border-border/80 hover:bg-surface/50 hover:border-border transition-all duration-300 ease-out hover:-translate-y-0.5 ${project.glowClass || 'glow-card-blue'}">
                             <div class="flex flex-col md:flex-row gap-6 justify-between md:items-start">
                                 <div class="flex-1">
                                     <div class="flex items-center gap-2">
-                                        <h3 class="text-lg font-bold text-zinc-200 group-hover:text-blue-400 transition-colors duration-200">${project.title}</h3>
+                                        <h3 class="text-lg font-bold text-primary group-hover:text-accent transition-colors duration-200">${project.title}</h3>
                                         ${project.url && project.url !== '#' ? `<i class="fa-solid fa-arrow-up-right-from-square text-xs text-secondary opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-4px] group-hover:translate-x-0"></i>` : ''}
                                     </div>
                                     <p class="text-sm text-secondary mt-2 mb-4 leading-relaxed">
@@ -437,7 +373,7 @@
             const githubArchiveLink = document.getElementById('github-archive-link');
             if (githubArchiveLink && data.profile) {
                 githubArchiveLink.innerHTML = `
-                    <a href="${data.profile.socials.github}" target="_blank" class="text-sm text-secondary hover:text-white border-b border-secondary/20 pb-0.5 hover:border-white transition-all duration-200">
+                    <a href="${data.profile.socials.github}" target="_blank" class="text-sm text-secondary hover:text-primary border-b border-border pb-0.5 hover:border-primary transition-all duration-200">
                         Lihat arsip kode lainnya di GitHub
                     </a>
                 `;
@@ -447,9 +383,9 @@
             const techStackContainer = document.getElementById('tech-stack-container');
             if (techStackContainer && data.techStack) {
                 techStackContainer.innerHTML = data.techStack.map(tech => {
-                    const textClass = 'text-white font-medium bg-zinc-900/80 border-zinc-700/50';
+                    const textClass = 'text-primary font-medium bg-surface/85 border-border/70';
                     return `
-                        <div class="p-3 rounded-xl border text-center text-xs backdrop-blur-sm transition-all duration-300 hover:border-zinc-600/50 hover:bg-zinc-900/60 hover:-translate-y-0.5 hover:shadow-md ${textClass}">
+                        <div class="p-3 rounded-xl border text-center text-xs backdrop-blur-sm transition-all duration-300 hover:border-secondary/50 hover:bg-surface/90 hover:-translate-y-0.5 hover:shadow-md ${textClass}">
                             ${tech.name}
                         </div>
                     `;
@@ -464,22 +400,37 @@
                 footerSection.innerHTML = `
                     <p>&copy; ${currentYear} ${profile.name}.</p>
                     <div class="flex gap-5">
-                        <a href="${profile.socials.resume}" target="_blank" class="hover:text-white transition duration-200 font-semibold text-blue-400 hover:text-blue-300">Resume</a>
-                        <a href="${profile.socials.linkedin}" target="_blank" class="hover:text-white transition duration-200">LinkedIn</a>
+                        <a href="${profile.socials.resume}" target="_blank" class="hover:text-primary transition duration-200 font-semibold text-accent">Resume</a>
+                        <a href="${profile.socials.linkedin}" target="_blank" class="hover:text-primary transition duration-200">LinkedIn</a>
                     </div>
                 `;
             }
 
-            // Interactive Event Listeners for Dynamic Colors
-            const focusCards = document.querySelectorAll('#focus-areas-container > div');
-            focusCards.forEach((card, index) => {
-                const areaData = data.focusAreas[index];
-                if (areaData && areaData.rgbColor) {
-                    card.addEventListener('mouseenter', () => neuronNetwork.setTargetColor(areaData.rgbColor));
-                    card.addEventListener('mouseleave', () => neuronNetwork.setTargetColor(null));
+            // Theme Switcher Logic
+            function updateThemeIcon(theme) {
+                const themeIcon = document.getElementById('theme-icon');
+                if (!themeIcon) return;
+                if (theme === 'light') {
+                    themeIcon.className = 'fa-solid fa-sun text-sm block text-amber-500';
+                } else {
+                    themeIcon.className = 'fa-solid fa-moon text-sm block';
                 }
+            }
 
-                // Also keep track of card cursor position for card inner gradient tracking
+            document.addEventListener('click', (e) => {
+                const toggle = e.target.closest('#theme-toggle');
+                if (toggle) {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                    updateThemeIcon(newTheme);
+                }
+            });
+
+            // Card Inner Gradient Cursor tracking
+            const focusCards = document.querySelectorAll('#focus-backend-card, #focus-dl-card');
+            focusCards.forEach((card) => {
                 card.addEventListener('mousemove', e => {
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
@@ -488,17 +439,6 @@
                     card.style.setProperty('--y', `${y}px`);
                 });
             });
-
-            const projectCards = document.querySelectorAll('#projects-container > a');
-            projectCards.forEach((card, index) => {
-                const projectData = data.projects[index];
-                if (projectData && projectData.rgbColor) {
-                    card.addEventListener('mouseenter', () => neuronNetwork.setTargetColor(projectData.rgbColor));
-                    card.addEventListener('mouseleave', () => neuronNetwork.setTargetColor(null));
-                }
-            });
-
-
 
             // --- FEATURE 2: Typewriter Tagline Animation ---
             const typewriterSpan = document.getElementById('typewriter');
@@ -522,12 +462,12 @@
                     }
 
                     if (!isDeleting && charIndex === currentRole.length) {
-                        typeSpeed = 2000; // pause at end
+                        typeSpeed = 2000;
                         isDeleting = true;
                     } else if (isDeleting && charIndex === 0) {
                         isDeleting = false;
                         roleIndex = (roleIndex + 1) % roles.length;
-                        typeSpeed = 500; // pause before typing
+                        typeSpeed = 500;
                     }
 
                     setTimeout(type, typeSpeed);
@@ -543,21 +483,21 @@
             techStackBadges.forEach((badge, index) => {
                 const techName = data.techStack[index].name.toLowerCase();
                 badge.classList.add('cursor-pointer');
-
+                
                 badge.addEventListener('click', () => {
                     if (activeFilter === techName) {
                         activeFilter = null;
                         techStackBadges.forEach(b => {
-                            b.classList.remove('border-accent/80', 'text-white', 'bg-zinc-900/60');
+                            b.classList.remove('border-accent/80', 'text-white', 'bg-zinc-800/10');
                         });
                         projectLinks.forEach(card => card.classList.remove('opacity-25'));
                     } else {
                         activeFilter = techName;
                         techStackBadges.forEach((b, idx) => {
                             if (data.techStack[idx].name.toLowerCase() === techName) {
-                                b.classList.add('border-accent/80', 'text-white', 'bg-zinc-900/60');
+                                b.classList.add('border-accent/80', 'text-white', 'bg-zinc-800/10');
                             } else {
-                                b.classList.remove('border-accent/80', 'text-white', 'bg-zinc-900/60');
+                                b.classList.remove('border-accent/80', 'text-white', 'bg-zinc-800/10');
                             }
                         });
 
@@ -608,7 +548,7 @@
             function writeOutput(text, isCommand = false) {
                 const div = document.createElement('div');
                 if (isCommand) {
-                    div.innerHTML = `<span class="text-accent">halo@mnovaldr:~$</span> <span class="text-white">${text}</span>`;
+                    div.innerHTML = `<span class="text-accent">noval@mnovaldr:~$</span> <span class="text-white">${text}</span>`;
                 } else {
                     div.innerHTML = text;
                 }
@@ -626,7 +566,7 @@
 
                     writeOutput(rawCommand, true);
 
-                    switch (command) {
+                    switch(command) {
                         case 'help':
                             writeOutput('Available commands:<br>' +
                                 '  <span class="text-white">about</span>    - Short bio info<br>' +
@@ -660,49 +600,172 @@
                     }
                 }
             });
+
+            // --- FEATURE 5: Doodle Sketch Canvas Card ---
+            const doodleCanvas = document.getElementById('doodle-canvas');
+            const clearDoodleBtn = document.getElementById('clear-doodle');
+            const doodlePlaceholder = document.getElementById('doodle-placeholder');
+
+            if (doodleCanvas) {
+                const ctx = doodleCanvas.getContext('2d');
+                let drawing = false;
+
+                function resizeDoodleCanvas() {
+                    const rect = doodleCanvas.parentElement.getBoundingClientRect();
+                    doodleCanvas.width = rect.width;
+                    doodleCanvas.height = rect.height;
+                    ctx.lineJoin = 'round';
+                    ctx.lineCap = 'round';
+                    ctx.lineWidth = 2.5;
+                    ctx.shadowBlur = 6;
+                }
+                
+                setTimeout(resizeDoodleCanvas, 300);
+                window.addEventListener('resize', resizeDoodleCanvas);
+
+                function getPos(e) {
+                    const rect = doodleCanvas.getBoundingClientRect();
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    return {
+                        x: clientX - rect.left,
+                        y: clientY - rect.top
+                    };
+                }
+
+                function startDraw(e) {
+                    drawing = true;
+                    if (doodlePlaceholder) doodlePlaceholder.classList.add('hidden');
+                    const pos = getPos(e);
+                    ctx.beginPath();
+                    ctx.moveTo(pos.x, pos.y);
+                    
+                    const colors = ['#3b82f6', '#a855f7', '#10b981'];
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    ctx.strokeStyle = randomColor;
+                    ctx.shadowColor = randomColor;
+                }
+
+                function draw(e) {
+                    if (!drawing) return;
+                    e.preventDefault();
+                    const pos = getPos(e);
+                    ctx.lineTo(pos.x, pos.y);
+                    ctx.stroke();
+                }
+
+                function stopDraw() {
+                    drawing = false;
+                }
+
+                doodleCanvas.addEventListener('mousedown', startDraw);
+                doodleCanvas.addEventListener('mousemove', draw);
+                window.addEventListener('mouseup', stopDraw);
+
+                doodleCanvas.addEventListener('touchstart', startDraw);
+                doodleCanvas.addEventListener('touchmove', draw);
+                window.addEventListener('touchend', stopDraw);
+
+                if (clearDoodleBtn) {
+                    clearDoodleBtn.addEventListener('click', () => {
+                        ctx.clearRect(0, 0, doodleCanvas.width, doodleCanvas.height);
+                        if (doodlePlaceholder) doodlePlaceholder.classList.remove('hidden');
+                    });
+                }
+            }
+
+            // --- FEATURE 6: Spotify Live Status Integration (Lanyard API) ---
+            const spotifyCard = document.getElementById('spotify-card');
+            
+            function updateSpotifyStatus() {
+                if (!spotifyCard) return;
+                fetch('https://api.lanyard.rest/v1/users/519486922264150016')
+                    .then(res => res.json())
+                    .then(res => {
+                        if (res.success && res.data && res.data.listening_to_spotify && res.data.spotify) {
+                            const spotify = res.data.spotify;
+                            const artists = spotify.artist.replace(/;/g, ',');
+                            spotifyCard.innerHTML = `
+                                <div class="relative w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 border border-border/50 shadow-md">
+                                    <img src="${spotify.album_art_url}" class="w-full h-full object-cover animate-[spin_8s_linear_infinite]" alt="Album art">
+                                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
+                                        <div class="w-2.5 h-2.5 bg-background rounded-full transition-colors duration-300"></div>
+                                    </div>
+                                </div>
+                                <div class="flex-1 min-w-0 z-10">
+                                    <span class="text-[9px] font-bold text-emerald-500 tracking-wider uppercase font-mono flex items-center gap-1.5 mb-1">
+                                        <span class="relative flex h-2 w-2">
+                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                        </span>
+                                        Now Playing
+                                    </span>
+                                    <h3 class="text-xs font-bold text-primary truncate" title="${spotify.song}">${spotify.song}</h3>
+                                    <p class="text-[11px] text-secondary truncate mt-0.5 font-medium" title="${artists}">${artists}</p>
+                                </div>
+                            `;
+                        } else {
+                            // Offline / Not listening
+                            spotifyCard.innerHTML = `
+                                <div class="w-12 h-12 rounded-xl bg-zinc-950/20 border border-border/80 flex items-center justify-center flex-shrink-0 text-zinc-500">
+                                    <i class="fa-brands fa-spotify text-2xl"></i>
+                                </div>
+                                <div class="flex-1 min-w-0 z-10">
+                                    <span class="text-[9px] font-bold text-zinc-500 tracking-wider uppercase font-mono mb-1 block">Spotify Offline</span>
+                                    <h3 class="text-xs font-semibold text-secondary">Not Listening</h3>
+                                </div>
+                            `;
+                        }
+                    })
+                    .catch(() => {
+                        spotifyCard.innerHTML = `
+                            <div class="w-12 h-12 rounded-xl bg-zinc-950/20 border border-border/80 flex items-center justify-center flex-shrink-0 text-zinc-500">
+                                <i class="fa-brands fa-spotify text-2xl"></i>
+                            </div>
+                            <div class="flex-1 min-w-0 z-10">
+                                <span class="text-[9px] font-bold text-zinc-500 tracking-wider uppercase font-mono mb-1 block">Spotify API</span>
+                                <h3 class="text-xs font-semibold text-secondary">Connection Error</h3>
+                            </div>
+                        `;
+                    });
+            }
+
+            updateSpotifyStatus();
+            // Poll Spotify API state every 15 seconds
+            setInterval(updateSpotifyStatus, 15000);
         });
     </script>
 
     <!-- Floating Terminal Button -->
-    <button id="terminal-trigger"
-        class="fixed bottom-6 right-6 z-40 bg-zinc-900/90 backdrop-blur border border-zinc-800 text-zinc-400 w-12 h-12 rounded-full shadow-lg hover:text-white hover:scale-105 hover:border-zinc-700 active:scale-95 transition flex items-center justify-center cursor-pointer group"
-        aria-label="Open Terminal">
+    <button id="terminal-trigger" class="fixed bottom-6 right-6 z-40 bg-zinc-900/90 backdrop-blur border border-zinc-800 text-zinc-400 w-12 h-12 rounded-full shadow-lg hover:text-white hover:scale-105 hover:border-zinc-700 active:scale-95 transition flex items-center justify-center cursor-pointer group" aria-label="Open Terminal">
         <i class="fa-solid fa-terminal text-lg group-hover:animate-pulse"></i>
     </button>
 
     <!-- Terminal Modal -->
-    <div id="terminal-modal"
-        class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
-        <div
-            class="w-full max-w-2xl bg-zinc-950/95 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[450px]">
+    <div id="terminal-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+        <div class="w-full max-w-2xl bg-zinc-950/95 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[450px]">
             <!-- Terminal Header -->
             <div class="bg-zinc-900/80 border-b border-zinc-800 px-4 py-3 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
                     <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
                     <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
-                    <span class="text-xs text-secondary font-mono ml-2">halo@mnovaldr.dev:~</span>
+                    <span class="text-xs text-secondary font-mono ml-2">noval@mnovaldr.dev:~</span>
                 </div>
-                <button id="terminal-close" class="text-zinc-500 hover:text-zinc-300 font-mono text-sm cursor-pointer"
-                    aria-label="Close Terminal">ESC / close</button>
+                <button id="terminal-close" class="text-zinc-500 hover:text-zinc-300 font-mono text-sm cursor-pointer" aria-label="Close Terminal">ESC / close</button>
             </div>
             <!-- Terminal Body -->
-            <div id="terminal-output"
-                class="flex-1 p-6 font-mono text-xs md:text-sm text-green-400 overflow-y-auto space-y-2 select-text">
+            <div id="terminal-output" class="flex-1 p-6 font-mono text-xs md:text-sm text-green-400 overflow-y-auto space-y-2 select-text">
                 <div>Welcome to Muhammad Noval CLI Portfolio v1.0.0.</div>
                 <div>Type <span class="text-white font-semibold">help</span> to list available commands.</div>
                 <br>
             </div>
             <!-- Terminal Input -->
-            <div
-                class="bg-zinc-900/40 border-t border-zinc-800 px-6 py-4 flex items-center gap-2 font-mono text-sm text-zinc-300">
-                <span class="text-accent">halo@mnovaldr:~$</span>
-                <input type="text" id="terminal-input"
-                    class="flex-1 bg-transparent border-none outline-none text-white font-mono caret-accent"
-                    autocomplete="off">
+            <div class="bg-zinc-900/40 border-t border-zinc-800 px-6 py-4 flex items-center gap-2 font-mono text-sm text-zinc-300">
+                <span class="text-accent">noval@mnovaldr:~$</span>
+                <input type="text" id="terminal-input" class="flex-1 bg-transparent border-none outline-none text-white font-mono caret-accent" autocomplete="off">
             </div>
         </div>
     </div>
 </body>
-
 </html>
