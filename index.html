@@ -133,6 +133,18 @@
         .glow-card-emerald:hover h3 {
             color: rgb(16, 185, 129) !important;
         }
+
+        /* Matrix Rain Canvas */
+        #spotify-matrix {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 110px;
+            pointer-events: none;
+            mask-image: linear-gradient(to left, rgba(0,0,0,0.7) 0%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.7) 0%, transparent 100%);
+        }
     </style>
 </head>
 <body class="bg-background text-primary font-sans antialiased selection:bg-accent/30 selection:text-white relative overflow-x-hidden min-h-screen blueprint-grid transition-colors duration-300">
@@ -142,12 +154,12 @@
         <!-- Bento Grid Top Row -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Hero / Bio Card (spans 2 columns on desktop) -->
-            <div id="hero-card" class="md:col-span-2 p-8 rounded-2xl bg-surface/40 backdrop-blur-md border border-border/80 flex flex-col justify-center animate-fade-in-up" style="animation-delay: 100ms;">
+            <div id="hero-card" class="md:col-span-2 p-8 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-xl hover:border-border/100 transition-all duration-300 flex flex-col justify-center animate-fade-in-up" style="animation-delay: 100ms;">
                 <!-- Rendered dynamically -->
             </div>
 
             <!-- Status & Socials Card (spans 1 column on desktop) -->
-            <div id="status-social-card" class="p-8 rounded-2xl bg-surface/40 backdrop-blur-md border border-border/80 flex flex-col justify-between animate-fade-in-up" style="animation-delay: 200ms;">
+            <div id="status-social-card" class="p-8 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-xl hover:border-border/100 transition-all duration-300 flex flex-col justify-between animate-fade-in-up" style="animation-delay: 200ms;">
                 <!-- Rendered dynamically -->
             </div>
         </div>
@@ -164,24 +176,9 @@
                 <!-- Rendered dynamically -->
             </div>
 
-            <!-- Column 3: Stack of Doodle & Spotify -->
-            <div class="flex flex-col gap-6 h-full animate-fade-in-up" style="animation-delay: 400ms;">
-                <!-- Doodle Sketch Card -->
-                <div id="doodle-card" class="group relative p-5 rounded-2xl bg-surface/40 backdrop-blur-md border border-border/80 flex flex-col justify-between h-[180px] glow-card-blue overflow-hidden">
-                    <div class="flex items-center justify-between z-10 mb-2">
-                        <span class="text-[9px] font-bold text-zinc-500 tracking-wider uppercase font-mono">Doodle Box</span>
-                        <button id="clear-doodle" class="text-[9px] px-2 py-0.5 rounded bg-surface border border-border text-secondary hover:text-primary transition cursor-pointer select-none">Clear</button>
-                    </div>
-                    <div class="relative flex-1 bg-zinc-950/20 rounded-xl border border-border/50 overflow-hidden cursor-crosshair group-hover:border-border transition-all duration-300">
-                        <span class="absolute inset-0 flex items-center justify-center text-[10px] text-zinc-500 font-mono pointer-events-none select-none" id="doodle-placeholder">Coret sesuatu...</span>
-                        <canvas id="doodle-canvas" class="absolute inset-0 w-full h-full"></canvas>
-                    </div>
-                </div>
-
-                <!-- Spotify Widget Card -->
-                <div id="spotify-card" class="group relative p-5 rounded-2xl bg-surface/40 backdrop-blur-md border border-border/80 flex items-center gap-4 h-[110px] transition-all duration-300 ease-out glow-card-emerald overflow-hidden">
-                    <!-- Rendered dynamically -->
-                </div>
+            <!-- Spotify Widget Card -->
+            <div id="spotify-card" class="group relative rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-xl transition-all duration-300 ease-out glow-card-emerald overflow-hidden h-full animate-fade-in-up" style="animation-delay: 400ms; min-height:170px;">
+                <!-- Rendered dynamically -->
             </div>
         </div>
 
@@ -197,17 +194,13 @@
             <div id="projects-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Rendered dynamically -->
             </div>
-            
-            <div id="github-archive-link" class="mt-8 text-center">
-                <!-- Rendered dynamically -->
-            </div>
         </section>
 
         <!-- Tech Stack Section -->
         <section class="animate-fade-in-up" style="animation-delay: 600ms;">
             <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-zinc-100">
                 <span class="p-1.5 rounded-lg bg-surface border border-border flex items-center justify-center">
-                    <i class="fa-solid fa-microchip text-secondary text-sm"></i>
+                    <i class="fa-solid fa-layer-group text-secondary text-sm"></i>
                 </span>
                 <span class="text-primary">Tech Stack</span>
             </h2>
@@ -219,7 +212,7 @@
         <hr class="border-border opacity-50 animate-fade-in-up" style="animation-delay: 700ms;">
 
         <!-- Footer -->
-        <footer id="footer-section" class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary animate-fade-in-up" style="animation-delay: 800ms;">
+        <footer id="footer-section" class="p-6 rounded-2xl bg-surface/30 backdrop-blur-md border border-border/60 shadow-lg flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary animate-fade-in-up" style="animation-delay: 800ms;">
             <!-- Rendered dynamically -->
         </footer>
 
@@ -316,7 +309,7 @@
             if (focusBackendCard && data.focusAreas && data.focusAreas[0]) {
                 const area = data.focusAreas[0];
                 focusBackendCard.innerHTML = `
-                    <div class="group relative p-6 rounded-2xl bg-surface/40 backdrop-blur-md border border-border/80 hover:border-border transition-all duration-300 ease-out hover:-translate-y-1 ${area.glowClass} h-full flex flex-col justify-between">
+                    <div class="group relative p-6 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-2xl hover:border-border transition-all duration-300 ease-out hover:-translate-y-1 ${area.glowClass} h-full flex flex-col justify-between">
                         <div class="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), ${area.glowColor}, transparent 40%);"></div>
                         <div>
                             <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${area.accentClass}">
@@ -334,7 +327,7 @@
             if (focusDlCard && data.focusAreas && data.focusAreas[1]) {
                 const area = data.focusAreas[1];
                 focusDlCard.innerHTML = `
-                    <div class="group relative p-6 rounded-2xl bg-surface/40 backdrop-blur-md border border-border/80 hover:border-border transition-all duration-300 ease-out hover:-translate-y-1 ${area.glowClass} h-full flex flex-col justify-between">
+                    <div class="group relative p-6 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-2xl hover:border-border transition-all duration-300 ease-out hover:-translate-y-1 ${area.glowClass} h-full flex flex-col justify-between">
                         <div class="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), ${area.glowColor}, transparent 40%);"></div>
                         <div>
                             <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${area.accentClass}">
@@ -362,7 +355,7 @@
                     `).join('');
 
                     return `
-                        <a ${projectLinkAttrs} class="group block p-6 rounded-2xl bg-surface/30 backdrop-blur-md border border-border/80 hover:bg-surface/50 hover:border-border transition-all duration-300 ease-out hover:-translate-y-0.5 ${project.glowClass || 'glow-card-blue'}">
+                        <a ${projectLinkAttrs} class="group block p-6 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-xl hover:border-border transition-all duration-300 ease-out hover:-translate-y-0.5 ${project.glowClass || 'glow-card-blue'}">
                             <div class="flex flex-col md:flex-row gap-6 justify-between md:items-start">
                                 <div class="flex-1">
                                     <div class="flex items-center gap-2">
@@ -382,23 +375,13 @@
                 }).join('');
             }
 
-            // Render GitHub Archive Link
-            const githubArchiveLink = document.getElementById('github-archive-link');
-            if (githubArchiveLink && data.profile) {
-                githubArchiveLink.innerHTML = `
-                    <a href="${data.profile.socials.github}" target="_blank" class="text-sm text-secondary hover:text-primary border-b border-border pb-0.5 hover:border-primary transition-all duration-200">
-                        Lihat arsip kode lainnya di GitHub
-                    </a>
-                `;
-            }
-
             // 4. Render Tech Stack
             const techStackContainer = document.getElementById('tech-stack-container');
             if (techStackContainer && data.techStack) {
                 techStackContainer.innerHTML = data.techStack.map(tech => {
-                    const textClass = 'text-primary font-medium bg-surface/85 border-border/70';
+                    const textClass = 'text-primary font-medium bg-surface border-border/70';
                     return `
-                        <div class="p-3 rounded-xl border text-center text-xs backdrop-blur-sm transition-all duration-300 hover:border-secondary/50 hover:bg-surface/90 hover:-translate-y-0.5 hover:shadow-md ${textClass}">
+                        <div class="p-3 rounded-xl border text-center text-xs shadow-sm hover:shadow-lg transition-all duration-300 hover:border-secondary/50 hover:-translate-y-0.5 ${textClass}">
                             ${tech.name}
                         </div>
                     `;
@@ -614,142 +597,245 @@
                 }
             });
 
-            // --- FEATURE 5: Doodle Sketch Canvas Card ---
-            const doodleCanvas = document.getElementById('doodle-canvas');
-            const clearDoodleBtn = document.getElementById('clear-doodle');
-            const doodlePlaceholder = document.getElementById('doodle-placeholder');
+            // --- FEATURE 6: Spotify Live Status Integration (Lanyard WebSocket) ---
+            const spotifyCard = document.getElementById('spotify-card');
+            const LANYARD_USER_ID = '519486922264150016';
+            let lanyardWs = null;
+            let lanyardHeartbeatInterval = null;
+            let lanyardConnected = false;
 
-            if (doodleCanvas) {
-                const ctx = doodleCanvas.getContext('2d');
-                let drawing = false;
+            function renderSpotifyPlaying(spotify) {
+                if (!spotifyCard) return;
+                const artists = spotify.artist.replace(/;/g, ', ');
+                spotifyCard.innerHTML = `
+                    <!-- Matrix Rain Canvas -->
+                    <canvas id="spotify-matrix" width="110"></canvas>
 
-                function resizeDoodleCanvas() {
-                    const rect = doodleCanvas.parentElement.getBoundingClientRect();
-                    doodleCanvas.width = rect.width;
-                    doodleCanvas.height = rect.height;
-                    ctx.lineJoin = 'round';
-                    ctx.lineCap = 'round';
-                    ctx.lineWidth = 2.5;
-                    ctx.shadowBlur = 6;
-                }
-                
-                setTimeout(resizeDoodleCanvas, 300);
-                window.addEventListener('resize', resizeDoodleCanvas);
+                    <!-- Card Content -->
+                    <div class="relative z-10 p-6 flex flex-col justify-between h-full min-h-[170px]">
+                        <!-- Header Row -->
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] font-bold text-zinc-400 tracking-[0.18em] uppercase font-mono">Now Listening</span>
+                            <div class="flex items-center gap-2.5 text-zinc-500">
+                                <!-- Spotify -->
+                                <svg class="w-4 h-4 text-emerald-500 animate-pulse" viewBox="0 0 256 256" fill="currentColor"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm45.19,152a8,8,0,0,1-11,2.79C140.72,160.93,113.9,156,80,161.81a8,8,0,0,1-2.8-15.75c37.68-6.69,68.24-1,91.18,13.91A8,8,0,0,1,173.19,172Zm12-30.25a8,8,0,0,1-11,2.6C147,127.92,112.25,123.2,73.54,133.69a8,8,0,1,1-4.3-15.42c43.59-12.15,82.12-6.67,113.44,12.49A8,8,0,0,1,185.19,141.75Zm1.06-31.19a8,8,0,0,1-11,2.41C148.7,96,107,91.55,63.27,103.55a8,8,0,1,1-4.28-15.43C106.27,74.81,152,80,185.23,99.56A8,8,0,0,1,186.25,110.56Z"/></svg>
+                            </div>
+                        </div>
 
-                function getPos(e) {
-                    const rect = doodleCanvas.getBoundingClientRect();
-                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-                    return {
-                        x: clientX - rect.left,
-                        y: clientY - rect.top
-                    };
-                }
+                        <!-- Song Info Row -->
+                        <div class="flex items-center gap-4 mt-auto">
+                            <!-- Square Album Art -->
+                            <img src="${spotify.album_art_url}"
+                                class="w-[72px] h-[72px] rounded-xl flex-shrink-0 object-cover shadow-lg"
+                                style="box-shadow: 0 8px 24px rgba(0,0,0,0.4);"
+                                alt="Album art">
 
-                function startDraw(e) {
-                    drawing = true;
-                    if (doodlePlaceholder) doodlePlaceholder.classList.add('hidden');
-                    const pos = getPos(e);
-                    ctx.beginPath();
-                    ctx.moveTo(pos.x, pos.y);
-                    
-                    const colors = ['#3b82f6', '#a855f7', '#10b981'];
-                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                    ctx.strokeStyle = randomColor;
-                    ctx.shadowColor = randomColor;
-                }
-
-                function draw(e) {
-                    if (!drawing) return;
-                    e.preventDefault();
-                    const pos = getPos(e);
-                    ctx.lineTo(pos.x, pos.y);
-                    ctx.stroke();
-                }
-
-                function stopDraw() {
-                    drawing = false;
-                }
-
-                doodleCanvas.addEventListener('mousedown', startDraw);
-                doodleCanvas.addEventListener('mousemove', draw);
-                window.addEventListener('mouseup', stopDraw);
-
-                doodleCanvas.addEventListener('touchstart', startDraw);
-                doodleCanvas.addEventListener('touchmove', draw);
-                window.addEventListener('touchend', stopDraw);
-
-                if (clearDoodleBtn) {
-                    clearDoodleBtn.addEventListener('click', () => {
-                        ctx.clearRect(0, 0, doodleCanvas.width, doodleCanvas.height);
-                        if (doodlePlaceholder) doodlePlaceholder.classList.remove('hidden');
-                    });
-                }
+                            <!-- Text Info -->
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-base font-bold text-primary truncate leading-tight" title="${spotify.song}">${spotify.song}</h3>
+                                <p class="text-xs text-secondary truncate mt-1 font-medium tracking-wide" title="${artists}">${artists}</p>
+                                <!-- Pulsing dot -->
+                                <div class="flex items-center gap-1.5 mt-2">
+                                    <span class="relative flex h-1.5 w-1.5">
+                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                                    </span>
+                                    <span class="text-[9px] text-emerald-500 font-mono tracking-widest uppercase">Live</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                // Start matrix rain on the canvas
+                startMatrixRain();
             }
 
-            // --- FEATURE 6: Spotify Live Status Integration (Lanyard API) ---
-            const spotifyCard = document.getElementById('spotify-card');
-            
-            function updateSpotifyStatus() {
+            function renderSpotifyIdle(label = 'Not Listening', sublabel = 'Spotify Status') {
                 if (!spotifyCard) return;
-                fetch('https://api.lanyard.rest/v1/users/519486922264150016')
+                spotifyCard.innerHTML = `
+                    <div class="relative z-10 p-6 flex flex-col justify-between h-full min-h-[170px]">
+                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center bg-zinc-900/60 border border-zinc-800/80 shadow-inner">
+                            <svg class="w-6 h-6 text-emerald-500" viewBox="0 0 256 256" fill="currentColor">
+                                <path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm45.19,152a8,8,0,0,1-11,2.79C140.72,160.93,113.9,156,80,161.81a8,8,0,0,1-2.8-15.75c37.68-6.69,68.24-1,91.18,13.91A8,8,0,0,1,173.19,172Zm12-30.25a8,8,0,0,1-11,2.6C147,127.92,112.25,123.2,73.54,133.69a8,8,0,1,1-4.3-15.42c43.59-12.15,82.12-6.67,113.44,12.49A8,8,0,0,1,185.19,141.75Zm1.06-31.19a8,8,0,0,1-11,2.41C148.7,96,107,91.55,63.27,103.55a8,8,0,1,1-4.28-15.43C106.27,74.81,152,80,185.23,99.56A8,8,0,0,1,186.25,110.56Z"/>
+                            </svg>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-[10px] font-bold text-zinc-500 tracking-[0.15em] uppercase font-mono block mb-1">${sublabel}</span>
+                            <h3 class="text-xl font-bold text-primary tracking-wide">${label}</h3>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function renderSpotifyError(msg = 'Setup Required', hint = 'Join discord.gg/lanyard') {
+                if (!spotifyCard) return;
+                spotifyCard.innerHTML = `
+                    <div class="relative z-10 p-6 flex flex-col justify-between h-full min-h-[170px]">
+                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center bg-zinc-900/60 border border-zinc-800/80 shadow-inner">
+                            <svg class="w-6 h-6 text-yellow-500" viewBox="0 0 256 256" fill="currentColor">
+                                <path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm45.19,152a8,8,0,0,1-11,2.79C140.72,160.93,113.9,156,80,161.81a8,8,0,0,1-2.8-15.75c37.68-6.69,68.24-1,91.18,13.91A8,8,0,0,1,173.19,172Zm12-30.25a8,8,0,0,1-11,2.6C147,127.92,112.25,123.2,73.54,133.69a8,8,0,1,1-4.3-15.42c43.59-12.15,82.12-6.67,113.44,12.49A8,8,0,0,1,185.19,141.75Zm1.06-31.19a8,8,0,0,1-11,2.41C148.7,96,107,91.55,63.27,103.55a8,8,0,1,1-4.28-15.43C106.27,74.81,152,80,185.23,99.56A8,8,0,0,1,186.25,110.56Z"/>
+                            </svg>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-[10px] font-bold text-yellow-500 tracking-[0.15em] uppercase font-mono block mb-1">Spotify Status</span>
+                            <h3 class="text-xl font-bold text-primary tracking-wide">${msg}</h3>
+                            <p class="text-xs text-secondary/70 mt-1 truncate">${hint}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Initial loading state
+            renderSpotifyIdle('Connecting...', 'Spotify Status');
+
+            function connectLanyardWS() {
+                if (lanyardWs) {
+                    try { lanyardWs.close(); } catch(e) {}
+                }
+                clearInterval(lanyardHeartbeatInterval);
+
+                lanyardWs = new WebSocket('wss://api.lanyard.rest/socket');
+
+                lanyardWs.addEventListener('open', () => {
+                    lanyardConnected = true;
+                });
+
+                lanyardWs.addEventListener('message', (event) => {
+                    const payload = JSON.parse(event.data);
+                    const { op, d } = payload;
+
+                    // op 1: Hello — server sends heartbeat interval, we must subscribe
+                    if (op === 1) {
+                        const heartbeatMs = d.heartbeat_interval;
+                        lanyardHeartbeatInterval = setInterval(() => {
+                            if (lanyardWs && lanyardWs.readyState === WebSocket.OPEN) {
+                                lanyardWs.send(JSON.stringify({ op: 3 }));
+                            }
+                        }, heartbeatMs);
+
+                        // Subscribe to user
+                        lanyardWs.send(JSON.stringify({
+                            op: 2,
+                            d: { subscribe_to_id: LANYARD_USER_ID }
+                        }));
+                    }
+
+                    // op 0: Event — presence update or init
+                    if (op === 0) {
+                        const data = d;
+                        if (!data) return;
+
+                        if (data.listening_to_spotify && data.spotify) {
+                            renderSpotifyPlaying(data.spotify);
+                        } else if (data.discord_status === undefined) {
+                            // User not found in Lanyard (likely not joined server)
+                            renderSpotifyError('Not Configured', 'Join discord.gg/lanyard');
+                        } else {
+                            renderSpotifyIdle('Not Listening', 'Spotify Status');
+                        }
+                    }
+                });
+
+                lanyardWs.addEventListener('error', () => {
+                    // Fallback to REST polling on WS error
+                    fallbackRestPoll();
+                });
+
+                lanyardWs.addEventListener('close', () => {
+                    lanyardConnected = false;
+                    clearInterval(lanyardHeartbeatInterval);
+                    // Auto-reconnect after 5 seconds
+                    setTimeout(connectLanyardWS, 5000);
+                });
+            }
+
+            function fallbackRestPoll() {
+                fetch(`https://api.lanyard.rest/v1/users/${LANYARD_USER_ID}`)
                     .then(res => res.json())
                     .then(res => {
-                        if (res.success && res.data && res.data.listening_to_spotify && res.data.spotify) {
-                            const spotify = res.data.spotify;
-                            // Mengubah pemisah artis ';' menjadi ', ' (ditambah spasi agar rapi)
-                            const artists = spotify.artist.replace(/;/g, ', ');
-                            
-                            spotifyCard.innerHTML = `
-                                <div class="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0 border border-border/50 shadow-md">
-                                    <img src="${spotify.album_art_url}" class="w-full h-full object-cover animate-[spin_10s_linear_infinite]" alt="Album art">
-                                    <!-- Lubang tengah piringan hitam menyesuaikan variable background tema -->
-                                    <div class="absolute inset-0 flex items-center justify-center">
-                                        <div class="w-3 h-3 bg-zinc-950 dark:bg-zinc-900 border border-border/40 rounded-full shadow-inner"></div>
-                                    </div>
-                                </div>
-                                <div class="flex-1 min-w-0 z-10">
-                                    <span class="text-[9px] font-bold text-emerald-500 tracking-wider uppercase font-mono flex items-center gap-1.5 mb-0.5">
-                                        <span class="relative flex h-2 w-2">
-                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                                        </span>
-                                        Now Playing
-                                    </span>
-                                    <h3 class="text-xs font-bold text-primary truncate" title="${spotify.song}">${spotify.song}</h3>
-                                    <p class="text-[11px] text-secondary truncate mt-0.5 font-medium" title="${artists}">${artists}</p>
-                                </div>
-                            `;
+                        if (!res.success) {
+                            renderSpotifyError('Not Configured', 'Join discord.gg/lanyard');
+                            return;
+                        }
+                        const data = res.data;
+                        if (data.listening_to_spotify && data.spotify) {
+                            renderSpotifyPlaying(data.spotify);
                         } else {
-                            // Saat Offline: Menggunakan variabel utility Tailwind agar mendukung Light/Dark Mode
-                            spotifyCard.innerHTML = `
-                                <div class="w-12 h-12 rounded-xl bg-surface border border-border/80 flex items-center justify-center flex-shrink-0 text-secondary/70">
-                                    <i class="fa-brands fa-spotify text-2xl text-emerald-500/80"></i>
-                                </div>
-                                <div class="flex-1 min-w-0 z-10">
-                                    <span class="text-[9px] font-bold text-secondary tracking-wider uppercase font-mono mb-0.5 block">Spotify Status</span>
-                                    <h3 class="text-xs font-semibold text-primary/90">Not Listening</h3>
-                                </div>
-                            `;
+                            renderSpotifyIdle('Not Listening', 'Spotify Status');
                         }
                     })
-                    .catch(() => {
-                        // Saat Error API
-                        spotifyCard.innerHTML = `
-                            <div class="w-12 h-12 rounded-xl bg-surface border border-border/80 flex items-center justify-center flex-shrink-0 text-red-500/80">
-                                <i class="fa-solid fa-circle-exclamation text-xl"></i>
-                            </div>
-                            <div class="flex-1 min-w-0 z-10">
-                                <span class="text-[9px] font-bold text-red-400 tracking-wider uppercase font-mono mb-0.5 block">Spotify API</span>
-                                <h3 class="text-xs font-semibold text-secondary">Connection Error</h3>
-                            </div>
-                        `;
-                    });
+                    .catch(() => renderSpotifyError('Connection Error', 'Check your network'));
             }
 
-            updateSpotifyStatus();
-            // Poll Spotify API state every 15 seconds
-            setInterval(updateSpotifyStatus, 15000);
+            connectLanyardWS();
+
+            // --- Matrix Rain Animation for Spotify Card ---
+            let matrixAnimId = null;
+
+            function startMatrixRain() {
+                if (matrixAnimId) cancelAnimationFrame(matrixAnimId);
+
+                const canvas = document.getElementById('spotify-matrix');
+                if (!canvas) return;
+
+                const parent = canvas.parentElement; // the spotify-card div
+                canvas.height = parent.offsetHeight || 170;
+
+                const ctx = canvas.getContext('2d');
+                const W = canvas.width;   // 110px
+                const H = canvas.height;
+
+                const FONT_SIZE = 11;
+                const COLS = Math.floor(W / FONT_SIZE);
+                // Each column's current Y drop position (in rows)
+                const drops = Array.from({ length: COLS }, () => Math.floor(Math.random() * -20));
+
+                // Characters to use
+                const chars = 'abcdefghijklmnopqrstuvwxyz0123456789$%@^_:<>.,;!?';
+
+                function drawMatrix() {
+                    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                    // Fade out old characters
+                    ctx.fillStyle = isLight ? 'rgba(255, 255, 255, 0.18)' : 'rgba(24, 24, 27, 0.18)';
+                    ctx.fillRect(0, 0, W, H);
+
+                    ctx.font = `${FONT_SIZE}px 'Courier New', monospace`;
+
+                    for (let i = 0; i < COLS; i++) {
+                        const ch = chars[Math.floor(Math.random() * chars.length)];
+                        const x = i * FONT_SIZE;
+                        const y = drops[i] * FONT_SIZE;
+
+                        if (y > 0) {
+                            // Brightest (head) character
+                            ctx.fillStyle = isLight ? 'rgba(16, 185, 129, 0.92)' : 'rgba(255, 255, 255, 0.92)';
+                            ctx.fillText(ch, x, y);
+
+                            // Trail characters above (dimmer)
+                            for (let t = 1; t <= 4; t++) {
+                                const ty = y - t * FONT_SIZE;
+                                if (ty > 0) {
+                                    const alpha = (1 - t / 5) * 0.45;
+                                    ctx.fillStyle = isLight 
+                                        ? `rgba(16, 185, 129, ${alpha * 0.6})` 
+                                        : `rgba(200, 200, 210, ${alpha})`;
+                                    ctx.fillText(chars[Math.floor(Math.random() * chars.length)], x, ty);
+                                }
+                            }
+                        }
+
+                        // Advance drop, reset randomly
+                        drops[i]++;
+                        if (drops[i] * FONT_SIZE > H && Math.random() > 0.93) {
+                            drops[i] = Math.floor(Math.random() * -10);
+                        }
+                    }
+
+                    matrixAnimId = requestAnimationFrame(drawMatrix);
+                }
+
+                drawMatrix();
+            }
         });
     </script>
 
