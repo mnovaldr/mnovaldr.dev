@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Noval - AI & Backend Engineer</title>
-    <meta name="description" content="Portfolio of Muhammad Noval Dwi Ramadhani, focusing on Artificial Intelligence, Computer Vision, and Backend Engineering.">
-    
+    <meta name="description"
+        content="Portfolio of Muhammad Noval Dwi Ramadhani, focusing on Artificial Intelligence, Computer Vision, and Backend Engineering.">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <link rel="shortcut icon" href="dist/img/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="dist/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
@@ -22,154 +24,685 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        background: '#18181b', 
-                        surface: '#27272a',    
-                        border: '#3f3f46',     
-                        primary: '#fafafa',    
-                        secondary: '#a1a1aa',  
-                        accent: '#3b82f6',     
+                        background: '#09090b', // Zinc 950 for deeper modern dark background
+                        surface: '#18181b',    // Zinc 900
+                        border: '#27272a',     // Zinc 800
+                        primary: '#fafafa',
+                        secondary: '#a1a1aa',
+                        accent: '#3b82f6',
                     }
                 }
             }
         }
     </script>
-</head>
-<body class="bg-background text-primary font-sans antialiased selection:bg-accent selection:text-white">
 
-    <main class="max-w-3xl mx-auto px-6 py-12 md:py-20">
-        
-        <header class="mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                Hi, I'm Noval.
-            </h1>
-            <p class="text-lg text-secondary leading-relaxed mb-6">
-                Mahasiswa Teknik Informatika Semester 5 dengan spesialisasi pada <span class="text-white font-semibold">Artificial Intelligence (Computer Vision)</span> dan <span class="text-white font-semibold">Backend Engineering</span>. 
-                Menggabungkan fondasi Software Engineering yang kuat dengan kemampuan analisis data modern untuk menciptakan solusi cerdas yang aplikatif.
-            </p>
-            
-            <div class="flex flex-wrap items-center gap-4">
-                <div class="flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                    </span>
-                    <span class="text-xs font-medium text-green-500">Open for Internship</span>
-                </div>
-                
-                <a href="https://github.com/mnovaldr" class="text-secondary hover:text-white transition"><i class="fa-brands fa-github text-xl"></i></a>
-                <a href="https://instagram.com/mnvldr_" class="text-secondary hover:text-white transition"><i class="fa-brands fa-instagram text-xl"></i></a>
-                <a href="mailto:halo@mnovaldr.dev" class="text-secondary hover:text-white transition"><i class="fa-regular fa-envelope text-xl"></i></a>
-            </div>
+    <style>
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 9999px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
+        }
+
+        /* Ambient Glow Animations */
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.12;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.18;
+            }
+        }
+
+        .ambient-glow-1 {
+            animation: pulseGlow 12s ease-in-out infinite alternate;
+        }
+
+        .ambient-glow-2 {
+            animation: pulseGlow 16s ease-in-out infinite alternate-reverse;
+        }
+
+        /* Fade In Up Entrance Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        /* Hover Glow Classes */
+        .glow-card-blue {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glow-card-blue:hover {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.45) !important;
+        }
+
+        .glow-card-purple {
+            transition: all 0.3 cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glow-card-purple:hover {
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.15);
+            border-color: rgba(168, 85, 247, 0.45) !important;
+        }
+
+        .glow-card-emerald {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glow-card-emerald:hover {
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.45) !important;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background text-primary font-sans antialiased selection:bg-accent/30 selection:text-white relative overflow-x-hidden min-h-screen">
+
+
+
+    <!-- Ambient Decorative Background Glows: Interactive Neuron Network Canvas -->
+    <canvas id="neuron-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-60"></canvas>
+
+    <main class="max-w-4xl mx-auto px-6 py-12 md:py-20 relative z-10">
+
+        <!-- Header / Hero Section -->
+        <header id="hero-section" class="mb-16 animate-fade-in-up text-center flex flex-col items-center justify-center"
+            style="animation-delay: 100ms;">
+            <!-- Rendered dynamically -->
         </header>
 
-        <hr class="border-border mb-16 opacity-50">
+        <hr class="border-border mb-16 opacity-50 animate-fade-in-up" style="animation-delay: 200ms;">
 
-        <section class="mb-20">
-            <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
-                <i class="fa-solid fa-layer-group text-secondary text-sm"></i> Focus Area
+        <!-- Focus Area Section -->
+        <section class="mb-20 animate-fade-in-up" style="animation-delay: 300ms;">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 text-zinc-100">
+                <span class="p-1.5 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+                    <i class="fa-solid fa-layer-group text-zinc-400 text-sm"></i>
+                </span>
+                Focus Area
             </h2>
-            
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="p-6 rounded-2xl bg-surface border border-border hover:border-accent/50 transition duration-300">
-                    <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4 text-blue-400">
-                        <i class="fa-solid fa-server"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2">Backend Engineering</h3>
-                    <p class="text-sm text-secondary leading-relaxed">
-                        Membangun aplikasi web scalable dan API yang handal menggunakan <span class="text-white">Django (Python)</span> dan <span class="text-white">Laravel (PHP)</span>. Berpengalaman dalam integrasi model AI ke dalam sistem web.
-                    </p>
-                </div>
 
-                <div class="p-6 rounded-2xl bg-surface border border-border hover:border-accent/50 transition duration-300">
-                    <div class="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center mb-4 text-purple-400">
-                        <i class="fa-solid fa-brain"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2">Deep Learning</h3>
-                    <p class="text-sm text-secondary leading-relaxed">
-                        Pengembangan model deteksi objek real-time menggunakan <span class="text-white">YOLOv8</span> dan <span class="text-white">PyTorch</span>. Fokus pada implementasi end-to-end mulai dari training dataset hingga deployment.
-                    </p>
-                </div>
+            <div id="focus-areas-container" class="grid md:grid-cols-2 gap-4">
+                <!-- Rendered dynamically -->
             </div>
         </section>
 
-        <section class="mb-20">
-            <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
-                <i class="fa-solid fa-flask text-secondary text-sm"></i> Featured Projects
+        <!-- Featured Projects Section -->
+        <section class="mb-20 animate-fade-in-up" style="animation-delay: 400ms;">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 text-zinc-100">
+                <span class="p-1.5 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+                    <i class="fa-solid fa-flask text-zinc-400 text-sm"></i>
+                </span>
+                Featured Projects
             </h2>
 
-            <div class="space-y-6">
-
-                <a href="https://mamafrozen.000webhostapp.com/" target="_blank" class="group block p-6 rounded-2xl bg-surface/50 border border-border hover:bg-surface hover:border-accent/30 transition duration-300">
-                    <div class="flex flex-col md:flex-row gap-6 justify-between md:items-start">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2">
-                                <h3 class="text-lg font-bold group-hover:text-accent transition">Mama Frozen E-commerce</h3>
-                                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-secondary opacity-0 group-hover:opacity-100 transition"></i>
-                            </div>
-                            <p class="text-sm text-secondary mt-2 mb-4">
-                                Platform toko online untuk UMKM Frozen Food. Membantu digitalisasi proses pemesanan dan katalog produk.
-                            </p>
-                            <div class="flex gap-2">
-                                <span class="text-xs px-2 py-1 rounded bg-white/5 text-secondary border border-white/5">PHP</span>
-                                <span class="text-xs px-2 py-1 rounded bg-white/5 text-secondary border border-white/5">Laravel</span>
-                                <span class="text-xs px-2 py-1 rounded bg-white/5 text-secondary border border-white/5">MySQL</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="group block p-6 rounded-2xl bg-surface/50 border border-border hover:bg-surface hover:border-accent/30 transition duration-300">
-                    <div class="flex flex-col md:flex-row gap-6 justify-between md:items-start">
-                        <div class="flex-1">
-                            <h3 class="text-lg font-bold group-hover:text-accent transition">RestoranQue</h3>
-                            <p class="text-sm text-secondary mt-2 mb-4">
-                                Aplikasi Progressive Web App (PWA) untuk katalog restoran dengan fitur caching, favorites, dan integration testing.
-                            </p>
-                            <div class="flex gap-2">
-                                <span class="text-xs px-2 py-1 rounded bg-white/5 text-secondary border border-white/5">JavaScript</span>
-                                <span class="text-xs px-2 py-1 rounded bg-white/5 text-secondary border border-white/5">PWA</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
+            <div id="projects-container" class="space-y-4">
+                <!-- Rendered dynamically -->
             </div>
-            
-            <div class="mt-6 text-center">
-                <a href="https://github.com/mnovaldr" class="text-sm text-secondary hover:text-white border-b border-secondary/30 pb-0.5 hover:border-white transition">
-                    Lihat arsip kode lainnya di GitHub
-                </a>
+
+            <div id="github-archive-link" class="mt-8 text-center">
+                <!-- Rendered dynamically -->
             </div>
         </section>
 
-        <section class="mb-20">
-            <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
-                <i class="fa-solid fa-microchip text-secondary text-sm"></i> Tech Stack
+        <!-- Tech Stack Section -->
+        <section class="mb-20 animate-fade-in-up" style="animation-delay: 500ms;">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 text-zinc-100">
+                <span class="p-1.5 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+                    <i class="fa-solid fa-microchip text-zinc-400 text-sm"></i>
+                </span>
+                Tech Stack
             </h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-white font-medium">Python</div>
-                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">PyTorch</div>
-                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">YOLOv8</div>
-                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">Pandas & NumPy</div>
-                
-                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-white font-medium">Django</div>
-                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">Laravel</div>
-                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">SQL</div>
-                <div class="p-3 bg-surface/30 rounded border border-border text-center text-sm text-secondary">Git</div>
+            <div id="tech-stack-container" class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <!-- Rendered dynamically -->
             </div>
         </section>
 
-        <hr class="border-border mb-12 opacity-50">
+        <hr class="border-border mb-12 opacity-50 animate-fade-in-up" style="animation-delay: 600ms;">
 
-        <footer class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary">
-            <p>&copy; 2025 Muhammad Noval Dwi Ramadhani.</p>
-            <div class="flex gap-4">
-                <a href="https://drive.google.com/file/d/1Ij-yLprYCAYJWb7Hj9oCpgF2FF3Yk8ya/view?usp=sharing" target="_blank" class="hover:text-white transition font-medium text-accent">Resume</a>
-                <a href="https://www.linkedin.com/in/mnovaldr" target="_blank" class="hover:text-white transition">LinkedIn</a>
-            </div>
+        <!-- Footer -->
+        <footer id="footer-section"
+            class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary animate-fade-in-up"
+            style="animation-delay: 700ms;">
+            <!-- Rendered dynamically -->
         </footer>
 
     </main>
 
+    <!-- Load content data -->
+    <script src="data.js"></script>
+
+    <!-- Dynamic rendering & Neuron Background script -->
+    <script>
+        // HTML5 Canvas Neuron Network Engine
+        class NeuronNetwork {
+            constructor(canvasId) {
+                this.canvas = document.getElementById(canvasId);
+                if (!this.canvas) return;
+                this.ctx = this.canvas.getContext('2d');
+                this.particles = [];
+                this.mouse = { x: null, y: null, radius: 150 };
+                this.maxParticles = 80;
+                this.connectionDistance = 100;
+                this.baseColor = [161, 161, 170]; // Zinc-400 RGB
+                this.targetColor = [161, 161, 170];
+                this.currentColor = [161, 161, 170];
+                this.colorLerpFactor = 0.05;
+
+                this.init();
+                this.animate();
+
+                window.addEventListener('resize', () => this.resize());
+                window.addEventListener('mousemove', (e) => {
+                    this.mouse.x = e.clientX;
+                    this.mouse.y = e.clientY;
+                });
+                window.addEventListener('mouseout', () => {
+                    this.mouse.x = null;
+                    this.mouse.y = null;
+                });
+            }
+
+            init() {
+                this.resize();
+                this.particles = [];
+                for (let i = 0; i < this.maxParticles; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        vx: (Math.random() - 0.5) * 0.4,
+                        vy: (Math.random() - 0.5) * 0.4,
+                        radius: Math.random() * 2 + 1
+                    });
+                }
+            }
+
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+                if (window.innerWidth < 768) {
+                    this.maxParticles = 40;
+                    this.connectionDistance = 80;
+                } else {
+                    this.maxParticles = 80;
+                    this.connectionDistance = 120;
+                }
+            }
+
+            setTargetColor(rgb) {
+                this.targetColor = rgb || this.baseColor;
+            }
+
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                // Smooth color interpolation
+                for (let i = 0; i < 3; i++) {
+                    this.currentColor[i] += (this.targetColor[i] - this.currentColor[i]) * this.colorLerpFactor;
+                }
+
+                const colorStr = `rgba(${Math.round(this.currentColor[0])}, ${Math.round(this.currentColor[1])}, ${Math.round(this.currentColor[2])}`;
+
+                // Update & draw particles
+                for (let i = 0; i < this.particles.length; i++) {
+                    const p = this.particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
+
+                    this.ctx.beginPath();
+                    this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `${colorStr}, 0.35)`;
+                    this.ctx.fill();
+
+                    // Connect adjacent particles
+                    for (let j = i + 1; j < this.particles.length; j++) {
+                        const p2 = this.particles[j];
+                        const dx = p.x - p2.x;
+                        const dy = p.y - p2.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < this.connectionDistance) {
+                            const alpha = (1 - dist / this.connectionDistance) * 0.25;
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(p.x, p.y);
+                            this.ctx.lineTo(p2.x, p2.y);
+                            this.ctx.strokeStyle = `${colorStr}, ${alpha})`;
+                            this.ctx.lineWidth = 0.8;
+                            this.ctx.stroke();
+                        }
+                    }
+
+                    // Interactive mouse effect
+                    if (this.mouse.x !== null) {
+                        const dx = p.x - this.mouse.x;
+                        const dy = p.y - this.mouse.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < this.mouse.radius) {
+                            // Subtle gravity pull
+                            p.x -= dx * 0.008;
+                            p.y -= dy * 0.008;
+
+                            const alpha = (1 - dist / this.mouse.radius) * 0.35;
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(p.x, p.y);
+                            this.ctx.lineTo(this.mouse.x, this.mouse.y);
+                            this.ctx.strokeStyle = `${colorStr}, ${alpha})`;
+                            this.ctx.lineWidth = 1;
+                            this.ctx.stroke();
+                        }
+                    }
+                }
+
+                // Ambient mouse center glow
+                if (this.mouse.x !== null) {
+                    const gradient = this.ctx.createRadialGradient(this.mouse.x, this.mouse.y, 0, this.mouse.x, this.mouse.y, 80);
+                    gradient.addColorStop(0, `${colorStr}, 0.15)`);
+                    gradient.addColorStop(1, `${colorStr}, 0)`);
+                    this.ctx.beginPath();
+                    this.ctx.arc(this.mouse.x, this.mouse.y, 80, 0, Math.PI * 2);
+                    this.ctx.fillStyle = gradient;
+                    this.ctx.fill();
+                }
+
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = window.PORTFOLIO_DATA || {};
+
+            // Initialize Neuron Network Background
+            const neuronNetwork = new NeuronNetwork('neuron-canvas');
+
+            // 1. Render Hero Section
+            const heroSection = document.getElementById('hero-section');
+            if (heroSection && data.profile) {
+                const profile = data.profile;
+                const statusBadge = profile.status && profile.status.active
+                    ? `<div class="flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full w-fit">
+                            <span class="relative flex h-2 w-2">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                            <span class="text-xs font-medium text-green-500">${profile.status.text}</span>
+                       </div>`
+                    : '';
+
+                heroSection.innerHTML = `
+                    <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white w-full">
+                        ${profile.tagline}
+                    </h1>
+                    <p class="text-base md:text-lg text-secondary leading-relaxed mb-6 font-normal max-w-2xl mx-auto">
+                        ${profile.bio}
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+                        ${statusBadge}
+                        <div class="flex items-center justify-center gap-4 sm:ml-1">
+                            <a href="${profile.socials.github}" target="_blank" aria-label="GitHub" class="text-secondary hover:text-white transition duration-200"><i class="fa-brands fa-github text-xl"></i></a>
+                            <a href="${profile.socials.instagram}" target="_blank" aria-label="Instagram" class="text-secondary hover:text-white transition duration-200"><i class="fa-brands fa-instagram text-xl"></i></a>
+                            <a href="${profile.socials.email}" aria-label="Email" class="text-secondary hover:text-white transition duration-200"><i class="fa-regular fa-envelope text-xl"></i></a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 2. Render Focus Areas
+            const focusAreasContainer = document.getElementById('focus-areas-container');
+            if (focusAreasContainer && data.focusAreas) {
+                focusAreasContainer.innerHTML = data.focusAreas.map(area => `
+                    <div class="group relative p-6 rounded-2xl bg-zinc-900/40 backdrop-blur-md border border-zinc-800/80 hover:border-zinc-700/80 transition-all duration-300 ease-out hover:-translate-y-1 ${area.glowClass}">
+                        <div class="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), ${area.glowColor}, transparent 40%);"></div>
+                        
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${area.accentClass}">
+                            <i class="${area.icon} text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-zinc-100 group-hover:text-white transition-colors duration-200">${area.title}</h3>
+                        <p class="text-sm text-secondary leading-relaxed relative z-10">
+                            ${area.description}
+                        </p>
+                    </div>
+                `).join('');
+            }
+
+            // 3. Render Featured Projects
+            const projectsContainer = document.getElementById('projects-container');
+            if (projectsContainer && data.projects) {
+                projectsContainer.innerHTML = data.projects.map(project => {
+                    const projectLinkAttrs = project.url && project.url !== '#'
+                        ? `href="${project.url}" target="_blank"`
+                        : `href="#"`;
+
+                    const tagsHtml = project.tags.map(tag => `
+                        <span class="text-[11px] px-2 py-0.5 rounded bg-zinc-800/50 text-zinc-400 border border-zinc-700/30 group-hover:border-zinc-700/60 transition-colors duration-300">${tag}</span>
+                    `).join('');
+
+                    return `
+                        <a ${projectLinkAttrs} class="group block p-6 rounded-2xl bg-zinc-900/30 backdrop-blur-md border border-zinc-800/80 hover:bg-zinc-900/50 hover:border-zinc-700/80 transition-all duration-300 ease-out hover:-translate-y-0.5 ${project.glowClass || 'glow-card-blue'}">
+                            <div class="flex flex-col md:flex-row gap-6 justify-between md:items-start">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2">
+                                        <h3 class="text-lg font-bold text-zinc-200 group-hover:text-blue-400 transition-colors duration-200">${project.title}</h3>
+                                        ${project.url && project.url !== '#' ? `<i class="fa-solid fa-arrow-up-right-from-square text-xs text-secondary opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-4px] group-hover:translate-x-0"></i>` : ''}
+                                    </div>
+                                    <p class="text-sm text-secondary mt-2 mb-4 leading-relaxed">
+                                        ${project.description}
+                                    </p>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        ${tagsHtml}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                }).join('');
+            }
+
+            // Render GitHub Archive Link
+            const githubArchiveLink = document.getElementById('github-archive-link');
+            if (githubArchiveLink && data.profile) {
+                githubArchiveLink.innerHTML = `
+                    <a href="${data.profile.socials.github}" target="_blank" class="text-sm text-secondary hover:text-white border-b border-secondary/20 pb-0.5 hover:border-white transition-all duration-200">
+                        Lihat arsip kode lainnya di GitHub
+                    </a>
+                `;
+            }
+
+            // 4. Render Tech Stack
+            const techStackContainer = document.getElementById('tech-stack-container');
+            if (techStackContainer && data.techStack) {
+                techStackContainer.innerHTML = data.techStack.map(tech => {
+                    const textClass = 'text-white font-medium bg-zinc-900/80 border-zinc-700/50';
+                    return `
+                        <div class="p-3 rounded-xl border text-center text-xs backdrop-blur-sm transition-all duration-300 hover:border-zinc-600/50 hover:bg-zinc-900/60 hover:-translate-y-0.5 hover:shadow-md ${textClass}">
+                            ${tech.name}
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // 5. Render Footer
+            const footerSection = document.getElementById('footer-section');
+            if (footerSection && data.profile) {
+                const profile = data.profile;
+                const currentYear = new Date().getFullYear();
+                footerSection.innerHTML = `
+                    <p>&copy; ${currentYear} ${profile.name}.</p>
+                    <div class="flex gap-5">
+                        <a href="${profile.socials.resume}" target="_blank" class="hover:text-white transition duration-200 font-semibold text-blue-400 hover:text-blue-300">Resume</a>
+                        <a href="${profile.socials.linkedin}" target="_blank" class="hover:text-white transition duration-200">LinkedIn</a>
+                    </div>
+                `;
+            }
+
+            // Interactive Event Listeners for Dynamic Colors
+            const focusCards = document.querySelectorAll('#focus-areas-container > div');
+            focusCards.forEach((card, index) => {
+                const areaData = data.focusAreas[index];
+                if (areaData && areaData.rgbColor) {
+                    card.addEventListener('mouseenter', () => neuronNetwork.setTargetColor(areaData.rgbColor));
+                    card.addEventListener('mouseleave', () => neuronNetwork.setTargetColor(null));
+                }
+
+                // Also keep track of card cursor position for card inner gradient tracking
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--x', `${x}px`);
+                    card.style.setProperty('--y', `${y}px`);
+                });
+            });
+
+            const projectCards = document.querySelectorAll('#projects-container > a');
+            projectCards.forEach((card, index) => {
+                const projectData = data.projects[index];
+                if (projectData && projectData.rgbColor) {
+                    card.addEventListener('mouseenter', () => neuronNetwork.setTargetColor(projectData.rgbColor));
+                    card.addEventListener('mouseleave', () => neuronNetwork.setTargetColor(null));
+                }
+            });
+
+
+
+            // --- FEATURE 2: Typewriter Tagline Animation ---
+            const typewriterSpan = document.getElementById('typewriter');
+            if (typewriterSpan && data.profile && data.profile.typewriterRoles) {
+                const roles = data.profile.typewriterRoles;
+                let roleIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                let typeSpeed = 100;
+
+                function type() {
+                    const currentRole = roles[roleIndex];
+                    if (isDeleting) {
+                        typewriterSpan.textContent = currentRole.substring(0, charIndex - 1);
+                        charIndex--;
+                        typeSpeed = 45;
+                    } else {
+                        typewriterSpan.textContent = currentRole.substring(0, charIndex + 1);
+                        charIndex++;
+                        typeSpeed = 80;
+                    }
+
+                    if (!isDeleting && charIndex === currentRole.length) {
+                        typeSpeed = 2000; // pause at end
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        roleIndex = (roleIndex + 1) % roles.length;
+                        typeSpeed = 500; // pause before typing
+                    }
+
+                    setTimeout(type, typeSpeed);
+                }
+                setTimeout(type, 1000);
+            }
+
+            // --- FEATURE 3: Interactive Tech Stack Filters ---
+            let activeFilter = null;
+            const techStackBadges = document.querySelectorAll('#tech-stack-container > div');
+            const projectLinks = document.querySelectorAll('#projects-container > a');
+
+            techStackBadges.forEach((badge, index) => {
+                const techName = data.techStack[index].name.toLowerCase();
+                badge.classList.add('cursor-pointer');
+
+                badge.addEventListener('click', () => {
+                    if (activeFilter === techName) {
+                        activeFilter = null;
+                        techStackBadges.forEach(b => {
+                            b.classList.remove('border-accent/80', 'text-white', 'bg-zinc-900/60');
+                        });
+                        projectLinks.forEach(card => card.classList.remove('opacity-25'));
+                    } else {
+                        activeFilter = techName;
+                        techStackBadges.forEach((b, idx) => {
+                            if (data.techStack[idx].name.toLowerCase() === techName) {
+                                b.classList.add('border-accent/80', 'text-white', 'bg-zinc-900/60');
+                            } else {
+                                b.classList.remove('border-accent/80', 'text-white', 'bg-zinc-900/60');
+                            }
+                        });
+
+                        projectLinks.forEach((card, idx) => {
+                            const projectTags = data.projects[idx].tags.map(t => t.toLowerCase());
+                            if (projectTags.includes(techName)) {
+                                card.classList.remove('opacity-25');
+                            } else {
+                                card.classList.add('opacity-25');
+                            }
+                        });
+                    }
+                });
+            });
+
+            // --- FEATURE 4: CLI Terminal Widget ---
+            const terminalModal = document.getElementById('terminal-modal');
+            const terminalTrigger = document.getElementById('terminal-trigger');
+            const terminalClose = document.getElementById('terminal-close');
+            const terminalInput = document.getElementById('terminal-input');
+            const terminalOutput = document.getElementById('terminal-output');
+
+            function openTerminal() {
+                terminalModal.classList.remove('opacity-0', 'pointer-events-none');
+                terminalModal.classList.add('opacity-100');
+                setTimeout(() => terminalInput.focus(), 150);
+            }
+
+            function closeTerminal() {
+                terminalModal.classList.remove('opacity-100');
+                terminalModal.classList.add('opacity-0', 'pointer-events-none');
+                terminalInput.value = '';
+            }
+
+            if (terminalTrigger) terminalTrigger.addEventListener('click', openTerminal);
+            if (terminalClose) terminalClose.addEventListener('click', closeTerminal);
+
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeTerminal();
+            });
+
+            terminalModal.addEventListener('click', (e) => {
+                if (!e.target.closest('#terminal-trigger') && (e.target.closest('#terminal-output') || e.target.closest('.bg-zinc-950'))) {
+                    terminalInput.focus();
+                }
+            });
+
+            function writeOutput(text, isCommand = false) {
+                const div = document.createElement('div');
+                if (isCommand) {
+                    div.innerHTML = `<span class="text-accent">halo@mnovaldr:~$</span> <span class="text-white">${text}</span>`;
+                } else {
+                    div.innerHTML = text;
+                }
+                terminalOutput.appendChild(div);
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+            }
+
+            terminalInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const command = terminalInput.value.trim().toLowerCase();
+                    const rawCommand = terminalInput.value;
+                    terminalInput.value = '';
+
+                    if (!command) return;
+
+                    writeOutput(rawCommand, true);
+
+                    switch (command) {
+                        case 'help':
+                            writeOutput('Available commands:<br>' +
+                                '  <span class="text-white">about</span>    - Short bio info<br>' +
+                                '  <span class="text-white">projects</span> - View my development projects<br>' +
+                                '  <span class="text-white">skills</span>   - List my technical stack<br>' +
+                                '  <span class="text-white">clear</span>    - Clear terminal screen<br>' +
+                                '  <span class="text-white">exit</span>     - Exit terminal mode');
+                            break;
+                        case 'about':
+                            writeOutput('Hi, I am Muhammad Noval Dwi Ramadhani. A semester 6 Informatics Student specializing in AI (Computer Vision) and Backend Engineering. Open for Internship opportunities.');
+                            break;
+                        case 'projects':
+                            let projText = 'My featured projects:<br>';
+                            data.projects.forEach(p => {
+                                projText += `  - <span class="text-white font-bold">${p.title}</span>: ${p.description} <br>    Url: <a href="${p.url}" target="_blank" class="text-accent underline">${p.url}</a><br>`;
+                            });
+                            writeOutput(projText);
+                            break;
+                        case 'skills':
+                            const list = data.techStack.map(s => s.name).join(', ');
+                            writeOutput(`My technical skills: <span class="text-white">${list}</span>`);
+                            break;
+                        case 'clear':
+                            terminalOutput.innerHTML = '';
+                            break;
+                        case 'exit':
+                            closeTerminal();
+                            break;
+                        default:
+                            writeOutput(`sh: command not found: ${command}. Type <span class="text-white">help</span> for commands.`);
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- Floating Terminal Button -->
+    <button id="terminal-trigger"
+        class="fixed bottom-6 right-6 z-40 bg-zinc-900/90 backdrop-blur border border-zinc-800 text-zinc-400 w-12 h-12 rounded-full shadow-lg hover:text-white hover:scale-105 hover:border-zinc-700 active:scale-95 transition flex items-center justify-center cursor-pointer group"
+        aria-label="Open Terminal">
+        <i class="fa-solid fa-terminal text-lg group-hover:animate-pulse"></i>
+    </button>
+
+    <!-- Terminal Modal -->
+    <div id="terminal-modal"
+        class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+        <div
+            class="w-full max-w-2xl bg-zinc-950/95 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[450px]">
+            <!-- Terminal Header -->
+            <div class="bg-zinc-900/80 border-b border-zinc-800 px-4 py-3 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+                    <span class="text-xs text-secondary font-mono ml-2">halo@mnovaldr.dev:~</span>
+                </div>
+                <button id="terminal-close" class="text-zinc-500 hover:text-zinc-300 font-mono text-sm cursor-pointer"
+                    aria-label="Close Terminal">ESC / close</button>
+            </div>
+            <!-- Terminal Body -->
+            <div id="terminal-output"
+                class="flex-1 p-6 font-mono text-xs md:text-sm text-green-400 overflow-y-auto space-y-2 select-text">
+                <div>Welcome to Muhammad Noval CLI Portfolio v1.0.0.</div>
+                <div>Type <span class="text-white font-semibold">help</span> to list available commands.</div>
+                <br>
+            </div>
+            <!-- Terminal Input -->
+            <div
+                class="bg-zinc-900/40 border-t border-zinc-800 px-6 py-4 flex items-center gap-2 font-mono text-sm text-zinc-300">
+                <span class="text-accent">halo@mnovaldr:~$</span>
+                <input type="text" id="terminal-input"
+                    class="flex-1 bg-transparent border-none outline-none text-white font-mono caret-accent"
+                    autocomplete="off">
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
