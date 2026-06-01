@@ -16,7 +16,7 @@
 
     <script>
         // Apply theme early to prevent flash of wrong theme
-        const savedTheme = localStorage.getItem('theme') || 'dark';
+        const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
 
         tailwind.config = {
@@ -60,27 +60,42 @@
             --blueprint-opacity: 0.08;
         }
 
-        /* Modern Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgb(var(--color-background-rgb));
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgb(var(--color-border-rgb));
-            border-radius: 9999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgb(var(--color-secondary-rgb));
+        html {
+            background-color: rgb(var(--color-background-rgb));
+            transition: background-color 300ms;
+            overflow-x: hidden;
         }
 
-        /* Blueprint Grid Pattern */
-        .blueprint-grid {
+        /* Modern Scrollbar (Desktop only to prevent mobile rendering glitches) */
+        @media (min-width: 768px) {
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: rgb(var(--color-background-rgb));
+            }
+            ::-webkit-scrollbar-thumb {
+                background: rgb(var(--color-border-rgb));
+                border-radius: 9999px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: rgb(var(--color-secondary-rgb));
+            }
+        }
+
+        /* Blueprint Grid Pattern with Radial Fade */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
             background-size: 40px 40px;
             background-image: 
                 linear-gradient(to right, rgba(39, 39, 42, var(--blueprint-opacity)) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(39, 39, 42, var(--blueprint-opacity)) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at 50% 30%, black 30%, transparent 85%);
+            -webkit-mask-image: radial-gradient(circle at 50% 30%, black 30%, transparent 85%);
         }
 
         /* Fade In Up Entrance Animation */
@@ -145,9 +160,75 @@
             mask-image: linear-gradient(to left, rgba(0,0,0,0.7) 0%, transparent 100%);
             -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.7) 0%, transparent 100%);
         }
+
+        /* Glassmorphism Styles for Cards */
+        .bg-surface {
+            background-color: rgba(var(--color-surface-rgb), 0.45) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-color: rgba(var(--color-border-rgb), 0.5) !important;
+        }
+        
+        /* Light/Dark mode specific card shadow adjustments */
+        [data-theme="light"] .bg-surface {
+            background-color: rgba(255, 255, 255, 0.65) !important;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+        }
+
+        /* Blinking Caret animation for Typewriter */
+        #typewriter {
+            border-right: 2.5px solid rgb(var(--color-accent-rgb));
+            animation: caret-blink 0.75s step-end infinite !important;
+            padding-right: 3px;
+        }
+        @keyframes caret-blink {
+            from, to { border-color: transparent }
+            50% { border-color: rgb(var(--color-accent-rgb)) }
+        }
+        /* Text Shimmer Effect on Project Titles */
+        #projects-container a:hover h3 {
+            background: linear-gradient(
+                to right,
+                rgb(var(--color-primary-rgb)) 20%,
+                rgb(var(--color-accent-rgb)) 40%,
+                rgb(var(--color-accent-rgb)) 60%,
+                rgb(var(--color-primary-rgb)) 80%
+            );
+            background-size: 200% auto;
+            color: transparent !important;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: text-shimmer 1.5s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes text-shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Spotify Live Equalizer Animation */
+        .animate-eq {
+            height: 10%;
+            animation: bounce-eq 0.8s ease-in-out infinite alternate;
+        }
+
+        @keyframes bounce-eq {
+            0% {
+                height: 15%;
+            }
+            100% {
+                height: 100%;
+            }
+        }
     </style>
 </head>
-<body class="bg-background text-primary font-sans antialiased selection:bg-accent/30 selection:text-white relative overflow-x-hidden min-h-screen blueprint-grid transition-colors duration-300">
+<body class="bg-background text-primary font-sans antialiased selection:bg-accent/30 selection:text-white relative overflow-x-hidden min-h-screen transition-colors duration-300">
+
+    <!-- Ambient Background Glows -->
+    <div class="absolute top-[5%] left-[-15%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-blue-400/10 dark:bg-blue-500/15 blur-[80px] md:blur-[130px] pointer-events-none z-0 animate-pulse" style="animation-duration: 10s;"></div>
+    <div class="absolute bottom-[15%] right-[-15%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-purple-400/10 dark:bg-purple-500/15 blur-[80px] md:blur-[130px] pointer-events-none z-0 animate-pulse" style="animation-duration: 15s;"></div>
 
     <main class="max-w-5xl mx-auto px-6 py-12 md:py-20 relative z-10 flex flex-col gap-6">
         
@@ -648,13 +729,22 @@
                             <div class="flex-1 min-w-0">
                                 <h3 class="text-base font-bold text-primary truncate leading-tight" title="${spotify.song}">${spotify.song}</h3>
                                 <p class="text-xs text-secondary truncate mt-1 font-medium tracking-wide" title="${artists}">${artists}</p>
-                                <!-- Pulsing dot -->
-                                <div class="flex items-center gap-1.5 mt-2">
-                                    <span class="relative flex h-1.5 w-1.5">
-                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                        <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
-                                    </span>
-                                    <span class="text-[9px] text-emerald-500 font-mono tracking-widest uppercase">Live</span>
+                                <!-- Pulsing dot & Equalizer -->
+                                <div class="flex items-center gap-2 mt-2">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="relative flex h-1.5 w-1.5">
+                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                                        </span>
+                                        <span class="text-[9px] text-emerald-500 font-mono tracking-widest uppercase">Live</span>
+                                    </div>
+                                    <!-- Soundwave Equalizer -->
+                                    <div class="flex items-end gap-[2.5px] h-2.5 w-fit pb-[1px]">
+                                        <div class="w-[2px] bg-emerald-500 rounded-full animate-eq" style="animation-duration: 0.6s; animation-delay: 0.1s;"></div>
+                                        <div class="w-[2px] bg-emerald-500 rounded-full animate-eq" style="animation-duration: 0.8s; animation-delay: 0.3s;"></div>
+                                        <div class="w-[2px] bg-emerald-500 rounded-full animate-eq" style="animation-duration: 0.5s; animation-delay: 0.5s;"></div>
+                                        <div class="w-[2px] bg-emerald-500 rounded-full animate-eq" style="animation-duration: 0.7s; animation-delay: 0.2s;"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -850,6 +940,69 @@
 
                 drawMatrix();
             }
+
+            // Magnetic Hover Effect
+            function initMagneticHover() {
+                const targets = document.querySelectorAll('#theme-toggle, #status-social-card a, #terminal-trigger, #footer-section a');
+                
+                targets.forEach(elem => {
+                    elem.addEventListener('mousemove', (e) => {
+                        const rect = elem.getBoundingClientRect();
+                        const x = e.clientX - rect.left - rect.width / 2;
+                        const y = e.clientY - rect.top - rect.height / 2;
+                        
+                        elem.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+                        elem.style.transition = 'transform 0.1s ease-out';
+                    });
+                    
+                    elem.addEventListener('mouseleave', () => {
+                        elem.style.transform = 'translate(0px, 0px)';
+                        elem.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+                    });
+                });
+            }
+
+            // 3D Card Tilt Effect (Event delegation for dynamic elements)
+            function init3DTilt() {
+                const mainContainer = document.querySelector('main');
+                if (!mainContainer) return;
+
+                mainContainer.addEventListener('mousemove', (e) => {
+                    const card = e.target.closest('#hero-card, #status-social-card, #focus-backend-card > div, #focus-dl-card > div, #spotify-card, #projects-container > a');
+                    if (!card) return;
+
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    // Limit tilt rotation to a subtle 4.5 degrees
+                    const rotateX = ((centerY - y) / centerY) * 4.5;
+                    const rotateY = ((x - centerX) / centerX) * 4.5;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+                    card.style.transition = 'transform 0.08s ease-out';
+                });
+
+                mainContainer.addEventListener('mouseout', (e) => {
+                    const card = e.target.closest('#hero-card, #status-social-card, #focus-backend-card > div, #focus-dl-card > div, #spotify-card, #projects-container > a');
+                    if (!card) return;
+
+                    // Only reset when leaving the card boundaries
+                    if (!e.relatedTarget || !card.contains(e.relatedTarget)) {
+                        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+                        card.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+                    }
+                });
+            }
+
+            // Run interactive effects after layout is fully rendered
+            setTimeout(() => {
+                initMagneticHover();
+                init3DTilt();
+            }, 300);
         });
     </script>
 
