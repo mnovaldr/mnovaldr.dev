@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Noval - AI & Backend Engineer</title>
-    <meta name="description" content="Portfolio of Muhammad Noval Dwi Ramadhani, focusing on Artificial Intelligence, Computer Vision, and Backend Engineering.">
-    
+    <meta name="description"
+        content="Portfolio of Muhammad Noval Dwi Ramadhani, focusing on Artificial Intelligence, Computer Vision, and Backend Engineering.">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <link rel="shortcut icon" href="dist/img/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="dist/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
@@ -71,13 +73,16 @@
             ::-webkit-scrollbar {
                 width: 8px;
             }
+
             ::-webkit-scrollbar-track {
                 background: rgb(var(--color-background-rgb));
             }
+
             ::-webkit-scrollbar-thumb {
                 background: rgb(var(--color-border-rgb));
                 border-radius: 9999px;
             }
+
             ::-webkit-scrollbar-thumb:hover {
                 background: rgb(var(--color-secondary-rgb));
             }
@@ -91,7 +96,7 @@
             z-index: 0;
             pointer-events: none;
             background-size: 40px 40px;
-            background-image: 
+            background-image:
                 linear-gradient(to right, rgba(39, 39, 42, var(--blueprint-opacity)) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(39, 39, 42, var(--blueprint-opacity)) 1px, transparent 1px);
             mask-image: radial-gradient(circle at 50% 30%, black 30%, transparent 85%);
@@ -104,11 +109,13 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
         .animate-fade-in-up {
             animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
@@ -119,32 +126,38 @@
         .glow-card-blue {
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .glow-card-blue:hover {
             box-shadow: 0 0 25px rgba(59, 130, 246, 0.12);
             border-color: rgba(59, 130, 246, 0.4) !important;
         }
+
         .glow-card-blue:hover h3 {
             color: rgb(59, 130, 246) !important;
         }
-        
+
         .glow-card-purple {
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .glow-card-purple:hover {
             box-shadow: 0 0 25px rgba(168, 85, 247, 0.12);
             border-color: rgba(168, 85, 247, 0.4) !important;
         }
+
         .glow-card-purple:hover h3 {
             color: rgb(168, 85, 247) !important;
         }
-        
+
         .glow-card-emerald {
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .glow-card-emerald:hover {
             box-shadow: 0 0 25px rgba(16, 185, 129, 0.12);
             border-color: rgba(16, 185, 129, 0.4) !important;
         }
+
         .glow-card-emerald:hover h3 {
             color: rgb(16, 185, 129) !important;
         }
@@ -157,8 +170,8 @@
             height: 100%;
             width: 110px;
             pointer-events: none;
-            mask-image: linear-gradient(to left, rgba(0,0,0,0.7) 0%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.7) 0%, transparent 100%);
+            mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
         }
 
         /* Glassmorphism Styles for Cards */
@@ -168,7 +181,7 @@
             -webkit-backdrop-filter: blur(16px);
             border-color: rgba(var(--color-border-rgb), 0.5) !important;
         }
-        
+
         /* Light/Dark mode specific card shadow adjustments */
         [data-theme="light"] .bg-surface {
             background-color: rgba(255, 255, 255, 0.65) !important;
@@ -181,19 +194,26 @@
             animation: caret-blink 0.75s step-end infinite !important;
             padding-right: 3px;
         }
+
         @keyframes caret-blink {
-            from, to { border-color: transparent }
-            50% { border-color: rgb(var(--color-accent-rgb)) }
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: rgb(var(--color-accent-rgb))
+            }
         }
+
         /* Text Shimmer Effect on Project Titles */
         #projects-container a:hover h3 {
-            background: linear-gradient(
-                to right,
-                rgb(var(--color-primary-rgb)) 20%,
-                rgb(var(--color-accent-rgb)) 40%,
-                rgb(var(--color-accent-rgb)) 60%,
-                rgb(var(--color-primary-rgb)) 80%
-            );
+            background: linear-gradient(to right,
+                    rgb(var(--color-primary-rgb)) 20%,
+                    rgb(var(--color-accent-rgb)) 40%,
+                    rgb(var(--color-accent-rgb)) 60%,
+                    rgb(var(--color-primary-rgb)) 80%);
             background-size: 200% auto;
             color: transparent !important;
             -webkit-background-clip: text;
@@ -218,29 +238,38 @@
             0% {
                 height: 15%;
             }
+
             100% {
                 height: 100%;
             }
         }
     </style>
 </head>
-<body class="bg-background text-primary font-sans antialiased selection:bg-accent/30 selection:text-white relative overflow-x-hidden min-h-screen transition-colors duration-300">
+
+<body
+    class="bg-background text-primary font-sans antialiased selection:bg-accent/30 selection:text-white relative overflow-x-hidden min-h-screen transition-colors duration-300">
 
     <!-- Ambient Background Glows -->
-    <div class="absolute top-[5%] left-[-15%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-blue-400/10 dark:bg-blue-500/15 blur-[80px] md:blur-[130px] pointer-events-none z-0 animate-pulse" style="animation-duration: 10s;"></div>
-    <div class="absolute bottom-[15%] right-[-15%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-purple-400/10 dark:bg-purple-500/15 blur-[80px] md:blur-[130px] pointer-events-none z-0 animate-pulse" style="animation-duration: 15s;"></div>
+    <div class="absolute top-[5%] left-[-15%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-blue-400/10 dark:bg-blue-500/15 blur-[80px] md:blur-[130px] pointer-events-none z-0 animate-pulse"
+        style="animation-duration: 10s;"></div>
+    <div class="absolute bottom-[15%] right-[-15%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-purple-400/10 dark:bg-purple-500/15 blur-[80px] md:blur-[130px] pointer-events-none z-0 animate-pulse"
+        style="animation-duration: 15s;"></div>
 
     <main class="max-w-5xl mx-auto px-6 py-12 md:py-20 relative z-10 flex flex-col gap-6">
-        
+
         <!-- Bento Grid Top Row -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Hero / Bio Card (spans 2 columns on desktop) -->
-            <div id="hero-card" class="md:col-span-2 p-8 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-xl hover:border-border/100 transition-all duration-300 flex flex-col justify-center animate-fade-in-up" style="animation-delay: 100ms;">
+            <div id="hero-card"
+                class="md:col-span-2 p-8 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-xl hover:border-border/100 transition-all duration-300 flex flex-col justify-center animate-fade-in-up"
+                style="animation-delay: 100ms;">
                 <!-- Rendered dynamically -->
             </div>
 
             <!-- Status & Socials Card (spans 1 column on desktop) -->
-            <div id="status-social-card" class="p-8 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-xl hover:border-border/100 transition-all duration-300 flex flex-col justify-between animate-fade-in-up" style="animation-delay: 200ms;">
+            <div id="status-social-card"
+                class="p-8 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-xl hover:border-border/100 transition-all duration-300 flex flex-col justify-between animate-fade-in-up"
+                style="animation-delay: 200ms;">
                 <!-- Rendered dynamically -->
             </div>
         </div>
@@ -251,14 +280,16 @@
             <div id="focus-backend-card" class="animate-fade-in-up" style="animation-delay: 300ms;">
                 <!-- Rendered dynamically -->
             </div>
-            
+
             <!-- Focus Area 2: Deep Learning -->
             <div id="focus-dl-card" class="animate-fade-in-up" style="animation-delay: 350ms;">
                 <!-- Rendered dynamically -->
             </div>
 
             <!-- Spotify Widget Card -->
-            <div id="spotify-card" class="group relative rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-xl transition-all duration-300 ease-out glow-card-emerald overflow-hidden h-full animate-fade-in-up" style="animation-delay: 400ms; min-height:170px;">
+            <div id="spotify-card"
+                class="group relative rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-xl transition-all duration-300 ease-out glow-card-emerald overflow-hidden h-full animate-fade-in-up"
+                style="animation-delay: 400ms; min-height:170px;">
                 <!-- Rendered dynamically -->
             </div>
         </div>
@@ -275,7 +306,7 @@
             <div id="projects-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Rendered dynamically -->
             </div>
-            
+
             <div id="github-archive-link" class="mt-8 text-center">
                 <!-- Rendered dynamically -->
             </div>
@@ -297,7 +328,9 @@
         <hr class="border-border opacity-50 animate-fade-in-up" style="animation-delay: 700ms;">
 
         <!-- Footer -->
-        <footer id="footer-section" class="p-6 rounded-2xl bg-surface/30 backdrop-blur-md border border-border/60 shadow-lg flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary animate-fade-in-up" style="animation-delay: 800ms;">
+        <footer id="footer-section"
+            class="p-6 rounded-2xl bg-surface/30 backdrop-blur-md border border-border/60 shadow-lg flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary animate-fade-in-up"
+            style="animation-delay: 800ms;">
             <!-- Rendered dynamically -->
         </footer>
 
@@ -329,7 +362,7 @@
             const statusSocialCard = document.getElementById('status-social-card');
             if (statusSocialCard && data.profile) {
                 const profile = data.profile;
-                const statusBadge = profile.status && profile.status.active 
+                const statusBadge = profile.status && profile.status.active
                     ? `<div class="flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full w-fit mb-6">
                             <span class="relative flex h-2 w-2">
                               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -382,7 +415,7 @@
                         <a href="${profile.socials.resume}" target="_blank" class="text-xs font-semibold text-accent hover:opacity-80 transition duration-200 flex items-center gap-1">Resume <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
                     </div>
                 `;
-                
+
                 // Initialize icon based on current theme state
                 updateThemeIcon(document.documentElement.getAttribute('data-theme'));
             }
@@ -390,7 +423,7 @@
             // 2. Render Focus Areas
             const focusBackendCard = document.getElementById('focus-backend-card');
             const focusDlCard = document.getElementById('focus-dl-card');
-            
+
             if (focusBackendCard && data.focusAreas && data.focusAreas[0]) {
                 const area = data.focusAreas[0];
                 focusBackendCard.innerHTML = `
@@ -431,8 +464,8 @@
             const projectsContainer = document.getElementById('projects-container');
             if (projectsContainer && data.projects) {
                 projectsContainer.innerHTML = data.projects.map(project => {
-                    const projectLinkAttrs = project.url && project.url !== '#' 
-                        ? `href="${project.url}" target="_blank"` 
+                    const projectLinkAttrs = project.url && project.url !== '#'
+                        ? `href="${project.url}" target="_blank"`
                         : `href="#"`;
 
                     const tagsHtml = project.tags.map(tag => `
@@ -574,7 +607,7 @@
             techStackBadges.forEach((badge, index) => {
                 const techName = data.techStack[index].name.toLowerCase();
                 badge.classList.add('cursor-pointer');
-                
+
                 badge.addEventListener('click', () => {
                     if (activeFilter === techName) {
                         activeFilter = null;
@@ -639,7 +672,7 @@
             function writeOutput(text, isCommand = false) {
                 const div = document.createElement('div');
                 if (isCommand) {
-                    div.innerHTML = `<span class="text-accent">noval@mnovaldr:~$</span> <span class="text-white">${text}</span>`;
+                    div.innerHTML = `<span class="text-accent">halo@mnovaldr:~$</span> <span class="text-white">${text}</span>`;
                 } else {
                     div.innerHTML = text;
                 }
@@ -657,7 +690,7 @@
 
                     writeOutput(rawCommand, true);
 
-                    switch(command) {
+                    switch (command) {
                         case 'help':
                             writeOutput('Available commands:<br>' +
                                 '  <span class="text-white">about</span>    - Short bio info<br>' +
@@ -794,7 +827,7 @@
 
             function connectLanyardWS() {
                 if (lanyardWs) {
-                    try { lanyardWs.close(); } catch(e) {}
+                    try { lanyardWs.close(); } catch (e) { }
                 }
                 clearInterval(lanyardHeartbeatInterval);
 
@@ -920,8 +953,8 @@
                                 const ty = y - t * FONT_SIZE;
                                 if (ty > 0) {
                                     const alpha = (1 - t / 5) * 0.45;
-                                    ctx.fillStyle = isLight 
-                                        ? `rgba(16, 185, 129, ${alpha * 0.6})` 
+                                    ctx.fillStyle = isLight
+                                        ? `rgba(16, 185, 129, ${alpha * 0.6})`
                                         : `rgba(200, 200, 210, ${alpha})`;
                                     ctx.fillText(chars[Math.floor(Math.random() * chars.length)], x, ty);
                                 }
@@ -944,17 +977,17 @@
             // Magnetic Hover Effect
             function initMagneticHover() {
                 const targets = document.querySelectorAll('#theme-toggle, #status-social-card a, #terminal-trigger, #footer-section a');
-                
+
                 targets.forEach(elem => {
                     elem.addEventListener('mousemove', (e) => {
                         const rect = elem.getBoundingClientRect();
                         const x = e.clientX - rect.left - rect.width / 2;
                         const y = e.clientY - rect.top - rect.height / 2;
-                        
+
                         elem.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
                         elem.style.transition = 'transform 0.1s ease-out';
                     });
-                    
+
                     elem.addEventListener('mouseleave', () => {
                         elem.style.transform = 'translate(0px, 0px)';
                         elem.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
@@ -1007,35 +1040,45 @@
     </script>
 
     <!-- Floating Terminal Button -->
-    <button id="terminal-trigger" class="fixed bottom-6 right-6 z-40 bg-zinc-900/90 backdrop-blur border border-zinc-800 text-zinc-400 w-12 h-12 rounded-full shadow-lg hover:text-white hover:scale-105 hover:border-zinc-700 active:scale-95 transition flex items-center justify-center cursor-pointer group" aria-label="Open Terminal">
+    <button id="terminal-trigger"
+        class="fixed bottom-6 right-6 z-40 bg-zinc-900/90 backdrop-blur border border-zinc-800 text-zinc-400 w-12 h-12 rounded-full shadow-lg hover:text-white hover:scale-105 hover:border-zinc-700 active:scale-95 transition flex items-center justify-center cursor-pointer group"
+        aria-label="Open Terminal">
         <i class="fa-solid fa-terminal text-lg group-hover:animate-pulse"></i>
     </button>
 
     <!-- Terminal Modal -->
-    <div id="terminal-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
-        <div class="w-full max-w-2xl bg-zinc-950/95 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[450px]">
+    <div id="terminal-modal"
+        class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+        <div
+            class="w-full max-w-2xl bg-zinc-950/95 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[450px]">
             <!-- Terminal Header -->
             <div class="bg-zinc-900/80 border-b border-zinc-800 px-4 py-3 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
                     <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
                     <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
-                    <span class="text-xs text-secondary font-mono ml-2">noval@mnovaldr.dev:~</span>
+                    <span class="text-xs text-secondary font-mono ml-2">halo@mnovaldr.dev:~</span>
                 </div>
-                <button id="terminal-close" class="text-zinc-500 hover:text-zinc-300 font-mono text-sm cursor-pointer" aria-label="Close Terminal">ESC / close</button>
+                <button id="terminal-close" class="text-zinc-500 hover:text-zinc-300 font-mono text-sm cursor-pointer"
+                    aria-label="Close Terminal">ESC / close</button>
             </div>
             <!-- Terminal Body -->
-            <div id="terminal-output" class="flex-1 p-6 font-mono text-xs md:text-sm text-green-400 overflow-y-auto space-y-2 select-text">
+            <div id="terminal-output"
+                class="flex-1 p-6 font-mono text-xs md:text-sm text-green-400 overflow-y-auto space-y-2 select-text">
                 <div>Welcome to Muhammad Noval CLI Portfolio v1.0.0.</div>
                 <div>Type <span class="text-white font-semibold">help</span> to list available commands.</div>
                 <br>
             </div>
             <!-- Terminal Input -->
-            <div class="bg-zinc-900/40 border-t border-zinc-800 px-6 py-4 flex items-center gap-2 font-mono text-sm text-zinc-300">
-                <span class="text-accent">noval@mnovaldr:~$</span>
-                <input type="text" id="terminal-input" class="flex-1 bg-transparent border-none outline-none text-white font-mono caret-accent" autocomplete="off">
+            <div
+                class="bg-zinc-900/40 border-t border-zinc-800 px-6 py-4 flex items-center gap-2 font-mono text-sm text-zinc-300">
+                <span class="text-accent">halo@mnovaldr:~$</span>
+                <input type="text" id="terminal-input"
+                    class="flex-1 bg-transparent border-none outline-none text-white font-mono caret-accent"
+                    autocomplete="off">
             </div>
         </div>
     </div>
 </body>
+
 </html>
