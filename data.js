@@ -48,8 +48,16 @@ window.PORTFOLIO_DATA = {
       title: "Sirekap MCC",
       description: "Sistem backend analitik dan manajemen data event untuk Malang Creative Center (MCC). Menampilkan dashboard visualisasi data interaktif, rekapitulasi sub-sektor ekraf, dan optimasi performa query database.",
       url: "https://sirekap.mnovaldr.dev",
+      githubUrl: "https://github.com/mnovaldr",
+      image: "dist/img/projects/sirekap.jpg",
+      architecture: "Laravel 10 • FilamentPHP • PostgreSQL • TailwindCSS",
+      highlights: [
+        "Dashboard visualisasi analitik interaktif sub-sektor ekonomi kreatif",
+        "Optimasi query database PostgreSQL & rekapitulasi data multi-tabel",
+        "Sistem manajemen event & pelaporan otomatis berbasis web"
+      ],
       tags: ["Laravel", "FilamentPHP", "PostgreSQL", "TailwindCSS"],
-      glowColor: "rgba(16, 185, 129, 0.2)", // Emerald green glow
+      glowColor: "rgba(16, 185, 129, 0.2)",
       glowClass: "glow-card-emerald",
       rgbColor: [16, 185, 129]
     },
@@ -57,17 +65,33 @@ window.PORTFOLIO_DATA = {
       title: "Mama Frozen E-commerce",
       description: "Platform e-commerce untuk UMKM makanan beku (<i>frozen food</i>) guna mendigitalisasi proses katalog produk serta sistem pemesanan online.",
       url: "https://mamafrozen.000webhostapp.com/",
+      githubUrl: "https://github.com/mnovaldr",
+      image: null,
+      architecture: "PHP 8 • Laravel MVC • MySQL • Bootstrap / Tailwind",
+      highlights: [
+        "Digitalisasi katalog produk frozen food dengan filter kategori dinamis",
+        "Alur pemesanan online terintegrasi langsung ke admin dashboard",
+        "Manajemen stok produk otomatis dan pencatatan transaksi"
+      ],
       tags: ["PHP", "Laravel", "MySQL"],
-      glowColor: "rgba(59, 130, 246, 0.2)", // Blue glow
+      glowColor: "rgba(59, 130, 246, 0.2)",
       glowClass: "glow-card-blue",
       rgbColor: [59, 130, 246]
     },
     {
       title: "RestoranQue",
       description: "Aplikasi pencarian katalog restoran berbasis Progressive Web App (PWA) dengan fitur <i>offline caching</i>, daftar favorit, serta pengujian terintegrasi (<i>integration testing</i>).",
-      url: "#",
-      tags: ["JavaScript", "PWA"],
-      glowColor: "rgba(168, 85, 247, 0.2)", // Purple glow
+      url: "https://github.com/mnovaldr",
+      githubUrl: "https://github.com/mnovaldr",
+      image: null,
+      architecture: "Vanilla JavaScript (ES6+) • IndexedDB • Service Worker • Webpack",
+      highlights: [
+        "Offline-first PWA caching dengan Service Worker & IndexedDB",
+        "Fitur review customer, pencarian restoran real-time & simpan restoran favorit",
+        "End-to-End & Integration Testing untuk keandalan fungsional aplikasi"
+      ],
+      tags: ["JavaScript", "PWA", "IndexedDB"],
+      glowColor: "rgba(168, 85, 247, 0.2)",
       glowClass: "glow-card-purple",
       rgbColor: [168, 85, 247]
     }

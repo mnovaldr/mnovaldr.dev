@@ -62,10 +62,21 @@
             --blueprint-opacity: 0.08;
         }
 
-        html {
+        /* Custom Spider-Man Glove & Web-Shooter Cursors */
+        :root {
+            --cursor-spidey-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cfilter id='s' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeDropShadow dx='1' dy='1' stdDeviation='1' flood-color='%23000' flood-opacity='0.4'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23s)'%3E%3Cpath d='M4,2 L14,14 L11,15 L16,25 L13,27 L8,17 L4,20 Z' fill='%23E11D48' stroke='%2309090B' stroke-width='1.2' stroke-linejoin='round'/%3E%3Cpath d='M4,2 L11,15 M3,8 L10,11 M5,13 L13,15 M8,17 L12,21' stroke='%2309090B' stroke-width='0.8' stroke-opacity='0.85'/%3E%3Cpath d='M12,20 L16,25 L13,27 L9,22 Z' fill='%231E3A8A' stroke='%2309090B' stroke-width='1'/%3E%3Ccircle cx='4' cy='2' r='1.2' fill='%23FFFFFF'/%3E%3C/g%3E%3C/svg%3E") 4 2, auto;
+            --cursor-spidey-pointer: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cfilter id='s2' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeDropShadow dx='1' dy='1' stdDeviation='1.2' flood-color='%23000' flood-opacity='0.5'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23s2)'%3E%3Cpath d='M11,28 L19,28 L21,20 L9,20 Z' fill='%231E3A8A' stroke='%2309090B' stroke-width='1.2'/%3E%3Cpath d='M9,20 L7,14 L10,8 L13,9 L14,15 L16,15 L17,9 L20,8 L23,14 L21,20 Z' fill='%23E11D48' stroke='%2309090B' stroke-width='1.2' stroke-linejoin='round'/%3E%3Cpath d='M8,12 L9,2 L12,3 L11,10 Z' fill='%23E11D48' stroke='%2309090B' stroke-width='1.2' stroke-linejoin='round'/%3E%3Cpath d='M19,10 L20,4 L23,5 L21,12 Z' fill='%23E11D48' stroke='%2309090B' stroke-width='1.2' stroke-linejoin='round'/%3E%3Cpath d='M12,11 C12,8 18,8 18,11 L18,16 C18,18 12,18 12,16 Z' fill='%239F1239' stroke='%2309090B' stroke-width='1.2'/%3E%3Cpath d='M10,2 L10,20 M21,4 L20,20 M9,6 L12,7 M19,8 L22,9 M9,16 L21,16 M10,13 L20,13' stroke='%2309090B' stroke-width='0.75' stroke-opacity='0.8'/%3E%3Ccircle cx='15' cy='15' r='2.2' fill='%23E2E8F0' stroke='%2309090B' stroke-width='0.8'/%3E%3Ccircle cx='15' cy='15' r='0.9' fill='%2306B6D4'/%3E%3Ccircle cx='10.5' cy='2.5' r='1' fill='%23FFFFFF'/%3E%3C/g%3E%3C/svg%3E") 10 2, pointer;
+        }
+
+        html, body {
+            cursor: var(--cursor-spidey-default);
             background-color: rgb(var(--color-background-rgb));
             transition: background-color 300ms;
             overflow-x: hidden;
+        }
+
+        a, button, [role="button"], input[type="submit"], .cursor-pointer, #spidey-slinger, .group, #theme-toggle {
+            cursor: var(--cursor-spidey-pointer) !important;
         }
 
         /* Modern Scrollbar (Desktop only to prevent mobile rendering glitches) */
@@ -243,17 +254,257 @@
                 height: 100%;
             }
         }
+
+        /* --- SPIDER-MAN MODERN ORNAMENTS & ANIMATIONS --- */
+        @keyframes spideySwing {
+            0% {
+                transform: rotate(8deg);
+            }
+            50% {
+                transform: rotate(-8deg);
+            }
+            100% {
+                transform: rotate(8deg);
+            }
+        }
+
+        @keyframes spideySensePulse {
+            0%, 100% {
+                opacity: 0.35;
+                transform: scale(0.95);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+                filter: drop-shadow(0 0 5px rgba(239, 68, 68, 0.7));
+            }
+        }
+
+        @keyframes webGlowPulse {
+            0%, 100% {
+                opacity: 0.12;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .spidey-swing-container {
+            transform-origin: top center;
+            animation: spideySwing 4s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        .spidey-swing-container:hover {
+            animation-duration: 2s;
+        }
+
+        .spidey-sense-wave {
+            animation: spideySensePulse 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .web-corner-decor {
+            position: absolute;
+            top: 0;
+            right: 0;
+            pointer-events: none;
+            opacity: 0.14;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        #hero-card:hover .web-corner-decor {
+            opacity: 0.35;
+            transform: scale(1.05);
+        }
+
+        .spidey-bubble {
+            opacity: 0;
+            transform: translateX(8px) scale(0.95);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        .spidey-interactive:hover .spidey-bubble,
+        .spidey-interactive:focus .spidey-bubble,
+        .spidey-bubble.active {
+            opacity: 1;
+            transform: translateX(0px) scale(1);
+            pointer-events: auto;
+        }
+
+        /* Spider-Verse Chromatic Glitch on Hover */
+        @keyframes spideyGlitch {
+            0% {
+                text-shadow: 2px 0 #ef4444, -2px 0 #06b6d4;
+            }
+            25% {
+                text-shadow: -2px 0 #ef4444, 2px 0 #06b6d4;
+            }
+            50% {
+                text-shadow: 1.5px 0 #ef4444, -1.5px 0 #06b6d4;
+            }
+            100% {
+                text-shadow: none;
+            }
+        }
+
+        .spidey-glitch-hover:hover {
+            animation: spideyGlitch 0.35s ease-out;
+        }
+
+        /* Bio-Electric Venom Accent Border on Card Hover */
+        .glow-card-blue:hover,
+        .glow-card-purple:hover,
+        .glow-card-emerald:hover {
+            position: relative;
+        }
+
+        .glow-card-blue:hover::after,
+        .glow-card-purple:hover::after,
+        .glow-card-emerald:hover::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            pointer-events: none;
+            background: linear-gradient(90deg, transparent 0%, rgba(239, 68, 68, 0.35) 25%, rgba(6, 182, 212, 0.35) 75%, transparent 100%);
+            background-size: 200% 100%;
+            animation: venomSpark 2.2s linear infinite;
+            z-index: 1;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+            padding: 1.5px;
+        }
+
+        @keyframes venomSpark {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        /* --- FEATURE: Spider-Verse Ben-Day Halftone Dot Matrix Texture --- */
+        .spidey-halftone-overlay {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background-image: radial-gradient(rgba(225, 29, 72, 0.08) 1.2px, transparent 1.2px), radial-gradient(rgba(6, 182, 212, 0.06) 1.2px, transparent 1.2px);
+            background-size: 12px 12px;
+            background-position: 0 0, 6px 6px;
+            z-index: 0;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+        }
+
+        [data-theme="light"] .spidey-halftone-overlay {
+            background-image: radial-gradient(rgba(225, 29, 72, 0.06) 1.2px, transparent 1.2px), radial-gradient(rgba(37, 99, 235, 0.05) 1.2px, transparent 1.2px);
+        }
+
+        #hero-card:hover .spidey-halftone-overlay,
+        #status-social-card:hover .spidey-halftone-overlay,
+        #focus-backend-card > div:hover .spidey-halftone-overlay,
+        #focus-dl-card > div:hover .spidey-halftone-overlay,
+        #spotify-card:hover .spidey-halftone-overlay,
+        .project-card:hover .spidey-halftone-overlay {
+            opacity: 1;
+        }
+
+        /* --- FEATURE: Web-Zip Scroll to Top Thread Animation --- */
+        @keyframes webZipShoot {
+            0% {
+                transform: scaleY(0);
+                opacity: 1;
+            }
+            35% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+            75% {
+                transform: scaleY(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scaleY(1);
+                opacity: 0;
+            }
+        }
+
+        .web-zip-line {
+            position: fixed;
+            bottom: 4.5rem;
+            left: 2.75rem;
+            width: 2px;
+            height: 100vh;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(6, 182, 212, 0.8), transparent);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 18px rgba(6, 182, 212, 0.6);
+            transform-origin: bottom center;
+            pointer-events: none;
+            z-index: 45;
+            animation: webZipShoot 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
     </style>
 </head>
 
 <body
     class="bg-background text-primary font-sans antialiased selection:bg-accent/30 selection:text-white relative overflow-x-hidden min-h-screen transition-colors duration-300">
 
-    <!-- Ambient Background Glows -->
-    <div class="absolute top-[5%] left-[-15%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-blue-400/10 dark:bg-blue-500/15 blur-[80px] md:blur-[130px] pointer-events-none z-0 animate-pulse"
-        style="animation-duration: 10s;"></div>
-    <div class="absolute bottom-[15%] right-[-15%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-purple-400/10 dark:bg-purple-500/15 blur-[80px] md:blur-[130px] pointer-events-none z-0 animate-pulse"
-        style="animation-duration: 15s;"></div>
+    <!-- Full-screen Web Shooter Particle Burst Canvas -->
+    <canvas id="spidey-web-canvas" class="fixed inset-0 pointer-events-none z-50 w-full h-full"></canvas>
+
+    <!-- Ambient Spider-Verse Multiverse Background Glows -->
+    <div class="absolute top-[3%] left-[-12%] w-[350px] md:w-[680px] h-[350px] md:h-[680px] rounded-full bg-rose-500/12 dark:bg-rose-600/18 blur-[90px] md:blur-[140px] pointer-events-none z-0 animate-pulse"
+        style="animation-duration: 9s;"></div>
+    <div class="absolute top-[38%] right-[-14%] w-[320px] md:w-[620px] h-[320px] md:h-[620px] rounded-full bg-cyan-400/10 dark:bg-cyan-500/15 blur-[90px] md:blur-[140px] pointer-events-none z-0 animate-pulse"
+        style="animation-duration: 13s;"></div>
+    <div class="absolute bottom-[8%] left-[-10%] w-[300px] md:w-[580px] h-[300px] md:h-[580px] rounded-full bg-indigo-500/10 dark:bg-indigo-600/14 blur-[90px] md:blur-[140px] pointer-events-none z-0 animate-pulse"
+        style="animation-duration: 16s;"></div>
+
+    <!-- Spider-Man Swinging Top-Corner Interactive Ornament -->
+    <div class="fixed top-0 right-4 sm:right-10 md:right-16 z-30 pointer-events-auto spidey-interactive group select-none" id="spidey-slinger">
+        <div class="spidey-swing-container cursor-pointer flex flex-col items-center" id="spidey-body-wrapper" aria-label="Interactive Spider-Man">
+            <!-- Web Thread -->
+            <div id="spidey-thread" class="w-[1.5px] h-12 md:h-20 bg-gradient-to-b from-white/30 via-zinc-400/70 to-zinc-300 dark:from-zinc-700/50 dark:via-zinc-400 dark:to-white/90 shadow-[0_0_8px_rgba(255,255,255,0.4)] origin-top"></div>
+            
+            <!-- Hanging Inverted Spider-Man -->
+            <div id="spidey-figure" class="relative -mt-1 group-hover:scale-110 transition-transform duration-300 origin-center">
+                <!-- SVG Spider-Man Hanging Upside Down -->
+                <svg class="w-9 h-11 md:w-11 md:h-14 drop-shadow-[0_4px_12px_rgba(220,38,38,0.45)]" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Web thread grip hand -->
+                    <circle cx="50" cy="8" r="6" fill="#DC2626" />
+                    <!-- Arms holding line -->
+                    <path d="M50 10 L32 28 M50 10 L68 28" stroke="#DC2626" stroke-width="6" stroke-linecap="round" />
+                    <path d="M32 28 L42 50 M68 28 L58 50" stroke="#1E3A8A" stroke-width="6" stroke-linecap="round" />
+                    <!-- Torso (Upside Down) -->
+                    <path d="M38 48 C38 48 50 62 50 62 C50 62 62 48 62 48 L58 75 C58 75 50 82 50 82 C50 82 42 75 42 75 Z" fill="#DC2626" stroke="#09090B" stroke-width="1.5"/>
+                    <path d="M38 52 C35 58 35 68 40 74 L42 75 C42 75 40 65 42 56 Z" fill="#1E3A8A" />
+                    <path d="M62 52 C65 58 65 68 60 74 L58 75 C58 75 60 65 58 56 Z" fill="#1E3A8A" />
+                    <!-- Spider Emblem on chest -->
+                    <path d="M48 60 L52 60 M46 58 L54 62 M46 62 L54 58 M50 56 L50 66" stroke="#09090B" stroke-width="1.2" stroke-linecap="round" />
+                    <!-- Head / Mask (Upside Down) -->
+                    <ellipse cx="50" cy="100" rx="22" ry="24" fill="#E11D48" stroke="#9F1239" stroke-width="1.5"/>
+                    <!-- Web lines on mask -->
+                    <path d="M50 76 L50 124 M28 100 L72 100 M34 83 L66 117 M34 117 L66 83" stroke="#09090B" stroke-width="1" stroke-opacity="0.6"/>
+                    <ellipse cx="50" cy="100" rx="12" ry="13" stroke="#09090B" stroke-width="0.8" stroke-opacity="0.6" fill="none"/>
+                    <!-- Eyes (Upside Down, sleek and expressive) -->
+                    <path d="M36 94 Q43 90 47 98 Q41 106 36 94 Z" fill="#FFFFFF" stroke="#09090B" stroke-width="2.5" />
+                    <path d="M64 94 Q57 90 53 98 Q59 106 64 94 Z" fill="#FFFFFF" stroke="#09090B" stroke-width="2.5" />
+                </svg>
+
+                <!-- Interactive Speech Bubble (Positioned to the left) -->
+                <div class="spidey-bubble absolute right-full top-1/2 -translate-y-1/2 mr-2 sm:mr-3 px-2.5 sm:px-3 py-1.5 bg-surface/95 backdrop-blur-md border border-red-500/40 rounded-xl shadow-2xl max-w-[170px] sm:max-w-[260px] md:max-w-none whitespace-normal sm:whitespace-nowrap z-50 text-left font-mono text-[10px] sm:text-[11px] text-primary select-none">
+                    <span class="text-red-500 font-bold">🕷️ Spidey:</span> <span id="spidey-dialogue">Spidey-Sense is tingling! ⚡</span>
+                    <div class="w-2 h-2 bg-surface border-t border-r border-red-500/40 rotate-45 absolute top-1/2 -translate-y-1/2 -right-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <main class="max-w-5xl mx-auto px-6 py-12 md:py-20 relative z-10 flex flex-col gap-6">
 
@@ -349,12 +600,35 @@
             if (heroCard && data.profile) {
                 const profile = data.profile;
                 heroCard.innerHTML = `
-                    <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-primary">
-                        ${profile.tagline}
-                    </h1>
-                    <p class="text-base md:text-lg text-secondary leading-relaxed font-normal">
-                        ${profile.bio}
-                    </p>
+                    <!-- Spider-Verse Ben-Day Halftone Dot Matrix Texture -->
+                    <div class="spidey-halftone-overlay"></div>
+
+                    <!-- Spider-Man Web Corner Tech Ornament -->
+                    <svg class="web-corner-decor w-28 h-28 md:w-36 md:h-36 text-zinc-400 dark:text-zinc-500 overflow-visible" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
+                        <line x1="100" y1="0" x2="0" y2="100" stroke-opacity="0.6" stroke-dasharray="2 2" />
+                        <line x1="100" y1="0" x2="0" y2="0" stroke-opacity="0.35" />
+                        <line x1="100" y1="0" x2="100" y2="100" stroke-opacity="0.35" />
+                        <line x1="100" y1="0" x2="25" y2="100" stroke-opacity="0.5" />
+                        <line x1="100" y1="0" x2="0" y2="25" stroke-opacity="0.5" />
+                        <line x1="100" y1="0" x2="0" y2="60" stroke-opacity="0.55" />
+                        <line x1="100" y1="0" x2="60" y2="100" stroke-opacity="0.55" />
+                        <!-- Web arcs -->
+                        <path d="M 100,20 Q 80,20 80,0" stroke-opacity="0.75" />
+                        <path d="M 100,40 Q 60,40 60,0" stroke-opacity="0.75" />
+                        <path d="M 100,60 Q 40,60 40,0" stroke-opacity="0.75" />
+                        <path d="M 100,80 Q 20,80 20,0" stroke-opacity="0.75" />
+                        <path d="M 100,100 Q 0,100 0,0" stroke-opacity="0.75" />
+                        <circle cx="96" cy="4" r="2.5" fill="currentColor" fill-opacity="0.6" />
+                    </svg>
+
+                    <div class="relative z-10">
+                        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-primary spidey-glitch-hover cursor-default transition-all">
+                            ${profile.tagline}
+                        </h1>
+                        <p class="text-base md:text-lg text-secondary leading-relaxed font-normal">
+                            ${profile.bio}
+                        </p>
+                    </div>
                 `;
             }
 
@@ -363,56 +637,67 @@
             if (statusSocialCard && data.profile) {
                 const profile = data.profile;
                 const statusBadge = profile.status && profile.status.active
-                    ? `<div class="flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full w-fit mb-6">
+                    ? `<div class="flex items-center gap-2 px-3 py-1 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 dark:border-emerald-500/30 rounded-full w-fit mb-6 relative group/status hover:border-red-500/40 transition-all duration-300">
+                            <!-- Spider-Sense Arc SVG -->
+                            <svg class="w-3.5 h-3.5 text-red-500 spidey-sense-wave inline-block -ml-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                                <path d="M4 11a8 8 0 0 1 16 0" />
+                                <path d="M7 14a5 5 0 0 1 10 0" />
+                                <circle cx="12" cy="17" r="1.5" fill="currentColor" />
+                            </svg>
                             <span class="relative flex h-2 w-2">
-                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                             </span>
-                            <span class="text-xs font-medium text-green-500">${profile.status.text}</span>
+                            <span class="text-xs font-medium text-emerald-600 dark:text-emerald-400">${profile.status.text}</span>
                        </div>`
                     : '';
 
                 statusSocialCard.innerHTML = `
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-[10px] font-bold text-zinc-500 tracking-wider uppercase font-mono">Info & Medsos</span>
-                            <button id="theme-toggle" class="text-secondary hover:text-primary transition duration-200 cursor-pointer p-1.5 rounded-lg hover:bg-zinc-800/20" aria-label="Toggle Theme">
-                                <i class="fa-solid fa-moon text-sm block" id="theme-icon"></i>
-                            </button>
+                    <!-- Spider-Verse Ben-Day Halftone Dot Matrix Texture -->
+                    <div class="spidey-halftone-overlay"></div>
+
+                    <div class="relative z-10 flex flex-col justify-between h-full">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-[10px] font-bold text-zinc-500 tracking-wider uppercase font-mono">Info & Medsos</span>
+                                <button id="theme-toggle" class="text-secondary hover:text-primary transition duration-200 cursor-pointer p-1.5 rounded-lg hover:bg-zinc-800/20" aria-label="Toggle Theme">
+                                    <i class="fa-solid fa-moon text-sm block" id="theme-icon"></i>
+                                </button>
+                            </div>
+                            ${statusBadge}
+                            <h2 class="text-lg font-bold text-primary mb-1">${profile.nickname}</h2>
+                            <p class="text-xs text-secondary leading-relaxed mb-6 font-mono">${profile.role}</p>
                         </div>
-                        ${statusBadge}
-                        <h2 class="text-lg font-bold text-primary mb-1">${profile.nickname}</h2>
-                        <p class="text-xs text-secondary leading-relaxed mb-6 font-mono">${profile.role}</p>
-                    </div>
-                    
-                    <div class="flex items-center justify-between border-t border-border/80 pt-4">
-                        <div class="flex items-center gap-4">
-                            <!-- GitHub (Phosphor Bold Cute Cat) -->
-                            <a href="${profile.socials.github}" target="_blank" aria-label="GitHub" class="text-secondary hover:text-primary transition duration-200">
-                                <svg class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
-                                    <path d="M212.62,75.17A63.7,63.7,0,0,0,206.39,26,12,12,0,0,0,196,20a63.71,63.71,0,0,0-50,24H126A63.71,63.71,0,0,0,76,20a12,12,0,0,0-10.39,6,63.7,63.7,0,0,0-6.23,49.17A61.5,61.5,0,0,0,52,104v8a60.1,60.1,0,0,0,45.76,58.28A43.66,43.66,0,0,0,92,192v4H76a20,20,0,0,1-20-20,44.05,44.05,0,0,0-44-44,12,12,0,0,0,0,24,20,20,0,0,1,20,20,44.05,44.05,0,0,0,44,44H92v12a12,12,0,0,0,24,0V192a20,20,0,0,1,40,0v40a12,12,0,0,0,24,0V192a43.66,43.66,0,0,0-5.76-21.72A60.1,60.1,0,0,0,220,112v-8A61.5,61.5,0,0,0,212.62,75.17ZM196,112a36,36,0,0,1-36,36H112a36,36,0,0,1-36-36v-8a37.87,37.87,0,0,1,6.13-20.12,11.65,11.65,0,0,0,1.58-11.49,39.9,39.9,0,0,1-.4-27.72,39.87,39.87,0,0,1,26.41,17.8A12,12,0,0,0,119.82,68h32.35a12,12,0,0,0,10.11-5.53,39.84,39.84,0,0,1,26.41-17.8,39.9,39.9,0,0,1-.4,27.72,12,12,0,0,0,1.61,11.53A37.85,37.85,0,0,1,196,104Z"/>
-                                </svg>
-                            </a>
-                            <!-- LinkedIn (Phosphor Bold Square in) -->
-                            <a href="${profile.socials.linkedin}" target="_blank" aria-label="LinkedIn" class="text-secondary hover:text-primary transition duration-200">
-                                <svg class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
-                                    <path d="M216,20H40A20,20,0,0,0,20,40V216a20,20,0,0,0,20,20H216a20,20,0,0,0,20-20V40A20,20,0,0,0,216,20ZM112,176V120a12,12,0,0,1,21.43-7.41A40,40,0,0,1,192,148v28a12,12,0,0,1-24,0V148a16,16,0,0,0-32,0v28a12,12,0,0,1-24,0ZM96,120v56a12,12,0,0,1-24,0V120a12,12,0,0,1,24,0ZM68,80A16,16,0,1,1,84,96,16,16,0,0,1,68,80Z"/>
-                                </svg>
-                            </a>
-                            <!-- Instagram (Phosphor Bold Square Camera) -->
-                            <a href="${profile.socials.instagram}" target="_blank" aria-label="Instagram" class="text-secondary hover:text-primary transition duration-200">
-                                <svg class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
-                                    <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,72a24,24,0,1,1,24-24A24,24,0,0,1,128,152ZM176,20H80A60.07,60.07,0,0,0,20,80v96a60.07,60.07,0,0,0,60,60h96a60.07,60.07,0,0,0,60-60V80A60.07,60.07,0,0,0,176,20Zm36,156a36,36,0,0,1-36,36H80a36,36,0,0,1-36-36V80A36,36,0,0,1,80,44h96a36,36,0,0,1,36,36ZM196,76a16,16,0,1,1-16-16A16,16,0,0,1,196,76Z"/>
-                                </svg>
-                            </a>
-                            <!-- Email (Phosphor Bold Envelope) -->
-                            <a href="${profile.socials.email}" aria-label="Email" class="text-secondary hover:text-primary transition duration-200">
-                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M4 5.095v-.001l.002-.002a.011.011 0 01.003-.003h.004C5.786 5.234 9.406 5.5 12 5.5c2.594 0 6.214-.266 7.991-.41h.003l.004.002.002.002v2.318l-8 4.444-8-4.444V5.095zM4 9.7v9.206l.002.002a.01.01 0 00.003.003h.004C5.786 18.766 9.406 18.5 12 18.5c2.594 0 6.214.266 7.991.41h.003l.004-.002.002-.002V9.7l-7.029 3.904a2 2 0 01-1.942 0L4 9.7zm.17-6.604a2.007 2.007 0 00-2.17 2v13.809a2.007 2.007 0 002.17 1.999c1.781-.145 5.327-.404 7.83-.404 2.502 0 6.049.26 7.83.404a2.007 2.007 0 002.17-2V5.096a2.007 2.007 0 00-2.17-1.999c-1.781.145-5.327.404-7.83.404s-6.049-.26-7.83-.404z"/>
-                                </svg>
-                            </a>
+                        
+                        <div class="flex items-center justify-between border-t border-border/80 pt-4">
+                            <div class="flex items-center gap-4">
+                                <!-- GitHub (Phosphor Bold Cute Cat) -->
+                                <a href="${profile.socials.github}" target="_blank" aria-label="GitHub" class="text-secondary hover:text-primary transition duration-200">
+                                    <svg class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
+                                        <path d="M212.62,75.17A63.7,63.7,0,0,0,206.39,26,12,12,0,0,0,196,20a63.71,63.71,0,0,0-50,24H126A63.71,63.71,0,0,0,76,20a12,12,0,0,0-10.39,6,63.7,63.7,0,0,0-6.23,49.17A61.5,61.5,0,0,0,52,104v8a60.1,60.1,0,0,0,45.76,58.28A43.66,43.66,0,0,0,92,192v4H76a20,20,0,0,1-20-20,44.05,44.05,0,0,0-44-44,12,12,0,0,0,0,24,20,20,0,0,1,20,20,44.05,44.05,0,0,0,44,44H92v12a12,12,0,0,0,24,0V192a20,20,0,0,1,40,0v40a12,12,0,0,0,24,0V192a43.66,43.66,0,0,0-5.76-21.72A60.1,60.1,0,0,0,220,112v-8A61.5,61.5,0,0,0,212.62,75.17ZM196,112a36,36,0,0,1-36,36H112a36,36,0,0,1-36-36v-8a37.87,37.87,0,0,1,6.13-20.12,11.65,11.65,0,0,0,1.58-11.49,39.9,39.9,0,0,1-.4-27.72,39.87,39.87,0,0,1,26.41,17.8A12,12,0,0,0,119.82,68h32.35a12,12,0,0,0,10.11-5.53,39.84,39.84,0,0,1,26.41-17.8,39.9,39.9,0,0,1-.4,27.72,12,12,0,0,0,1.61,11.53A37.85,37.85,0,0,1,196,104Z"/>
+                                    </svg>
+                                </a>
+                                <!-- LinkedIn (Phosphor Bold Square in) -->
+                                <a href="${profile.socials.linkedin}" target="_blank" aria-label="LinkedIn" class="text-secondary hover:text-primary transition duration-200">
+                                    <svg class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
+                                        <path d="M216,20H40A20,20,0,0,0,20,40V216a20,20,0,0,0,20,20H216a20,20,0,0,0,20-20V40A20,20,0,0,0,216,20ZM112,176V120a12,12,0,0,1,21.43-7.41A40,40,0,0,1,192,148v28a12,12,0,0,1-24,0V148a16,16,0,0,0-32,0v28a12,12,0,0,1-24,0ZM96,120v56a12,12,0,0,1-24,0V120a12,12,0,0,1,24,0ZM68,80A16,16,0,1,1,84,96,16,16,0,0,1,68,80Z"/>
+                                    </svg>
+                                </a>
+                                <!-- Instagram (Phosphor Bold Square Camera) -->
+                                <a href="${profile.socials.instagram}" target="_blank" aria-label="Instagram" class="text-secondary hover:text-primary transition duration-200">
+                                    <svg class="w-5 h-5" viewBox="0 0 256 256" fill="currentColor">
+                                        <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,72a24,24,0,1,1,24-24A24,24,0,0,1,128,152ZM176,20H80A60.07,60.07,0,0,0,20,80v96a60.07,60.07,0,0,0,60,60h96a60.07,60.07,0,0,0,60-60V80A60.07,60.07,0,0,0,176,20Zm36,156a36,36,0,0,1-36,36H80a36,36,0,0,1-36-36V80A36,36,0,0,1,80,44h96a36,36,0,0,1,36,36ZM196,76a16,16,0,1,1-16-16A16,16,0,0,1,196,76Z"/>
+                                    </svg>
+                                </a>
+                                <!-- Email (Phosphor Bold Envelope) -->
+                                <a href="${profile.socials.email}" aria-label="Email" class="text-secondary hover:text-primary transition duration-200">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M4 5.095v-.001l.002-.002a.011.011 0 01.003-.003h.004C5.786 5.234 9.406 5.5 12 5.5c2.594 0 6.214-.266 7.991-.41h.003l.004.002.002.002v2.318l-8 4.444-8-4.444V5.095zM4 9.7v9.206l.002.002a.01.01 0 00.003.003h.004C5.786 18.766 9.406 18.5 12 18.5c2.594 0 6.214.266 7.991.41h.003l.004-.002.002-.002V9.7l-7.029 3.904a2 2 0 01-1.942 0L4 9.7zm.17-6.604a2.007 2.007 0 00-2.17 2v13.809a2.007 2.007 0 002.17 1.999c1.781-.145 5.327-.404 7.83-.404 2.502 0 6.049.26 7.83.404a2.007 2.007 0 002.17-2V5.096a2.007 2.007 0 00-2.17-1.999c-1.781.145-5.327.404-7.83.404s-6.049-.26-7.83-.404z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <a href="${profile.socials.resume}" target="_blank" class="text-xs font-semibold text-accent hover:opacity-80 transition duration-200 flex items-center gap-1">Resume <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
                         </div>
-                        <a href="${profile.socials.resume}" target="_blank" class="text-xs font-semibold text-accent hover:opacity-80 transition duration-200 flex items-center gap-1">Resume <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
                     </div>
                 `;
 
@@ -427,14 +712,16 @@
             if (focusBackendCard && data.focusAreas && data.focusAreas[0]) {
                 const area = data.focusAreas[0];
                 focusBackendCard.innerHTML = `
-                    <div class="group relative p-6 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-2xl hover:border-border transition-all duration-300 ease-out hover:-translate-y-1 ${area.glowClass} h-full flex flex-col justify-between">
+                    <div class="group relative p-6 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-2xl hover:border-border transition-all duration-300 ease-out hover:-translate-y-1 ${area.glowClass} h-full flex flex-col justify-between overflow-hidden">
+                        <!-- Spider-Verse Ben-Day Halftone Dot Matrix Texture -->
+                        <div class="spidey-halftone-overlay"></div>
                         <div class="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), ${area.glowColor}, transparent 40%);"></div>
-                        <div>
+                        <div class="relative z-10">
                             <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${area.accentClass}">
                                 <i class="${area.icon} text-lg"></i>
                             </div>
                             <h3 class="font-bold text-lg mb-2 text-primary transition-colors duration-200">${area.title}</h3>
-                            <p class="text-sm text-secondary leading-relaxed relative z-10">
+                            <p class="text-sm text-secondary leading-relaxed">
                                 ${area.description}
                             </p>
                         </div>
@@ -445,14 +732,16 @@
             if (focusDlCard && data.focusAreas && data.focusAreas[1]) {
                 const area = data.focusAreas[1];
                 focusDlCard.innerHTML = `
-                    <div class="group relative p-6 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-2xl hover:border-border transition-all duration-300 ease-out hover:-translate-y-1 ${area.glowClass} h-full flex flex-col justify-between">
+                    <div class="group relative p-6 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-2xl hover:border-border transition-all duration-300 ease-out hover:-translate-y-1 ${area.glowClass} h-full flex flex-col justify-between overflow-hidden">
+                        <!-- Spider-Verse Ben-Day Halftone Dot Matrix Texture -->
+                        <div class="spidey-halftone-overlay"></div>
                         <div class="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), ${area.glowColor}, transparent 40%);"></div>
-                        <div>
+                        <div class="relative z-10">
                             <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${area.accentClass}">
                                 <i class="${area.icon} text-lg"></i>
                             </div>
                             <h3 class="font-bold text-lg mb-2 text-primary transition-colors duration-200">${area.title}</h3>
-                            <p class="text-sm text-secondary leading-relaxed relative z-10">
+                            <p class="text-sm text-secondary leading-relaxed">
                                 ${area.description}
                             </p>
                         </div>
@@ -460,38 +749,221 @@
                 `;
             }
 
-            // 3. Render Featured Projects
+            // 3. Render Featured Projects with Interactive Preview Modal
             const projectsContainer = document.getElementById('projects-container');
             if (projectsContainer && data.projects) {
-                projectsContainer.innerHTML = data.projects.map(project => {
-                    const projectLinkAttrs = project.url && project.url !== '#'
-                        ? `href="${project.url}" target="_blank"`
-                        : `href="#"`;
-
+                projectsContainer.innerHTML = data.projects.map((project, pIdx) => {
                     const tagsHtml = project.tags.map(tag => `
                         <span class="text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/60 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50 transition-colors duration-300">${tag}</span>
                     `).join('');
 
                     return `
-                        <a ${projectLinkAttrs} class="group block p-6 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-xl hover:border-border transition-all duration-300 ease-out hover:-translate-y-0.5 ${project.glowClass || 'glow-card-blue'}">
-                            <div class="flex flex-col md:flex-row gap-6 justify-between md:items-start">
-                                <div class="flex-1">
-                                    <div class="flex items-center gap-2">
-                                        <h3 class="text-lg font-bold text-primary transition-colors duration-200">${project.title}</h3>
-                                        ${project.url && project.url !== '#' ? `<i class="fa-solid fa-arrow-up-right-from-square text-xs text-secondary opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-4px] group-hover:translate-x-0"></i>` : ''}
+                        <div data-project-index="${pIdx}" class="project-card group cursor-pointer block p-6 rounded-2xl bg-surface border border-border/80 shadow-lg hover:shadow-xl hover:border-border transition-all duration-300 ease-out hover:-translate-y-0.5 ${project.glowClass || 'glow-card-blue'} relative overflow-hidden">
+                            <!-- Spider-Verse Ben-Day Halftone Dot Matrix Texture -->
+                            <div class="spidey-halftone-overlay"></div>
+
+                            <div class="flex flex-col justify-between h-full gap-4 relative z-10">
+                                <div>
+                                    <div class="flex items-center justify-between gap-2 mb-2.5">
+                                        <h3 class="text-lg font-bold text-primary group-hover:text-rose-500 dark:group-hover:text-rose-400 transition-colors duration-200">${project.title}</h3>
+                                        <div class="flex items-center gap-1.5 flex-shrink-0">
+                                            <span class="text-[10px] font-mono font-semibold text-rose-500 bg-rose-500/10 px-2 py-0.5 rounded-md border border-rose-500/20 group-hover:bg-rose-600 group-hover:text-white transition-all duration-200 flex items-center gap-1">
+                                                <i class="fa-solid fa-eye text-[9px]"></i> Preview
+                                            </span>
+                                            ${project.url && project.url !== '#' ? `
+                                                <a href="${project.url}" target="_blank" onclick="event.stopPropagation();" class="p-1 rounded text-secondary hover:text-primary transition-colors" title="Buka website langsung">
+                                                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                                </a>
+                                            ` : ''}
+                                        </div>
                                     </div>
-                                    <p class="text-sm text-secondary mt-2 mb-4 leading-relaxed">
+                                    <p class="text-sm text-secondary mb-3 leading-relaxed">
                                         ${project.description}
                                     </p>
-                                    <div class="flex flex-wrap gap-1.5">
-                                        ${tagsHtml}
-                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5 pt-3 border-t border-border/50">
+                                    ${tagsHtml}
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     `;
                 }).join('');
+
+                // Add click listener to project cards
+                document.querySelectorAll('.project-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const idx = parseInt(card.getAttribute('data-project-index'), 10);
+                        if (!isNaN(idx)) {
+                            openProjectModal(idx);
+                        }
+                    });
+                });
             }
+
+            // --- FEATURE: Project Demo Preview Modal Controller ---
+            const projectModal = document.getElementById('project-modal');
+            const projectModalDialog = document.getElementById('project-modal-dialog');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const modalTitle = document.getElementById('modal-project-title');
+            const modalArch = document.getElementById('modal-project-arch');
+            const modalDesc = document.getElementById('modal-project-desc');
+            const modalHighlights = document.getElementById('modal-project-highlights');
+            const modalTags = document.getElementById('modal-project-tags');
+            const modalGithubLink = document.getElementById('modal-github-link');
+            const modalLiveLink = document.getElementById('modal-live-link');
+            const modalImageContainer = document.getElementById('modal-image-container');
+
+            function openProjectModal(index) {
+                if (!data.projects || !data.projects[index] || !projectModal) return;
+                const p = data.projects[index];
+
+                if (modalTitle) modalTitle.textContent = p.title;
+                if (modalArch) modalArch.textContent = p.architecture || 'Web Application & Backend';
+                if (modalDesc) modalDesc.innerHTML = p.description;
+
+                // Highlights
+                if (modalHighlights) {
+                    if (p.highlights && p.highlights.length) {
+                        modalHighlights.innerHTML = p.highlights.map(h => `
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-circle-check text-rose-500 text-xs mt-0.5 flex-shrink-0"></i>
+                                <span class="leading-relaxed text-zinc-300">${h}</span>
+                            </li>
+                        `).join('');
+                    } else {
+                        modalHighlights.innerHTML = `<li class="text-zinc-500 italic">Dokumentasi arsitektur dalam proses.</li>`;
+                    }
+                }
+
+                // Tags
+                if (modalTags) {
+                    modalTags.innerHTML = p.tags.map(t => `
+                        <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-lg bg-zinc-800 text-zinc-300 border border-zinc-700/60">${t}</span>
+                    `).join('');
+                }
+
+                // Links
+                if (modalGithubLink) {
+                    if (p.githubUrl && p.githubUrl !== '#') {
+                        modalGithubLink.href = p.githubUrl;
+                        modalGithubLink.classList.remove('hidden');
+                    } else {
+                        modalGithubLink.classList.add('hidden');
+                    }
+                }
+
+                if (modalLiveLink) {
+                    if (p.url && p.url !== '#') {
+                        modalLiveLink.href = p.url;
+                        modalLiveLink.classList.remove('hidden');
+                    } else {
+                        modalLiveLink.classList.add('hidden');
+                    }
+                }
+
+                // Preview Screenshot or Tech Showcase Banner
+                if (modalImageContainer) {
+                    const hasLiveUrl = p.url && p.url !== '#' && p.url.startsWith('http');
+                    const displayUrl = hasLiveUrl ? p.url : 'https://mnovaldr.dev/projects/' + p.title.toLowerCase().replace(/\s+/g, '-');
+
+                    if (p.image) {
+                        modalImageContainer.innerHTML = `
+                            <div class="w-full h-full flex flex-col rounded-xl overflow-hidden bg-zinc-950 border border-zinc-800/80 relative group/screen">
+                                <!-- Browser Bar Simulation -->
+                                <div class="flex items-center justify-between px-3 py-2 bg-zinc-900/90 border-b border-zinc-800 text-xs font-mono text-zinc-400 select-none z-10 flex-shrink-0">
+                                    <div class="flex items-center gap-2 min-w-0">
+                                        <div class="flex items-center gap-1.5 flex-shrink-0">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                                            <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                                        </div>
+                                        <span class="text-[11px] text-zinc-300 bg-zinc-950 px-2.5 py-0.5 rounded-md border border-zinc-800 flex items-center gap-1.5 truncate">
+                                            <i class="fa-solid fa-lock text-emerald-400 text-[9px]"></i>
+                                            <span class="truncate">${displayUrl}</span>
+                                        </span>
+                                    </div>
+                                    <span class="text-[10px] text-rose-500 font-mono uppercase tracking-wider font-semibold">Screenshot Preview</span>
+                                </div>
+                                
+                                <!-- Screenshot Image Viewport with Hover Zoom -->
+                                <div class="relative flex-1 w-full h-[260px] sm:h-[340px] bg-zinc-900 overflow-hidden flex items-center justify-center">
+                                    <img src="${p.image}" alt="${p.title} Screenshot" class="w-full h-full object-contain bg-zinc-950 group-hover/screen:scale-105 transition-transform duration-500">
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        modalImageContainer.innerHTML = `
+                            <div class="w-full h-full flex flex-col justify-between rounded-xl p-5 bg-gradient-to-br from-zinc-900 via-zinc-950 to-zinc-900 border border-zinc-800/80 relative overflow-hidden group">
+                                <!-- Browser Bar Simulation -->
+                                <div class="flex items-center justify-between pb-3 border-b border-zinc-800/60 text-xs font-mono text-zinc-500">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                                    </div>
+                                    <span class="text-[11px] truncate max-w-[220px] text-zinc-400 bg-zinc-950/80 px-3 py-0.5 rounded-md border border-zinc-800">${displayUrl}</span>
+                                    <span class="text-[10px] text-zinc-500 font-mono uppercase tracking-wider font-bold">Tech Overview</span>
+                                </div>
+                                
+                                <!-- Center Graphic -->
+                                <div class="py-6 flex flex-col items-center justify-center text-center my-auto">
+                                    <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-500 flex items-center justify-center text-xl mb-3 shadow-lg shadow-rose-500/10 group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-code"></i>
+                                    </div>
+                                    <h4 class="text-base font-bold text-white mb-1 font-mono">${p.title}</h4>
+                                    <p class="text-xs text-zinc-400 max-w-md font-mono">${p.architecture || ''}</p>
+                                </div>
+
+                                <!-- Footer indicator -->
+                                <div class="flex items-center justify-between pt-2 border-t border-zinc-800/50 text-[10px] text-zinc-500 font-mono">
+                                    <span>Interactive Code Showcase</span>
+                                    <span class="text-cyan-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Architecture Ready</span>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+
+                // Show modal with animation
+                projectModal.classList.remove('opacity-0', 'pointer-events-none');
+                if (projectModalDialog) {
+                    projectModalDialog.classList.remove('scale-95');
+                    projectModalDialog.classList.add('scale-100');
+                }
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeProjectModal() {
+                if (!projectModal) return;
+                projectModal.classList.add('opacity-0', 'pointer-events-none');
+                if (projectModalDialog) {
+                    projectModalDialog.classList.remove('scale-100');
+                    projectModalDialog.classList.add('scale-95');
+                }
+                const iframe = document.getElementById('live-preview-iframe');
+                if (iframe) {
+                    iframe.src = 'about:blank';
+                }
+                document.body.style.overflow = 'auto';
+            }
+
+            if (modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', closeProjectModal);
+            }
+
+            if (projectModal) {
+                projectModal.addEventListener('click', (e) => {
+                    if (e.target === projectModal) {
+                        closeProjectModal();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && projectModal && !projectModal.classList.contains('pointer-events-none')) {
+                    closeProjectModal();
+                }
+            });
 
             // Render GitHub Archive Link
             const githubArchiveLink = document.getElementById('github-archive-link');
@@ -522,7 +994,16 @@
                 const profile = data.profile;
                 const currentYear = new Date().getFullYear();
                 footerSection.innerHTML = `
-                    <p>&copy; ${currentYear} ${profile.name}.</p>
+                    <div class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left">
+                        <p>&copy; ${currentYear} ${profile.name}.</p>
+                        <span class="hidden sm:inline opacity-30">&bull;</span>
+                        <div class="flex items-center gap-1.5 text-xs text-secondary font-mono">
+                            <svg class="w-3.5 h-3.5 text-red-500/90 animate-pulse inline-block" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2a2 2 0 0 0-2 2c0 .74.4 1.39 1 1.73V7h-1.5C8.67 7 8 7.67 8 8.5v1.28l-3.3-1.65a1 1 0 0 0-1.4 1.34l3.7 5.55V17a2 2 0 0 0 2 2h1v3h2v-3h1a2 2 0 0 0 2-2v-1.98l3.7-5.55a1 1 0 0 0-1.4-1.34L17 9.78V8.5c0-.83-.67-1.5-1.5-1.5H14V5.73c.6-.34 1-.99 1-1.73a2 2 0 0 0-2-2z"/>
+                            </svg>
+                            <span class="italic text-[11px]">"With great data comes great responsibility"</span>
+                        </div>
+                    </div>
                     <div class="flex gap-5">
                         <a href="${profile.socials.resume}" target="_blank" class="hover:text-primary transition duration-200 font-semibold text-accent">Resume</a>
                         <a href="${profile.socials.linkedin}" target="_blank" class="hover:text-primary transition duration-200">LinkedIn</a>
@@ -693,11 +1174,12 @@
                     switch (command) {
                         case 'help':
                             writeOutput('Available commands:<br>' +
-                                '  <span class="text-white">about</span>    - Short bio info<br>' +
-                                '  <span class="text-white">projects</span> - View my development projects<br>' +
-                                '  <span class="text-white">skills</span>   - List my technical stack<br>' +
-                                '  <span class="text-white">clear</span>    - Clear terminal screen<br>' +
-                                '  <span class="text-white">exit</span>     - Exit terminal mode');
+                                '  <span class="text-white">about</span>     - Short bio info<br>' +
+                                '  <span class="text-white">projects</span>  - View my development projects<br>' +
+                                '  <span class="text-white">skills</span>    - List my technical stack<br>' +
+                                '  <span class="text-white">spidey</span>    - Spider-Man easter egg protocol 🕷️<br>' +
+                                '  <span class="text-white">clear</span>     - Clear terminal screen<br>' +
+                                '  <span class="text-white">exit</span>      - Exit terminal mode');
                             break;
                         case 'about':
                             writeOutput('Hi, I am Muhammad Noval Dwi Ramadhani. A semester 6 Informatics Student specializing in AI (Computer Vision) and Backend Engineering. Open for Internship opportunities.');
@@ -712,6 +1194,16 @@
                         case 'skills':
                             const list = data.techStack.map(s => s.name).join(', ');
                             writeOutput(`My technical skills: <span class="text-white">${list}</span>`);
+                            break;
+                        case 'spiderman':
+                        case 'spidey':
+                        case 'miles':
+                            writeOutput('<span class="text-red-500 font-bold">🕷️ SPIDER-MAN PROTOCOL ACTIVATED:</span><br>' +
+                                '  Hero: <span class="text-white">Friendly Neighborhood AI & Backend Engineer</span><br>' +
+                                '  Suit: <span class="text-white">Miles Morales Nano-Tech Edition</span><br>' +
+                                '  Motto: <span class="text-zinc-300 italic">"With great model precision comes great responsibility."</span><br>' +
+                                '  Web Shooters: <span class="text-accent">Python, PyTorch, YOLOv8, Django, Laravel</span><br>' +
+                                '  Tip: Coba klik Spider-Man gantung di pojok kanan atas!');
                             break;
                         case 'clear':
                             terminalOutput.innerHTML = '';
@@ -976,7 +1468,7 @@
 
             // Magnetic Hover Effect
             function initMagneticHover() {
-                const targets = document.querySelectorAll('#theme-toggle, #status-social-card a, #terminal-trigger, #footer-section a');
+                const targets = document.querySelectorAll('#theme-toggle, #status-social-card a, #terminal-trigger, #footer-section a, #modal-close-btn, #modal-github-link, #modal-live-link');
 
                 targets.forEach(elem => {
                     elem.addEventListener('mousemove', (e) => {
@@ -1001,7 +1493,7 @@
                 if (!mainContainer) return;
 
                 mainContainer.addEventListener('mousemove', (e) => {
-                    const card = e.target.closest('#hero-card, #status-social-card, #focus-backend-card > div, #focus-dl-card > div, #spotify-card, #projects-container > a');
+                    const card = e.target.closest('#hero-card, #status-social-card, #focus-backend-card > div, #focus-dl-card > div, #spotify-card, .project-card');
                     if (!card) return;
 
                     const rect = card.getBoundingClientRect();
@@ -1020,7 +1512,7 @@
                 });
 
                 mainContainer.addEventListener('mouseout', (e) => {
-                    const card = e.target.closest('#hero-card, #status-social-card, #focus-backend-card > div, #focus-dl-card > div, #spotify-card, #projects-container > a');
+                    const card = e.target.closest('#hero-card, #status-social-card, #focus-backend-card > div, #focus-dl-card > div, #spotify-card, .project-card');
                     if (!card) return;
 
                     // Only reset when leaving the card boundaries
@@ -1031,13 +1523,237 @@
                 });
             }
 
+            // Web-Shooter Click Canvas Particle System
+            function initWebShooterClick() {
+                const canvas = document.getElementById('spidey-web-canvas');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+
+                function resize() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
+                resize();
+                window.addEventListener('resize', resize);
+
+                window.spideyWebBursts = [];
+
+                window.triggerWebBurstAt = function(x, y) {
+                    const spokes = 8;
+                    const angles = [];
+                    for (let i = 0; i < spokes; i++) {
+                        const baseAngle = (i / spokes) * Math.PI * 2;
+                        const jitter = (Math.random() - 0.5) * 0.28;
+                        angles.push(baseAngle + jitter);
+                    }
+                    const maxRadius = Math.random() * 25 + 45; // 45px - 70px
+                    window.spideyWebBursts.push({
+                        x,
+                        y,
+                        angles,
+                        maxRadius,
+                        startTime: performance.now(),
+                        duration: 480 // ms
+                    });
+                };
+
+                document.addEventListener('click', (e) => {
+                    // Ignore clicks inside modal inputs/buttons
+                    if (e.target.closest('#terminal-modal, input, button, textarea, select')) return;
+                    window.triggerWebBurstAt(e.clientX, e.clientY);
+                });
+
+                function animateWeb(now) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+
+                    for (let i = window.spideyWebBursts.length - 1; i >= 0; i--) {
+                        const wb = window.spideyWebBursts[i];
+                        const elapsed = now - wb.startTime;
+                        const progress = elapsed / wb.duration;
+
+                        if (progress >= 1) {
+                            window.spideyWebBursts.splice(i, 1);
+                            continue;
+                        }
+
+                        // Ease out cubic
+                        const easeOut = 1 - Math.pow(1 - progress, 3);
+                        const r = wb.maxRadius * easeOut;
+                        const alpha = (1 - progress) * (isLight ? 0.65 : 0.88);
+
+                        ctx.save();
+                        ctx.translate(wb.x, wb.y);
+
+                        // 1. Draw radiating spokes
+                        ctx.strokeStyle = isLight
+                            ? `rgba(24, 24, 27, ${alpha})`
+                            : `rgba(255, 255, 255, ${alpha})`;
+                        ctx.lineWidth = 1.2;
+
+                        for (const angle of wb.angles) {
+                            ctx.beginPath();
+                            ctx.moveTo(0, 0);
+                            ctx.lineTo(Math.cos(angle) * r, Math.sin(angle) * r);
+                            ctx.stroke();
+
+                            // Micro glowing cyan/crimson endpoint
+                            ctx.fillStyle = isLight
+                                ? `rgba(225, 29, 72, ${alpha})`
+                                : `rgba(6, 182, 212, ${alpha})`;
+                            ctx.beginPath();
+                            ctx.arc(Math.cos(angle) * r, Math.sin(angle) * r, 1.8, 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+
+                        // 2. Draw connecting web spirals
+                        const rings = [0.35, 0.68, 1.0];
+                        for (const ringFrac of rings) {
+                            const ringR = r * ringFrac;
+                            if (ringR < 4) continue;
+
+                            ctx.beginPath();
+                            for (let j = 0; j < wb.angles.length; j++) {
+                                const angle = wb.angles[j];
+                                const px = Math.cos(angle) * ringR;
+                                const py = Math.sin(angle) * ringR;
+                                if (j === 0) ctx.moveTo(px, py);
+                                else {
+                                    const prevAngle = wb.angles[j - 1];
+                                    const midAngle = (prevAngle + angle) / 2;
+                                    const sag = ringR * 0.88;
+                                    const cpx = Math.cos(midAngle) * sag;
+                                    const cpy = Math.sin(midAngle) * sag;
+                                    ctx.quadraticCurveTo(cpx, cpy, px, py);
+                                }
+                            }
+                            const firstAngle = wb.angles[0];
+                            const lastAngle = wb.angles[wb.angles.length - 1];
+                            const midAngle = (lastAngle + firstAngle + Math.PI * 2) / 2;
+                            const sag = ringR * 0.88;
+                            ctx.quadraticCurveTo(Math.cos(midAngle) * sag, Math.sin(midAngle) * sag, Math.cos(firstAngle) * ringR, Math.sin(firstAngle) * ringR);
+                            ctx.stroke();
+                        }
+
+                        // 3. Center impact spark
+                        ctx.fillStyle = `rgba(239, 68, 68, ${alpha * 0.95})`;
+                        ctx.beginPath();
+                        ctx.arc(0, 0, (1 - progress) * 3.5, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        ctx.restore();
+                    }
+
+                    requestAnimationFrame(animateWeb);
+                }
+
+                requestAnimationFrame(animateWeb);
+            }
+
+            // Spider-Man Interactive Click Dialogue & Natural Swing
+            function initSpideyEasterEgg() {
+                const spideySlinger = document.getElementById('spidey-slinger');
+                const spideyDialogue = document.getElementById('spidey-dialogue');
+                const spideyBubble = document.querySelector('.spidey-bubble');
+
+                const spideyQuotes = [
+                    "Spidey-Sense is tingling! ⚡",
+                    "With great code comes great scalability! 🕸️",
+                    "Anyone can wear the mask. It's how you engineer it that counts.",
+                    "Friendly Neighborhood AI & Backend Dev! 🕷️",
+                    "Tip: Buka terminal (ESC) lalu ketik 'spidey'!"
+                ];
+                let quoteIdx = 0;
+
+                if (spideySlinger && spideyDialogue) {
+                    spideySlinger.addEventListener('click', (e) => {
+                        e.stopPropagation();
+
+                        // 1. Web shooter burst at Spider-Man hand
+                        if (window.triggerWebBurstAt) {
+                            const rect = spideySlinger.getBoundingClientRect();
+                            window.triggerWebBurstAt(rect.left + rect.width / 2, rect.top + rect.height * 0.8);
+                        }
+
+                        // 2. Update and show Dialogue Bubble
+                        quoteIdx = (quoteIdx + 1) % spideyQuotes.length;
+                        spideyDialogue.textContent = spideyQuotes[quoteIdx];
+                        if (spideyBubble) {
+                            spideyBubble.classList.add('active');
+                            setTimeout(() => spideyBubble.classList.remove('active'), 2800);
+                        }
+                    });
+                }
+            }
+
+            // FEATURE: Web-Zip Scroll to Top Floating Button & Animation
+            function initWebZipScroll() {
+                const webzipBtn = document.getElementById('webzip-top-btn');
+                if (!webzipBtn) return;
+
+                // Show/hide on scroll
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 280) {
+                        webzipBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                        webzipBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                    } else {
+                        webzipBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                        webzipBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                    }
+                }, { passive: true });
+
+                // Click event: Shoot Web Line & Zip to Top
+                webzipBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+
+                    // 1. Create Shooting Web Thread Line
+                    const line = document.createElement('div');
+                    line.className = 'web-zip-line';
+                    document.body.appendChild(line);
+
+                    // 2. Particle bursts at button & top anchor
+                    const rect = webzipBtn.getBoundingClientRect();
+                    if (window.triggerWebBurstAt) {
+                        window.triggerWebBurstAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
+                        setTimeout(() => {
+                            window.triggerWebBurstAt(rect.left + rect.width / 2, 80);
+                        }, 250);
+                    }
+
+                    // 3. Smooth Scroll to Top
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+
+                    // 4. Clean up web thread
+                    setTimeout(() => {
+                        line.remove();
+                    }, 800);
+                });
+            }
+
             // Run interactive effects after layout is fully rendered
             setTimeout(() => {
                 initMagneticHover();
                 init3DTilt();
+                initSpideyEasterEgg();
+                initWebShooterClick();
+                initWebZipScroll();
             }, 300);
         });
     </script>
+
+    <!-- Floating Web-Zip Scroll to Top Button -->
+    <button id="webzip-top-btn"
+        class="fixed bottom-6 left-6 z-40 bg-zinc-900/90 backdrop-blur-md border border-zinc-800 text-zinc-400 w-12 h-12 rounded-full shadow-lg hover:text-white hover:scale-110 hover:border-rose-500/60 hover:shadow-rose-500/25 active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer group opacity-0 pointer-events-none translate-y-4"
+        aria-label="Web-Zip to Top"
+        title="Web-Zip to Top">
+        <span class="relative flex items-center justify-center">
+            <i class="fa-solid fa-spider text-sm text-rose-500 group-hover:scale-110 transition-transform"></i>
+            <i class="fa-solid fa-angles-up text-[9px] text-cyan-400 absolute -top-2 opacity-0 group-hover:opacity-100 group-hover:-top-3 transition-all duration-200"></i>
+        </span>
+    </button>
 
     <!-- Floating Terminal Button -->
     <button id="terminal-trigger"
@@ -1076,6 +1792,95 @@
                 <input type="text" id="terminal-input"
                     class="flex-1 bg-transparent border-none outline-none text-white font-mono caret-accent"
                     autocomplete="off">
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Demo Preview Modal -->
+    <div id="project-modal"
+        class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div id="project-modal-dialog"
+            class="w-full max-w-2xl bg-zinc-950/95 border border-zinc-800/90 rounded-3xl overflow-hidden shadow-2xl flex flex-col transform scale-95 transition-all duration-300 max-h-[90vh] my-auto relative">
+            
+            <!-- Spider-Man Corner Web Accent in Modal -->
+            <svg class="absolute top-0 right-0 w-24 h-24 text-zinc-700/30 pointer-events-none overflow-visible" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
+                <line x1="100" y1="0" x2="0" y2="100" stroke-dasharray="2 2" stroke-opacity="0.4" />
+                <path d="M 100,30 Q 70,30 70,0" stroke-opacity="0.6" />
+                <path d="M 100,60 Q 40,60 40,0" stroke-opacity="0.6" />
+                <path d="M 100,90 Q 10,90 10,0" stroke-opacity="0.6" />
+            </svg>
+
+            <!-- Modal Header -->
+            <div class="bg-zinc-900/90 border-b border-zinc-800/80 px-6 py-4 flex items-center justify-between flex-shrink-0 relative z-10">
+                <div class="flex items-center gap-3">
+                    <div id="modal-project-icon" class="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-500 flex items-center justify-center text-sm border border-rose-500/20 shadow-sm">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <h3 id="modal-project-title" class="text-base font-bold text-white leading-tight">Project Title</h3>
+                        <p id="modal-project-arch" class="text-[11px] font-mono text-zinc-400 mt-0.5">Architecture Stack</p>
+                    </div>
+                </div>
+                <button id="modal-close-btn" class="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-800/60 transition font-mono text-xs cursor-pointer flex items-center gap-1.5" aria-label="Close Modal">
+                    <span class="hidden sm:inline">ESC /</span>
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Modal Scrollable Body -->
+            <div class="flex-1 overflow-y-auto p-6 space-y-5 select-text">
+                <!-- Preview Visual / Mockup Screen Banner -->
+                <div id="modal-preview-banner" class="relative rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900/80 shadow-lg aspect-video flex items-center justify-center">
+                    <div id="modal-image-container" class="w-full h-full flex flex-col items-center justify-center p-6 text-center">
+                        <!-- Rendered dynamically -->
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <h4 class="text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400 mb-1.5 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Tentang Proyek
+                    </h4>
+                    <p id="modal-project-desc" class="text-xs md:text-sm text-zinc-300 leading-relaxed font-normal"></p>
+                </div>
+
+                <!-- Highlights -->
+                <div>
+                    <h4 class="text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Fitur Utama & Arsitektur
+                    </h4>
+                    <ul id="modal-project-highlights" class="space-y-2 text-xs text-zinc-300 font-normal">
+                        <!-- Rendered dynamically -->
+                    </ul>
+                </div>
+
+                <!-- Tags -->
+                <div>
+                    <h4 class="text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Teknologi yang Digunakan
+                    </h4>
+                    <div id="modal-project-tags" class="flex flex-wrap gap-1.5">
+                        <!-- Rendered dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-zinc-900/80 border-t border-zinc-800/80 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 flex-shrink-0 relative z-10">
+                <div class="flex items-center gap-2 text-xs text-zinc-500 font-mono">
+                    <i class="fa-solid fa-cube text-rose-500"></i>
+                    <span>Noval &bull; Project Showcase</span>
+                </div>
+                <div class="flex items-center gap-2.5 w-full sm:w-auto">
+                    <a id="modal-github-link" href="#" target="_blank" class="flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-zinc-800/80 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-700/60 text-xs font-medium transition flex items-center justify-center gap-2 shadow-sm">
+                        <i class="fa-brands fa-github text-sm"></i>
+                        <span>Source Code</span>
+                    </a>
+                    <a id="modal-live-link" href="#" target="_blank" class="flex-1 sm:flex-initial px-5 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs transition shadow-lg shadow-rose-600/25 flex items-center justify-center gap-2">
+                        <span>Buka Website</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
