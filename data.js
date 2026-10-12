@@ -1,114 +1,111 @@
-window.PORTFOLIO_DATA = {
+const PORTFOLIO_DATA = {
   profile: {
     name: "Muhammad Noval Dwi Ramadhani",
     nickname: "Noval",
     tagline: "Hi, I'm Noval.",
     role: "AI & Backend Engineer",
-    bio: "Mahasiswa Teknik Informatika Semester 6 dengan spesialisasi pada <span id='typewriter' class='text-primary font-semibold border-r-2 border-accent animate-pulse pr-1'></span>. Menggabungkan fondasi Software Engineering yang kuat dengan kemampuan analisis data modern untuk menciptakan solusi cerdas yang aplikatif.",
+    bio: "Computer Science student specializing in Computer Vision pipelines and scalable backend systems. Combining solid software engineering foundations with deep learning to build production-grade, data-driven solutions.",
     typewriterRoles: [
-      "Artificial Intelligence (Computer Vision)",
-      "Backend Engineering",
-      "Deep Learning Models",
-      "Scalable Web APIs"
+      "Computer Vision & YOLOv8",
+      "Backend Architecture & APIs",
+      "Deep Learning (PyTorch)",
+      "Scalable Web Services"
     ],
     status: {
       active: true,
-      text: "Open for Internship"
+      text: "Open to Opportunities"
     },
+    location: "Malang, Indonesia",
     socials: {
       github: "https://github.com/mnovaldr",
       instagram: "https://instagram.com/mnvldr_",
       email: "mailto:halo@mnovaldr.dev",
       linkedin: "https://www.linkedin.com/in/mnovaldr",
-      resume: "https://drive.google.com/file/d/1Ij-yLprYCAYJWb7Hj9oCpgF2FF3Yk8ya/view?usp=sharing"
+      resume: "https://s.mnovaldr.dev/RESUME"
     }
   },
   focusAreas: [
     {
       title: "Backend Engineering",
+      subtitle: "Scalable Architecture & APIs",
       icon: "fa-solid fa-server",
-      description: "Membangun aplikasi web yang <i>scalable</i> menggunakan <span class='text-primary font-semibold'>Django (Python)</span> dan <span class='text-primary font-semibold'>Laravel (PHP)</span>. Berpengalaman mengintegrasikan model AI ke dalam sistem web.",
-      accentClass: "text-blue-400 bg-blue-500/10 hover:border-blue-500/30 group-hover:text-blue-400 shadow-blue-500/5",
-      glowColor: "rgba(59, 130, 246, 0.15)",
-      glowClass: "glow-card-blue",
-      rgbColor: [59, 130, 246]
+      description: "Engineering robust, scalable web backends and REST APIs with Django (Python) and Laravel (PHP). Experienced in relational database schema design, query optimization, and deploying AI models into production environments.",
+      tags: ["Django", "Laravel", "PostgreSQL", "MySQL", "REST APIs"]
     },
     {
-      title: "Deep Learning",
+      title: "Deep Learning & Vision",
+      subtitle: "Computer Vision Pipelines",
       icon: "fa-solid fa-brain",
-      description: "Mengembangkan model deteksi objek secara <i>real-time</i> menggunakan <span class='text-primary font-semibold'>YOLOv8</span> dan <span class='text-primary font-semibold'>PyTorch</span>. Fokus pada implementasi <i>end-to-end</i>, mulai dari <i>training dataset</i> hingga tahap <i>deployment</i>.",
-      accentClass: "text-purple-400 bg-purple-500/10 hover:border-purple-500/30 group-hover:text-purple-400 shadow-purple-500/5",
-      glowColor: "rgba(168, 85, 247, 0.15)",
-      glowClass: "glow-card-purple",
-      rgbColor: [168, 85, 247]
+      description: "Building real-time computer vision and object detection workflows using PyTorch and YOLOv8. Focused on end-to-end implementation from dataset curation and transfer learning to low-latency model inference.",
+      tags: ["PyTorch", "YOLOv8", "OpenCV", "NumPy", "Transfer Learning"]
     }
   ],
   projects: [
     {
       title: "Sirekap MCC",
-      description: "Sistem backend analitik dan manajemen data event untuk Malang Creative Center (MCC). Menampilkan dashboard visualisasi data interaktif, rekapitulasi sub-sektor ekraf, dan optimasi performa query database.",
+      category: "Analytics & Management Platform",
+      description: "Backend analytics and event data management system developed for Malang Creative Center (MCC). Delivers interactive data visualization dashboards, creative economy sub-sector consolidation, and database query optimization.",
       url: "https://sirekap.mnovaldr.dev",
       githubUrl: "https://github.com/mnovaldr",
       image: "dist/img/projects/sirekap.jpg",
-      architecture: "Laravel 10 • FilamentPHP • PostgreSQL • TailwindCSS",
+      architecture: "Laravel 10 / FilamentPHP / PostgreSQL / TailwindCSS",
       highlights: [
-        "Dashboard visualisasi analitik interaktif sub-sektor ekonomi kreatif",
-        "Optimasi query database PostgreSQL & rekapitulasi data multi-tabel",
-        "Sistem manajemen event & pelaporan otomatis berbasis web"
+        "Interactive analytics visualization for creative economy sub-sectors",
+        "Optimized PostgreSQL queries across multi-table event records",
+        "Automated event management and data recapitulation system"
       ],
-      tags: ["Laravel", "FilamentPHP", "PostgreSQL", "TailwindCSS"],
-      glowColor: "rgba(16, 185, 129, 0.2)",
-      glowClass: "glow-card-emerald",
-      rgbColor: [16, 185, 129]
+      tags: ["Laravel", "FilamentPHP", "PostgreSQL", "TailwindCSS"]
     },
     {
       title: "Mama Frozen E-commerce",
-      description: "Platform e-commerce untuk UMKM makanan beku (<i>frozen food</i>) guna mendigitalisasi proses katalog produk serta sistem pemesanan online.",
-      url: "https://mamafrozen.000webhostapp.com/",
+      category: "E-Commerce System",
+      description: "Digital commerce platform for a frozen food SME to modernize product catalogs and online customer orders, featuring dynamic inventory management and an administrative transaction dashboard.",
+      url: "#",
       githubUrl: "https://github.com/mnovaldr",
-      image: null,
-      architecture: "PHP 8 • Laravel MVC • MySQL • Bootstrap / Tailwind",
+      image: "dist/img/projects/mamafrozen.jpg",
+      architecture: "PHP 8 / Laravel MVC / MySQL / Bootstrap / Tailwind",
       highlights: [
-        "Digitalisasi katalog produk frozen food dengan filter kategori dinamis",
-        "Alur pemesanan online terintegrasi langsung ke admin dashboard",
-        "Manajemen stok produk otomatis dan pencatatan transaksi"
+        "Product catalog with dynamic category filtering and search",
+        "Integrated customer ordering workflow tied to admin control center",
+        "Automated inventory tracking and transaction logging"
       ],
-      tags: ["PHP", "Laravel", "MySQL"],
-      glowColor: "rgba(59, 130, 246, 0.2)",
-      glowClass: "glow-card-blue",
-      rgbColor: [59, 130, 246]
+      tags: ["PHP", "Laravel", "MySQL"]
     },
     {
       title: "RestoranQue",
-      description: "Aplikasi pencarian katalog restoran berbasis Progressive Web App (PWA) dengan fitur <i>offline caching</i>, daftar favorit, serta pengujian terintegrasi (<i>integration testing</i>).",
+      category: "Point of Sale (POS) & Restaurant Management",
+      description: "Point of Sales (POS) and restaurant management system featuring multi-level role access (Admin, Cashier, Customer), dynamic menu ordering, real-time transaction billing, and receipt & sales report printing.",
       url: "https://github.com/mnovaldr",
       githubUrl: "https://github.com/mnovaldr",
-      image: null,
-      architecture: "Vanilla JavaScript (ES6+) • IndexedDB • Service Worker • Webpack",
+      image: "dist/img/projects/restoranque.jpg",
+      architecture: "PHP Native / MySQL / Bootstrap 5 / AdminLTE",
       highlights: [
-        "Offline-first PWA caching dengan Service Worker & IndexedDB",
-        "Fitur review customer, pencarian restoran real-time & simpan restoran favorit",
-        "End-to-End & Integration Testing untuk keandalan fungsional aplikasi"
+        "Multi-level role access control (Admin, Cashier, Customer)",
+        "Dynamic menu ordering and real-time transaction billing workflow",
+        "Automated receipt generation and comprehensive sales report printing"
       ],
-      tags: ["JavaScript", "PWA", "IndexedDB"],
-      glowColor: "rgba(168, 85, 247, 0.2)",
-      glowClass: "glow-card-purple",
-      rgbColor: [168, 85, 247]
+      tags: ["PHP", "MySQL", "AdminLTE", "Bootstrap", "POS"]
     }
   ],
   techStack: [
-    { name: "Python", isHighlighted: true },
-    { name: "PyTorch", isHighlighted: false },
-    { name: "YOLOv8", isHighlighted: false },
-    { name: "Pandas & NumPy", isHighlighted: false },
-    { name: "Django", isHighlighted: true },
-    { name: "Laravel", isHighlighted: false },
-    { name: "SQL", isHighlighted: false },
-    { name: "Git", isHighlighted: false }
+    { name: "Python", category: "Languages", isHighlighted: true },
+    { name: "PHP", category: "Languages", isHighlighted: false },
+    { name: "JavaScript", category: "Languages", isHighlighted: false },
+    { name: "SQL", category: "Languages", isHighlighted: false },
+    { name: "PyTorch", category: "AI & ML", isHighlighted: true },
+    { name: "YOLOv8", category: "AI & ML", isHighlighted: true },
+    { name: "Pandas & NumPy", category: "AI & ML", isHighlighted: false },
+    { name: "Django", category: "Backend", isHighlighted: true },
+    { name: "Laravel", category: "Backend", isHighlighted: true },
+    { name: "PostgreSQL", category: "Databases", isHighlighted: false },
+    { name: "MySQL", category: "Databases", isHighlighted: false },
+    { name: "Git", category: "Tools", isHighlighted: false }
   ]
 };
 
-// Export data if modules are used, or make it global
+if (typeof window !== 'undefined') {
+  window.PORTFOLIO_DATA = PORTFOLIO_DATA;
+}
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = window.PORTFOLIO_DATA;
+  module.exports = PORTFOLIO_DATA;
 }
